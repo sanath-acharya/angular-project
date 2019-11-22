@@ -14,6 +14,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { AppRoutingModule } from './app.routing';
 import { ComponentsModule } from './components/components.module';
 import { JwtUnAuthorizedInterceptorServiceService } from './jwt-un-authorized-interceptor-service.service';
+import { AddAssociateComponent } from './pages/add-associate/add-associate.component';
 
 
 @NgModule({
@@ -32,7 +33,8 @@ import { JwtUnAuthorizedInterceptorServiceService } from './jwt-un-authorized-in
   declarations: [
     AppComponent,
     AdminLayoutComponent,
-    AuthLayoutComponent
+    AuthLayoutComponent,
+    AddAssociateComponent
   ],
   providers: [
     {

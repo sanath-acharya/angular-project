@@ -42,6 +42,11 @@ export class DashboardComponent implements OnInit {
       type: 'bar',
       options: chartExample2.options,
       data: chartExample2.data
+    
+    
+    
+    
+    
     });
 
     var chartSales = document.getElementById('chart-sales');

@@ -10,29 +10,29 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 })
 export class LoginComponent implements OnInit, OnDestroy {
   constructor( private logservice:LoginService,private router:Router) {}
-  loginmodel:LoginModel=new LoginModel();
+  loginmodel:LoginModel=new LoginModel("","");
   loginError:string="";
-
+  currentuser:string="";
   ngOnInit() {
   }
+  
   ngOnDestroy() {
   }
-  onlogin(){
-    
-    
+  onlogin(model){
+    console.log("Before Login")
+    console.log(model);
 
-    this.logservice.login(this.loginmodel).subscribe(
-      (response)=>{
-      if(response){
-        console.log( "this is error");
-        this.router.navigateByUrl("/dashboard");
-      }
+    this.logservice.login(model).subscribe(
+      response=>{
+    //  var res=response.json();
+        console.log(response);
+        if(response!=null){
+          this.router.navigateByUrl("/dashboard");
+        }
+       
+      //  return response;
         
-       },
-       (error)=>{
-         console.log(error);
-         this.loginError="Invalid username or password";
-    });
+       });
   }
 
 }
