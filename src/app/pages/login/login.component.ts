@@ -1,6 +1,6 @@
 import { Router, RouterLink } from '@angular/router';
 import { LoginService } from './../../service/login.service';
-import { LoginModel } from './../../login-model';
+import { LoginModel } from '../../model/login-model';
 import { Component, OnInit, OnDestroy } from '@angular/core';
 
 @Component({

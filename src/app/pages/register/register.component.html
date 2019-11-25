@@ -1,3 +1,16 @@
+<!-- 
+  
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+
+ Latest compiled and minified JavaScript 
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+  
+   -->
+
+
 <div class="header bg-gradient-danger py-7 py-lg-8">
   <div class="container">
     <div class="header-body text-center mb-7">
@@ -32,14 +45,17 @@
           <div class="text-center text-muted mb-4">
             <small>Or sign up with credentials</small>
           </div>
-          <form role="form" >
-            <div class="form-group">
+          <form role="form" [formGroup]="addAssociateForm" > 
+            <div class="form-group"   > 
               <div class="input-group input-group-alternative mb-3">
                 <div class="input-group-prepend">
                   <span class="input-group-text"><i class="ni ni-hat-3"></i></span>
                 </div>
-                <input class="form-control" name="associateFirstName" [(ngModel)]="AssociateModel.associateFirstName" 
-                  placeholder="Name" type="text"/>
+                <input class="form-control"  [ngClass]="{'has-error':addAssociateForm.get('associateFirstName').errors &&
+              (addAssociateForm.get('associateFirstName').touched || addAssociateForm.get('associateFirstName').errors)}"  placeholder=" first Name" type="text"/>
+              <span *ngIf="addAssociateForm.get('associateFirstName').errors.required">
+                first Name is required
+              </span>
               </div>
             </div>
             <div class="form-group">
@@ -47,8 +63,9 @@
                 <div class="input-group-prepend">
                   <span class="input-group-text"><i class="ni ni-hat-3"></i></span>
                 </div>
-                <input class="form-control" name="associateLastName" [(ngModel)]="AssociateModel.associateLastName" 
-                  placeholder="Name" type="text">
+                <input class="form-control" formControlName="associateLastName"  name="associateLastName" [(ngModel)]="AssociateModel.associateLastName" 
+                  placeholder="last Name" type="text">
+              
               </div>
             </div>
 
@@ -57,7 +74,7 @@
                 <div class="input-group-prepend">
                   <span class="input-group-text"><i class="ni ni-email-83"></i></span>
                 </div>
-                <input class="form-control" [(ngModel)]="AssociateModel.associateEmail"  name="associateEmail"
+                <input class="form-control" formControlName="associateEmail  [(ngModel)]="AssociateModel.associateEmail"  name="associateEmail"
                   placeholder="Email" type="email">
               </div>
             </div>
@@ -67,7 +84,7 @@
                 <div class="input-group-prepend">
                   <span class="input-group-text"><i class="ni ni-email-83"></i></span>
                 </div>
-                <input class="form-control" name="password" [(ngModel)]="AssociateModel.password" 
+                <input class="form-control" formControlName="password"  name="password" [(ngModel)]="AssociateModel.password" 
                   placeholder="password" type="password">
               </div>
             </div>
@@ -77,7 +94,7 @@
                 <div class="input-group-prepend">
                   <span class="input-group-text"><i class="ni ni-hat-3"></i></span>
                 </div>
-                <input class="form-control" name="associateMobile" [(ngModel)]="AssociateModel.associateMobile" 
+                <input class="form-control" formControlName="associateMobile"  name="associateMobile" [(ngModel)]="AssociateModel.associateMobile" 
                   placeholder="phone number" type="tel">
               </div>
 
@@ -88,28 +105,31 @@
                 <div class="input-group-prepend">
                   <span class="input-group-text"><i class="ni ni-hat-3"></i></span>
                 </div>
-                <input class="form-control" name="dob" [(ngModel)]="AssociateModel.dob" 
+                <input class="form-control" formControlName="dob"  name="dob" [(ngModel)]="AssociateModel.dob" 
                   placeholder="date of birth" type="date">
               </div>
             </div>
 
             <div class="form-group">
               <div class="input-group input-group-alternative mb-3">
-                
+                 
                 <legend>Gender</legend>
+                <div  *ngFor="let gender of genders">
                 <div class="form-check">
-                  <label class="form-check-label">
-                    <input type="radio" class="form-check-input" name="gender" [(ngModel)]="AssociateModel.gender"  id="optionsRadios1" value="option1"
-                      checked> Female
-                  </label>
+                  <label [for]="gender" class="form-check-label">{{gender}} &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
+                 
+                    <input type="radio" class="form-check-input" formControlName="gender"  name="gender" [(ngModel)]="AssociateModel.gender"  [id]="gender" [value]="gender"
+                      checked>
+                    </label>
                 </div>
-                <div class="form-check">
+              </div>
+                <!-- <div class="form-check">
                   <label class="form-check-label">
-                    <input type="radio" class="form-check-input" 
+                    <input type="radio" class="form-check-input" formControlName="gender" 
                     [(ngModel)]="AssociateModel.gender" name="gender" id="optionsRadios2" value="option2">
                     Male
                   </label>
-                </div>
+                </div> -->
               </div>
             </div>
 
@@ -122,7 +142,7 @@
                 <div class="input-group-prepend">
                   <span class="input-group-text"><i class="ni ni-hat-3"></i></span>
                 </div>
-                <input class="form-control" [(ngModel)]="AssociateModel.location" name="locatoin" 
+                <input class="form-control" [(ngModel)]="AssociateModel.location" formControlName="location"  name="location" 
                   placeholder="location" type="text">
               </div>
             </div>
@@ -145,7 +165,7 @@
                   <span class="input-group-text"><i class="ni ni-hat-3"></i></span>
                 </div>
 
-                <select class="form-control" name="country" [(ngModel)]="AssociateModel.country"
+                <select class="form-control" name="country" formControlName="country"  [(ngModel)]="AssociateModel.country"
                   placeholder="country">
                   <option value="volvo">Volvo</option>
                   <option value="saab">Saab</option>
@@ -212,7 +232,7 @@
 
           </form>
 
-          <!-- {{signupForm.value| json}} -->
+          {{addAssociateForm.value| json}}
         </div>
       </div>
     </div>

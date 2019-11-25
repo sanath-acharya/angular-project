@@ -1,3 +1,5 @@
+import { SearchComponent } from './../../pages/search/search.component';
+import { AddAssociateComponent } from './../../pages/add-associate/add-associate.component';
 import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';import { RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
@@ -29,6 +31,8 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     UserProfileComponent,
     TablesComponent,
     IconsComponent,
+    AddAssociateComponent,
+    SearchComponent
     
   ]
 })

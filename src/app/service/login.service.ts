@@ -1,4 +1,4 @@
-import { LoginModel } from './../login-model';
+import { LoginModel } from '../model/login-model';
 import { map } from 'rxjs/operators';
 import { HttpClient, HttpBackend } from '@angular/common/http';
 import { Injectable } from '@angular/core';

@@ -15,6 +15,7 @@ import { AppRoutingModule } from './app.routing';
 import { ComponentsModule } from './components/components.module';
 import { JwtUnAuthorizedInterceptorServiceService } from './jwt-un-authorized-interceptor-service.service';
 import { AddAssociateComponent } from './pages/add-associate/add-associate.component';
+import { SearchComponent } from './pages/search/search.component';
 
 
 @NgModule({
@@ -34,7 +35,8 @@ import { AddAssociateComponent } from './pages/add-associate/add-associate.compo
     AppComponent,
     AdminLayoutComponent,
     AuthLayoutComponent,
-    AddAssociateComponent
+  
+    
   ],
   providers: [
     {

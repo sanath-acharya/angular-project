@@ -1,3 +1,5 @@
+import { SearchComponent } from './../../pages/search/search.component';
+import { AddAssociateComponent } from './../../pages/add-associate/add-associate.component';
 import { Routes } from '@angular/router';
 
 import { DashboardComponent } from '../../pages/dashboard/dashboard.component';
@@ -11,5 +13,7 @@ export const AdminLayoutRoutes: Routes = [
     { path: 'user-profile',   component: UserProfileComponent },
     { path: 'tables',         component: TablesComponent },
     { path: 'icons',          component: IconsComponent },
+    { path: 'add',          component: AddAssociateComponent },
+    { path: 'search',          component: SearchComponent }
    
 ];
