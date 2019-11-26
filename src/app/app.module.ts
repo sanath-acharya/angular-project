@@ -16,6 +16,9 @@ import { ComponentsModule } from './components/components.module';
 import { JwtUnAuthorizedInterceptorServiceService } from './jwt-un-authorized-interceptor-service.service';
 import { AddAssociateComponent } from './pages/add-associate/add-associate.component';
 import { SearchComponent } from './pages/search/search.component';
+import { FilterPipe } from './filter-pipe';
+import { AdminPageComponent } from './pages/admin-page/admin-page.component';
+import { AddSkillComponent } from './pages/add-skill/add-skill.component';
 
 
 @NgModule({
@@ -30,11 +33,15 @@ import { SearchComponent } from './pages/search/search.component';
     ReactiveFormsModule,
     AppRoutingModule,
    
+
   ],
   declarations: [
     AppComponent,
     AdminLayoutComponent,
     AuthLayoutComponent,
+    FilterPipe,
+    AddSkillComponent
+   
   
     
   ],

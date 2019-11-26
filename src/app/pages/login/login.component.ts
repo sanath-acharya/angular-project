@@ -27,7 +27,7 @@ export class LoginComponent implements OnInit, OnDestroy {
     //  var res=response.json();
         console.log(response);
         if(response!=null){
-          this.router.navigateByUrl("/dashboard");
+          this.router.navigateByUrl("/tables");
         }
        
       //  return response;

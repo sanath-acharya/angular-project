@@ -1,0 +1,126 @@
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+    integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+    crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+    integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+    crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+    integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+    crossorigin="anonymous"></script>
+
+
+
+
+<br>
+<br><br>
+<br>
+<div class="row">
+
+    <div class="col-5-md"><button type="button" class="btn btn-success" routerLink="/add">Add Associate</button></div>
+
+    <div class="col-5-md"><button type="button" class="btn btn-success" (click)="onaddSkill()">Add skills</button></div>
+
+
+</div>
+
+<div class="row">
+    <div class="col">
+        1 of 2
+    </div>
+    <div class="col">
+        2 of 2
+    </div>
+</div>
+
+
+
+<form [formGroup]="addSkills">
+    <div class="form-group" class="form-row">
+        <label class="col-form-label">skills:</label>
+        <div *ngFor="let skil of addSkills.get('skills').controls;let i=index">
+            <div class="row ">
+                <div class="col">
+                    <input type="text" clas="form-control" formControlName="skillName">
+                </div>
+                <div class="w-100"></div>
+                <div class="col">
+                    <select name="level" id="level" formControlName="level" class="form-control">
+                        <option> beginer</option>
+                        <option> beginer</option>
+                        <option> beginer</option>
+                    </select>
+                </div>
+                <div class="col"> {{i}}</div>
+            </div>
+
+        </div>
+    </div>
+</form>
+
+
+<div class="card-header border-0">
+    <h3 class="mb-0">Card tables</h3>
+</div>
+<div class="table-responsive">
+    <div>
+
+        <table class="table table-striped">
+            <tr>
+                <th>
+                    Skill Catagory
+                </th>
+                <th>
+                    Skill Name
+                </th>
+                <th>
+                    Associates
+                </th>
+                <th>
+                    completion ratio
+                </th>
+                <th>
+                    update associate
+                </th>
+                <th>
+                    Delete associate
+                </th>
+            </tr>
+
+
+
+
+            <tr *ngFor="let employee of associate ">
+                <!-- <td>{{employee.associateFirstName | searchTitle:employee.gender}}</td> -->
+                <a>
+                    <td>
+                        {{employee.associateLastName}}
+
+                    </td>
+                </a>
+                <a>
+                    <td>
+                        {{employee.associateEmail}}
+                    </td>
+                </a>
+                <a>
+                    <td>
+                        {{employee.password}}
+                    </td>
+                </a>
+                <td>
+                    <button class="btn btn-success">update</button>
+
+                </td>
+                <td>
+                    <button class="btn btn-danger">remove</button>
+
+                </td>
+            </tr>
+
+
+        </table>
+    </div>
+
+</div>

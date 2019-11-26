@@ -153,6 +153,7 @@ export class AddAssociateComponent implements OnInit {
     //console.log("heleloeoefh");
     //  console.log(Amodel.password);
     this.addAssociateForm["submitted"] = true;
+    console.log("Inside register")
     console.log(this.addAssociateForm);
 
     this.addAssociate.addAssociate(Amodel).subscribe(response => {

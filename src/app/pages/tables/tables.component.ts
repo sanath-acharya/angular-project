@@ -23,21 +23,7 @@ export class TablesComponent implements OnInit {
       }    )
   }
   
- Associates = [
-    {'name': "sanath",
-    'email':"sanath@gmail.com",
 
-    'phone' :2343245,
-    'skills1':['angular','c++','spring']
-    },
-    {'name': "KINI",
-    'email':"sanath@gmail.com",
-
-    'phone' :2343245,
-    'skills2':['angular','c','spring-boot']
-  }
-    
-];
    
    
   
