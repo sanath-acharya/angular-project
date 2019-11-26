@@ -40,7 +40,7 @@ import { AddSkillComponent } from './pages/add-skill/add-skill.component';
     AdminLayoutComponent,
     AuthLayoutComponent,
     FilterPipe,
-    AddSkillComponent
+    
    
   
     

@@ -1,3 +1,4 @@
+import { AddSkillComponent } from './../../pages/add-skill/add-skill.component';
 import { SearchComponent } from './../../pages/search/search.component';
 import { AddAssociateComponent } from './../../pages/add-associate/add-associate.component';
 import { Routes } from '@angular/router';
@@ -14,8 +15,9 @@ export const AdminLayoutRoutes: Routes = [
     { path: 'user-profile',   component: UserProfileComponent },
     { path: 'tables',         component: TablesComponent },
     { path: 'icons',          component: IconsComponent },
-    { path: 'add',          component: AddAssociateComponent },
+    { path: 'addAssociate',          component: AddAssociateComponent },
     { path: 'search',          component: SearchComponent },
-    { path: 'admin',          component: AdminPageComponent }
+    { path: 'admin',          component: AdminPageComponent },
+    { path: 'addSkills',          component: AddSkillComponent }
    
 ];

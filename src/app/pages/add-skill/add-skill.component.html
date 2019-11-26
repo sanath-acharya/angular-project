@@ -1,1 +1,53 @@
-<p>add-skill works!</p>
+<br><br><br><br><br>
+<div class="col-5-md">
+
+    <button type="button" class="btn btn-success" (click)="onaddSkill()">Add skills</button>
+</div>
+
+<div class="col-md-10 col-xl-6 mx-auto">
+    <div class="card-header">skills </div>
+    <div class="card-body">
+        <form [formGroup]="addSkills">
+
+            <div class="form-group form-row">
+                <div class="col-md-4">
+                    label
+                </div>
+                <div class="col-md-8">
+                    input
+                </div>
+
+            </div>
+
+            <div class="form-group form-row">
+
+                <div class="col-md-10" formArrayName="skills">
+                    <div class="row" *ngFor="let skil of addSkills.get('skills').controls;let i=index"
+                        [formGroupName]="i">
+                        <div class="col-5">
+                            <input type="text" placeholder="skill category" name="skillName" id="skillName"
+                                class="form-control" formControlName="SkillCategory" >
+                        </div>
+                        <div class="col-4">
+                            <select name="level" id="level" formControlName="SkillName" class="form-control" >
+                                <option value="null"> angular</option>
+                                <option> springs</option>
+                                <option> c++</option>
+                            </select>
+                        </div>
+                        <div class="col-3">
+                            <button class="btn btn-danger" type="button" (click)="onRemoveSkills(i)"> Remove</button>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+        </form>
+
+    </div>
+
+
+</div>
+
+<button class="btn btn-secondary" type="button" (click)="submit()" routerLink="/admin"> submit & goBack</button>

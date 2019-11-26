@@ -1,5 +1,12 @@
+import { AssociateSkillServiceService } from './../../service/associate-skill-service.service';
+import { Skills } from './../../model/skills';
+import { SkillsService } from './../../service/skills.service';
+import { Associates } from './../../associates';
+import { AddAssociateService } from 'src/app/service/add-associate.service';
 import { FormGroup, FormControl, FormArrayName, FormArray } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
+import { Associate } from 'src/app/model/associate';
+import { Response } from 'selenium-webdriver/http';
 
 @Component({
   selector: 'app-admin-page',
@@ -8,7 +15,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AdminPageComponent implements OnInit {
   associate:any;
-  constructor() { 
+  private AssociateModel: Associate[] ;
+  private skillsList:Skills[];
+  private AssociateSkillMo
+  // = new Associate("", "", "", "",null, "", "", "", "");
+
+  constructor(private AssociateService:AddAssociateService,private skillService:SkillsService) { 
     this.associate = [
 
       { "associateFirstName":"ben","associateLastName":"skdsjf","associateEmail":"jejl@gmal.com","password":"pass","associateMobile":341341234,"dob":"22/22/2345","gender":"male","location":"22/22/2345","country":"male"},
@@ -27,23 +39,37 @@ export class AdminPageComponent implements OnInit {
         // country:'male'
      ];
   }
-addSkills:FormGroup;
+// addSkills:FormGroup;
   ngOnInit() {
     
-    this.addSkills=new FormGroup({
-      skills:new FormArray([])
+    this.AssociateService.getAssociate().subscribe(
+      (response:Associate[])=>{
+      // console.log(response);
+      // if(response!=null){
+        this.AssociateModel=response;
 
-    });
+      }
+    );
+    this.skillService.getSkills().subscribe(
+      (response:Skills[])=>{
+        this.skillsList=response;
+      }
+    );
+    // this.AssociateSkillServiceService.getAssociateAndSkills().subscribe(
+    //   (response:AssociateAndSkills)=>{
+    //     this.
+    //   }
+    
   }
-  onaddSkill(){
-    var formgroup=new FormGroup({
-      skillName:new FormControl(null),
-      level:new FormControl(null)
-    });
+  // onaddSkill(){
+  //   var formgroup=new FormGroup({
+  //     skillName:new FormControl(null),
+  //     level:new FormControl(null)
+  //   });
 
-    (<FormArray>this.addSkills.get("skills")).push(formgroup);
-    console.log(this.addSkills);
-  }
+  //   (<FormArray>this.addSkills.get("skills")).push(formgroup);
+  //   console.log(this.addSkills);
+  // }
 
   
 

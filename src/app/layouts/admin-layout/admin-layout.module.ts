@@ -1,3 +1,4 @@
+import { AddSkillComponent } from './../../pages/add-skill/add-skill.component';
 import { SearchComponent } from './../../pages/search/search.component';
 import { AddAssociateComponent } from './../../pages/add-associate/add-associate.component';
 import { NgModule } from '@angular/core';
@@ -34,7 +35,8 @@ import { AdminPageComponent } from 'src/app/pages/admin-page/admin-page.componen
     IconsComponent,
     AddAssociateComponent,
     SearchComponent,
-    AdminPageComponent
+    AdminPageComponent,
+    AddSkillComponent
     
   ]
 })
