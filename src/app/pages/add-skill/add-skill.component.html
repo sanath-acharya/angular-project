@@ -1,4 +1,4 @@
-<br><br><br><br><br>
+<!-- <br><br><br><br><br>
 <div class="col-5-md">
 
     <button type="button" class="btn btn-success" (click)="onaddSkill()">Add skills</button>
@@ -35,8 +35,9 @@
                                 <option> c++</option>
                             </select>
                         </div>
-                        <div class="col-3">
-                            <button class="btn btn-danger" type="button" (click)="onRemoveSkills(i)"> Remove</button>
+
+                        <div class="col-3" *ngIf="">
+                            <button title="send and go back" class="btn btn-danger" type="button" (click)="onRemoveSkills(i)"> Remove</button>
                         </div>
 
                     </div>
@@ -50,4 +51,72 @@
 
 </div>
 
-<button class="btn btn-secondary" type="button" (click)="submit()" routerLink="/admin"> submit & goBack</button>
+<button class="btn btn-secondary" type="button" (click)="submit()" routerLink="/admin"> submit & goBack</button> -->
+
+<div class="col-md-10 col-xl-6 mx-auto">
+
+    <div class="card-header">skills </div>
+    <div class="card-body">
+        <div class="row">
+            <form  >
+                <table>
+
+                    <tr>
+                        <td>
+                                <input type="text" placeholder="skill category"  name="skillName" class="form-control" [(ngModel)]="skillModel.skillName"
+                                >
+                        </td>
+                        <td>
+                                <select [(ngModel)]="skillModel.skillCategory" name="skillCategory" class="form-control">
+                                        <option value="angular"> angular</option>
+                                        <option value="angular" > springs</option>
+                                        <option value="angular"> c++</option>
+                                    </select>
+                        </td>
+                        <td>
+                                <button type="button" class="btn btn-success" (click)="onaddSkill()">Add skills</button>
+
+                        </td>
+                    </tr>
+                </table>
+                    
+             
+               
+                   
+         
+                <div class="col-3">
+                    
+                </div>
+
+            </form>
+        </div>
+
+        <div class="row">
+
+            <table class="table">
+                <thead class="thead-dark">
+                    <tr>
+                        <th scope="col">Skill category</th>
+                        <th scope="col">Skill name</th>
+                        <th>remove</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let skill of skills ;let i=index">
+
+                        <td>{{skill.skillName}}</td>
+                        <td>{{skill.skillCategory}}</td>
+                        <td><button title="delete the skill " class="btn btn-danger" type="button"
+                                (click)="onRemoveSkills(i)"> Remove</button>
+                        </td>
+                    </tr>
+
+
+                </tbody>
+            </table>
+        </div>
+
+    </div>
+
+
+</div>

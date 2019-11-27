@@ -21,11 +21,12 @@ export class LoginComponent implements OnInit, OnDestroy {
   onlogin(model){
     console.log("Before Login")
     console.log(model);
-
+    console.log("inside ts Login")
     this.logservice.login(model).subscribe(
       response=>{
     //  var res=response.json();
         console.log(response);
+        
         if(response!=null){
           this.router.navigateByUrl("/admin");
         }

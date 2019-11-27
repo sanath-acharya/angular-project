@@ -12,7 +12,15 @@ export class SkillsService {
   constructor(private http:HttpClient) { }
 
   getSkills():Observable<Skills[]>{
-    return this.http.get<Skills[]>("api/url");
+    return this.http.get<Skills[]>("/api/skills/all",{responseType:"json"});
 
   }
+  addSkill(model){
+   return  this.http.post("/api/saveSkills",model);
+  }
+  removebyname(id:number):Observable<string>{
+    return this.http.delete<string>("api/id?id="+id);
+
+  }
+  
 }

@@ -19,11 +19,14 @@ export class AssociateService {
       headers=headers.set("Authorization","Bearer"+currentUser.token);
 
     }
-    return this.http.get<Associates[]>("/api/associates/list",{headers:headers,responseType:"json"})
+    return this.http.get<Associates[]>("/api/associate/all",{headers:headers,responseType:"json"})
     .pipe(map(
       (data:Associates[])=>{
         return data;
       }
     ))
   }
+
+  
+
 }

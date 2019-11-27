@@ -1,3 +1,4 @@
+import { JwtHelperService } from '@auth0/angular-jwt';
 import { JwtInterceptorService } from './jwt-interceptor.service';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgModule } from '@angular/core';
@@ -54,7 +55,8 @@ import { AddSkillComponent } from './pages/add-skill/add-skill.component';
       provide:HTTP_INTERCEPTORS,
       useClass:JwtUnAuthorizedInterceptorServiceService,
       multi:true
-    }
+    },
+   
   ],
   bootstrap: [AppComponent]
 })

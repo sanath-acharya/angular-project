@@ -3,13 +3,17 @@ import { map } from 'rxjs/operators';
 import { HttpClient, HttpBackend } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { JwtHelperService } from '@auth0/angular-jwt';
 
 @Injectable({
   providedIn: 'root'
 })
 export class LoginService {
   // private http:HttpClient;
-  constructor( private httpBackend:HttpBackend,private http:HttpClient) { }
+  constructor( private httpBackend:HttpBackend,
+    private http:HttpClient
+    // private JwtHelperService:JwtHelperService
+    ) { }
 
 
   currrentuser:string=null;
@@ -34,4 +38,15 @@ export class LoginService {
     this.currrentuser=null;
     // sessionStorage.removeItem("currentuser");
   }
+
+//   // public isAuthenticated():boolean{
+//   //   var token=sessionStorage.getItem("currentuser")?JSON.parse(sessionStorage.getItem("currentUser")).token:null;
+//   //   if(this.JwtHelperService.isTokenExpired()){
+//   //     return false;
+
+//   //   }else{
+//   //     return true;
+//   //   }
+//   // }
+// }
 }

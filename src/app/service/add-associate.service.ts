@@ -12,10 +12,16 @@ export class AddAssociateService {
   constructor(private http:HttpClient) { }
 
   addAssociate(model){
-    console.log(model)
+    console.log(model);
+    console.log("inside service");
+
     return this.http.post("/api/saveAssociate",model);
   }
   getAssociate():Observable<Associate[]>{
-    return this.http.get<Associate[]>("/api/");
+    return this.http.get<Associate[]>("/api/associate/all");
+  }
+
+  searchby(searchtext:string,name:string):Observable<Associate[]>{
+    return this.http.get<Associate[]>("/api/associate/"+name+"/"+"searchtext",{responseType:"json"});
   }
 }

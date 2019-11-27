@@ -2,7 +2,7 @@ import { AddSkillComponent } from './../../pages/add-skill/add-skill.component';
 import { SearchComponent } from './../../pages/search/search.component';
 import { AddAssociateComponent } from './../../pages/add-associate/add-associate.component';
 import { NgModule } from '@angular/core';
-import { HttpClientModule } from '@angular/common/http';import { RouterModule } from '@angular/router';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';import { RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
@@ -16,8 +16,10 @@ import { UserProfileComponent } from '../../pages/user-profile/user-profile.comp
 import { TablesComponent } from '../../pages/tables/tables.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { AdminPageComponent } from 'src/app/pages/admin-page/admin-page.component';
+import { JwtInterceptorService } from 'src/app/jwt-interceptor.service';
+import { JwtUnAuthorizedInterceptorServiceService } from 'src/app/jwt-un-authorized-interceptor-service.service';
 // import { ToastrModule } from 'ngx-toastr';
-
+import{JwtModule} from '@auth0/angular-jwt';
 @NgModule({
   imports: [
     CommonModule,
@@ -27,6 +29,13 @@ import { AdminPageComponent } from 'src/app/pages/admin-page/admin-page.componen
     HttpClientModule,
     NgbModule,
     ClipboardModule
+    // JwtModule.forRoot({
+    //   config:{
+    //     tokenGetter:()=>{
+    //       return (sessionStorage.getItem("currentUser")?JSON.parse(sessionStorage.getItem("currentUesr")).token:null);
+    //     }
+    //   }
+    // })
   ],
   declarations: [
     DashboardComponent,
@@ -37,6 +46,9 @@ import { AdminPageComponent } from 'src/app/pages/admin-page/admin-page.componen
     SearchComponent,
     AdminPageComponent,
     AddSkillComponent
+    
+  ],
+  providers: [
     
   ]
 })

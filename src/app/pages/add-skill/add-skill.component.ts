@@ -1,5 +1,8 @@
+
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormArray, FormControl, FormBuilder } from '@angular/forms';
+import { SkillsService } from 'src/app/service/skills.service';
+import { Skills } from 'src/app/model/skills';
 
 @Component({
   selector: 'app-add-skill',
@@ -7,35 +10,82 @@ import { FormGroup, FormArray, FormControl, FormBuilder } from '@angular/forms';
   styleUrls: ['./add-skill.component.scss']
 })
 export class AddSkillComponent implements OnInit {
-  addSkills:FormGroup;
-  isdisabled:boolean;
-  constructor( private fb:FormBuilder) { }
+  
+  // skillname:string;
+  // skillCategory:string;
+  skills:Skills[];
+  skillModel:Skills=new Skills("","");
+  constructor( private fb:FormBuilder,private skillService: SkillsService) { }
   
  
-  ngOnInit() {
-    
-    this.addSkills=this.fb.group({
-      skills: this.fb.array([])
 
+
+  ngOnInit() {
+   
+    this.getdata();
+         
+  }
+
+  onremove(id:number){
+    this.skillService.removebyname(id).subscribe(response=>{
+     
+    },(error)=>{
+      console.log(error)
     });
   }
   onaddSkill(){
-    
-    this.isdisabled=true;
-    var formgroup=this.fb.group({
-      SkillCategory:null,
-      SkillName:null
+    this.skillService.addSkill(this.skillModel).subscribe((responce)=>{
+      this.skills.push(this.skillModel);
+    },(error)=>{
+      console.log(error)
+
+    }
+    );
+  }
+  
+    getdata(){
+      this.skillService.getSkills().subscribe(responce=>{
+        this.skills=responce;
     });
 
-    (<FormArray>this.addSkills.get("skills")).push(formgroup);
-    console.log(this.addSkills);
-  }
+    }
 
-  onRemoveSkills(index:number){
-    (<FormArray>this.addSkills.get("skills")).removeAt(index);
+   }
+ 
 
-  }
-  submit(){
+
+
+
+
+
+
+
+
+
+//   ngOnInit() {
     
-  }
-}
+//     this.addSkills=this.fb.group({
+//       skills: this.fb.array([])
+
+//     });
+//   }
+//   onaddSkill(){
+    
+//     this.isdisabled=true;
+//     var formgroup=this.fb.group({
+//       SkillCategory:null,
+//       SkillName:null
+//     });
+
+//     (<FormArray>this.addSkills.get("skills")).push(formgroup);
+//     console.log(this.addSkills);
+//   }
+
+//   onRemoveSkills(index:number){
+//     (<FormArray>this.addSkills.get("skills")).removeAt(index);
+
+//   }
+//   submit(){
+    
+//   }
+// }
