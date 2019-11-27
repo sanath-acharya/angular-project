@@ -1,12 +1,12 @@
 import { AssociateSkillServiceService } from './../../service/associate-skill-service.service';
 import { Skills } from './../../model/skills';
 import { SkillsService } from './../../service/skills.service';
-import { Associates } from './../../associates';
+
 import { AddAssociateService } from 'src/app/service/add-associate.service';
 import { FormGroup, FormControl, FormArrayName, FormArray } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
 import { Associate } from 'src/app/model/associate';
-import { Response } from 'selenium-webdriver/http';
+
 import { AssociateAndSkills } from 'src/app/model/associate-and-skills';
 
 

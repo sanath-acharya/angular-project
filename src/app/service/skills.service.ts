@@ -13,8 +13,7 @@ export class SkillsService {
 
   getSkills():Observable<Skills[]>{
     return this.http.get<Skills[]>("/api/skills/all",{responseType:"json"});
-
-  }
+      }
   addSkill(model){
    return  this.http.post("/api/saveSkills",model);
   }

@@ -1,4 +1,4 @@
-import { LoginservService } from './../../../postingdata/src/app/loginserv.service';
+
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 
@@ -7,5 +7,5 @@ import { Router } from '@angular/router';
 })
 export class CanActivateGuardService {
 
-  constructor(private loginsevice:LoginservService,private router:Router ) { }
+  constructor(private router:Router ) { }
 }
