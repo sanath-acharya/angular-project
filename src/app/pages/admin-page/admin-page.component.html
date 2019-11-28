@@ -1,69 +1,71 @@
-<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
-    integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
-    crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
-    integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
-    crossorigin="anonymous"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
-    integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
-    crossorigin="anonymous"></script>
 
 
-<br>
-<br><br><br><br><br><br><br>
-<div class="row">
-    <div class="col-8- mx-auto">
-        <div class="form-group form-row">
+<div class="header bg-gradient-danger pb-8 pt-6 pt-md-6">
+    <div class="container-fluid">
+        <div class="header-body">
+            <!-- Card stats -->
 
-            <label for="drpSearchby" class="col-form-label col-3"> search by</label>
-            <div class="col-9">
-                <select name="searchBy" id="drpSearchBy" class="drpsearchBy" [(ngModel)]="searchby">
-                    <option value="projectId"> project id</option>
-                    <option value="name"> project name</option>
-                    <option value="email"> project phone</option>
-                    <option value="phone"> project id</option>
-                   
-                </select>
-            </div>
+
+
+
+           
+
+
         </div>
+    </div>
+</div>
 
-        <div class="form-group form-row">
-            <label for="drpSearchBy" class="col-form label col-3"> search by</label>
-            <div class="col-9">
-                <div class="input-group">
-                    <input type="text" class="form-control" id="txtSearchText" name="searchText" [(ngModel)]="searchText">
-                    <div class="input-group-append" (click)="onSearchClick()">
-                      <h6>search</h6>  <!-- <span class="input-group-text"><i class="fa fa-search"></i></fa-search></span> -->
-                    </div>
+<div class="pl-lg-4">
+
+
+
+
+    <div class="row">
+        <div class="col-lg-6">
+
+            <label for="drpSearchBy" class="col-md-3 col-form-label">Category:</label>
+            <select name="searchBy" id="drpSearchBy" class="form-control  col-lg-7" [(ngModel)]="searchby">
+
+                <option value="projectId"> Project id</option>
+                <option value="name"> project name</option>
+                <option value="email"> project phone</option>
+                <option value="phone"> project id</option>
+
+            </select>
+
+        </div>
+        <div class="col-lg-6">
+            <label for="drpSearchBy" class="col-md-3 col-form-label">SearchBy:</label>
+            <div class="input-group input-group-rounded input-group-merge">
+                <input type="search"
+                    class=" form-control-rounded form-control  fa fa-search col-lg-7  "
+                    id="txtSearchText" name="searchText" [(ngModel)]="searchText" 
+                    aria-label="Search">
+                <div class="input-group-append">
+                        <div class="input-group-text">
+                            <span class="fa fa-search" (click)="onSearchClick()"></span>
+                        </div>
                 </div>
             </div>
+
+
+
         </div>
+
     </div>
 </div>
 
-
-<br>
-<br><br>
-<br>
-<div class="row">
-
-    <div class="col-5-md"><button type="button" class="btn btn-success" routerLink="/addAssociate">Add
-            Associate</button></div>
-
-    <div class="col-5-md"><button type="button" class="btn btn-success" routerLink="/addSkills">Add skills</button>
+<div class="card-header text-center border-0 pt-10 pt-md-6 pb-0 pb-md-6">
+    <div class="row-mt-8">
+        <button type="button" class="btn btn-success float-left mr-8 col-lg-3 row-mt-10" routerLink="/addAssociate">Add
+            Associate</button>
+        <button type="button" class="btn btn-success float-left col-lg-3" routerLink="/addSkills">Add skills</button>
     </div>
-
-
 </div>
-
-
-
 
 
 <div class="card-header border-0">
-    <h3 class="mb-0">Card tables</h3>
+    <h3 class="mb-0">Employee Table</h3>
 </div>
 <div class="table-responsive">
     <div>
@@ -72,22 +74,34 @@
             <thead>
                 <tr>
                     <th>
-                        Skill Catagory
+                        <h5 class="text-dark mb-0">
+                           associateFirstName
+                        </h5>
                     </th>
                     <th>
-                        Skill Name
+                        <h5 class="text-dark mb-0">
+                            associateLastName
+                        </h5>
                     </th>
                     <th>
-                        Associates
+                        <h5 class="text-dark mb-0">
+                            associateEmail
+                        </h5>
                     </th>
                     <th>
-                        completion ratio
+                        <h5 class="text-dark mb-0">
+                            associateMobile
+                        </h5>
                     </th>
                     <th>
-                        update associate
+                        <h5 class="text-dark mb-0">
+                            Update associate
+                        </h5>
                     </th>
                     <th>
-                        Delete associate
+                        <h5 class="text-dark mb-0">
+                            Delete associate
+                        </h5>
                     </th>
                 </tr>
 
@@ -97,35 +111,50 @@
                 <tr *ngFor="let employee of AssociateModel;let i=index">
                     <!-- <td>{{employee.associateFirstName | searchTitle:employee.gender}}</td> -->
 
+
                     <td>
+                        <h5 class="text-dark mb-0">
+                    {{employee.associateFirstName}}
+                    </h5>
+
+                </td>
+                    <td>
+                            <h5 class="text-dark mb-0">
                         {{employee.associateLastName}}
+                        </h5>
 
                     </td>
 
 
                     <td>
+                            <h5 class="text-dark mb-0">
                         {{employee.associateEmail}}
+                        </h5>
                     </td>
 
 
-                    <td>
+                    <!-- <td>
+                            <h5 class="text-dark mb-0">
                         {{employee.password}}
-                    </td>
+                        </h5>
+                    </td> -->
 
 
                     <td>
+                            <h5 class="text-dark mb-0">
                         {{employee.associateMobile}}
+                        </h5>
                     </td>
 
 
 
 
                     <td>
-                        <button class="btn btn-success">update</button>
+                        <button class="btn btn-success">Update</button>
 
                     </td>
                     <td>
-                        <button class="btn btn-danger">remove</button>
+                        <button class="btn btn-danger">Remove</button>
 
                     </td>
                 </tr>
@@ -135,3 +164,28 @@
     </div>
 
 </div>
+
+
+
+
+<p>
+        <a class="btn btn-primary" data-toggle="collapse" href="#multiCollapseExample1" role="button" aria-expanded="false" aria-controls="multiCollapseExample1">Toggle first element</a>
+        <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#multiCollapseExample2" aria-expanded="false" aria-controls="multiCollapseExample2">Toggle second element</button>
+        <button class="btn btn-primary" type="button" data-toggle="collapse" data-target=".multi-collapse" aria-expanded="false" aria-controls="multiCollapseExample1 multiCollapseExample2">Toggle both elements</button>
+      </p>
+      <div class="row">
+        <div class="col">
+          <div class="collapse multi-collapse" id="multiCollapseExample1">
+            <div class="card card-body">
+              Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident.
+            </div>
+          </div>
+        </div>
+        <div class="col">
+          <div class="collapse multi-collapse" id="multiCollapseExample2">
+            <div class="card card-body">
+              Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident.
+            </div>
+          </div>
+        </div>
+      </div>

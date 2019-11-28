@@ -3,6 +3,7 @@ import { Associate } from 'src/app/model/associate';
 import { Router } from '@angular/router';
 import { AddAssociateService } from 'src/app/service/add-associate.service';
 import { FormBuilder, FormGroup, Validators, FormControl, AbstractControl } from '@angular/forms';
+import { CountriesService } from 'src/app/service/countries.service';
 
 @Component({
   selector: 'app-add-associate',
@@ -11,7 +12,11 @@ import { FormBuilder, FormGroup, Validators, FormControl, AbstractControl } from
 })
 export class AddAssociateComponent implements OnInit {
 
-  private AssociateModel: Associate = new Associate("", "", "", "",null, "", "", "", "");
+  stateInfo: any[] = [];
+  countryInfo: any[] = [];
+  cityInfo: any[] = [];
+
+  private AssociateModel: Associate = new Associate("", "", "", "", null, "", "", "", "");
   validationMessages = {
     'associateFirstName': {
       'required': 'First Name is required.',
@@ -26,12 +31,12 @@ export class AddAssociateComponent implements OnInit {
       'required': 'Email is required',
       'emailDomain': 'email should be gmail.com'
 
-    },'associateMobile': {
+    }, 'associateMobile': {
       'required': 'mobile number is required'
 
     },
 
-    
+
     'password': {
       'required': 'Password is required'
 
@@ -61,14 +66,16 @@ export class AddAssociateComponent implements OnInit {
     'dob': '',
     'gender': '',
     'location': '',
-    'country': ''
+    'country': '',
+    'state':''
 
   };
   constructor(
 
     private router: Router,
     private addAssociate: AddAssociateService,
-    private fb: FormBuilder
+    private fb: FormBuilder,
+    private country: CountriesService
   ) { }
 
   addAssociateForm: FormGroup;
@@ -77,12 +84,13 @@ export class AddAssociateComponent implements OnInit {
 
   ngOnInit() {
 
+    this.getCountries();
     this.addAssociateForm = this.fb.group({
 
       associateFirstName: [null, [Validators.required, Validators.minLength(2), Validators.maxLength(30)]],
       associateLastName: [null, [Validators.required]],
 
-      associateEmail: ['', [Validators.required,emailDomain]],
+      associateEmail: ['', [Validators.required, emailDomain]],
       password: [null, Validators.required],
       associateMobile: [null, Validators.required],
       dob: [null, Validators.required],
@@ -94,20 +102,30 @@ export class AddAssociateComponent implements OnInit {
     });
 
 
-    // this.signupForm.valueChanges.subscribe(
-    //   (value)=>{
-    //     //auto submit after some time complete
+  }
+  
+  getCountries(){
+    this.country.allCountries().
+    subscribe(
+      data2 => {
+        this.countryInfo=data2.Countries;
+        console.log(this.countryInfo)
+        //console.log('Data:', this.countryInfo);
+      },
+      err => console.log(err),
+      () => console.log('complete')
+    )
+  }
 
-    //     console.log(value);
-    //   }
-    // )
-    this.addAssociateForm.valueChanges.subscribe(
-      (data) => {
-        this.logValidationErrors(this.addAssociateForm);
-        // console.log(this.forErrors);
-      }
+  onChangeCountry(countryValue) {
+    this.stateInfo=this.countryInfo[countryValue].States;
+    this.cityInfo=this.stateInfo[0].Cities;
+    console.log(this.cityInfo);
+  }
 
-    );
+  onChangeState(stateValue) {
+    this.cityInfo=this.stateInfo[stateValue].Cities;
+    //console.log(this.cityInfo);
   }
 
   logValidationErrors(group: FormGroup = this.addAssociateForm): void {
@@ -135,50 +153,45 @@ export class AddAssociateComponent implements OnInit {
 
 
 
-  //  onaddSkills(){
-  //    var formgroup=new FormGroup({
-  //      skillName:new FormControl(null),
-  //      level:new FormControl(null)
-  //    });
-  //  (<FormArray>this.signupForm.get("skills")).push(formgroup);
-  //  }
-  //  onSubmitClick(){
-  //    console.log(this.signupForm.value);
-  //    //set
-  //    //patch
-  //    //reset
-  //  }
+
 
   onRegister(Amodel) {
-    //console.log("heleloeoefh");
-    //  console.log(Amodel.password);
+
     this.addAssociateForm["submitted"] = true;
     console.log("Inside register")
     console.log(this.addAssociateForm);
 
     this.addAssociate.addAssociate(Amodel).subscribe(response => {
-      // if(response!=null){
 
-      // this.router.navigateByUrl("/dashboard")
-      // }
-      //console.log(Amodel);
     });
     alert("Sucessfull")
 
 
   }
 
-  
+
 
 
 }
-function  emailDomain(control:AbstractControl): {[key:string]:any } | null{
-  const email:string =control.value;
-  const domain=email.substring(email.lastIndexOf('@')+1);
-  if(email === '' || domain.toLowerCase() ==='gmail.com'){
+function emailDomain(control: AbstractControl): { [key: string]: any } | null {
+  const email: string = control.value;
+  const domain = email.substring(email.lastIndexOf('@') + 1);
+  if (email === '' || domain.toLowerCase() === 'gmail.com') {
     return null;
 
-  }else{
-    return {'emailDomain':true};
+  } else {
+    return { 'emailDomain': true };
   }
 }
+
+
+
+
+
+
+
+
+
+
+
+

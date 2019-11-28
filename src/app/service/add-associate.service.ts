@@ -21,7 +21,10 @@ export class AddAssociateService {
     return this.http.get<Associate[]>("/api/associate/all");
   }
 
-  searchby(searchtext:string,name:string):Observable<Associate[]>{
-    return this.http.get<Associate[]>("/api/associate/"+name+"/"+"searchtext",{responseType:"json"});
+  searchby(searchtext:string):Observable<Associate[]>{
+    console.log("this, is inside service ");
+    console.log(searchtext);
+    console.log("this, is after service  ");
+    return this.http.get<Associate[]>("/api/name/"+searchtext);
   }
 }

@@ -20,6 +20,7 @@ import { JwtInterceptorService } from 'src/app/jwt-interceptor.service';
 import { JwtUnAuthorizedInterceptorServiceService } from 'src/app/jwt-un-authorized-interceptor-service.service';
 // import { ToastrModule } from 'ngx-toastr';
 import{JwtModule} from '@auth0/angular-jwt';
+import { CountriesService } from 'src/app/service/countries.service';
 @NgModule({
   imports: [
     CommonModule,
@@ -48,7 +49,7 @@ import{JwtModule} from '@auth0/angular-jwt';
     AddSkillComponent
     
   ],
-  providers: [
+  providers: [ CountriesService
     
   ]
 })
