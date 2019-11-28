@@ -12,13 +12,10 @@ export class AssociateSkillServiceService {
       
   }
   getAllAssociateSkills(){
-     return this.http.get<AssociateAndSkills[]>("/api/associateSkills/all").pipe(
-       map(
-         (data)=>{
-           return data;
-         }
-       )
-     )
+     return this.http.get<AssociateAndSkills[]>("/api/associateSkills/all");
+    
   }
+
+ 
 
 }

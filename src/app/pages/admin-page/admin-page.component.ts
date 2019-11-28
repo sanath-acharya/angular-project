@@ -79,11 +79,7 @@ export class AdminPageComponent implements OnInit {
         console.log(error);
       }
     );
-    
-
-
-
-
+  
   }
 
    
@@ -124,6 +120,8 @@ export class AdminPageComponent implements OnInit {
       );
       this.associateSkill.getAllAssociateSkills().subscribe(
         (response:AssociateAndSkills[])=>{
+          console.log("this is inside ts file above response")
+          console.log(response)
           this.AssociateSkill=response;
   
         });

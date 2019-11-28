@@ -11,7 +11,8 @@ import { CountriesService } from 'src/app/service/countries.service';
   styleUrls: ['./add-associate.component.scss']
 })
 export class AddAssociateComponent implements OnInit {
-
+  private Associateinfo: Associate[] ;
+  searchText="";
   stateInfo: any[] = [];
   countryInfo: any[] = [];
   cityInfo: any[] = [];
@@ -71,7 +72,8 @@ export class AddAssociateComponent implements OnInit {
 
   };
   constructor(
-
+    private AssociateService:AddAssociateService,
+    
     private router: Router,
     private addAssociate: AddAssociateService,
     private fb: FormBuilder,
@@ -83,6 +85,30 @@ export class AddAssociateComponent implements OnInit {
 
 
   ngOnInit() {
+
+
+
+    this.AssociateService.getAssociate().subscribe(
+      response=>{
+      // console.log(response);
+      // if(response!=null){
+         
+         
+        //  this.usersJson= Array.of(response);
+        console.log(response)
+        //  console.log( this.usersJson)
+        //  console.log(this.usersJson[0][0])
+        this.Associateinfo=response;
+
+      }
+    );
+
+
+
+
+
+
+
 
     this.getCountries();
     this.addAssociateForm = this.fb.group({
@@ -169,6 +195,24 @@ export class AddAssociateComponent implements OnInit {
 
   }
 
+  onSearchClick(){
+    this.AssociateService.searchby(this.searchText).subscribe(
+      (response)=>{
+        console.log(response);
+        console.log("this is inside onsearch funtion");
+        this.Associateinfo=response;
+
+        console.log(Array.of(response));
+        this.router.navigateByUrl['/admin']
+
+        // console.log(this.searchresult)
+        
+      },(error)=>{
+        console.log(error);
+      }
+    );
+  
+  }
 
 
 
