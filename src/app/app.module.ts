@@ -24,6 +24,8 @@ import { AddSkillComponent } from './pages/add-skill/add-skill.component';
 
 import {CountriesService} from './service/countries.service';
 import { SkillupdateComponent } from './skillupdate/skillupdate.component';
+import { LandingComponent } from './pages/landing/landing.component';
+
 
 
 @NgModule({
@@ -45,7 +47,8 @@ import { SkillupdateComponent } from './skillupdate/skillupdate.component';
     AdminLayoutComponent,
     AuthLayoutComponent,
     FilterPipe,
-    SkillupdateComponent,
+    
+    
     
    
   

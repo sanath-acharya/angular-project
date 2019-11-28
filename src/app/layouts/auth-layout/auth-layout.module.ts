@@ -1,3 +1,4 @@
+import { ResultlistComponent } from './../../pages/resultlist/resultlist.component';
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
@@ -7,6 +8,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 import { LoginComponent } from '../../pages/login/login.component';
 import { RegisterComponent } from '../../pages/register/register.component';
+import { LandingComponent } from 'src/app/pages/landing/landing.component';
 @NgModule({
   imports: [
     CommonModule,
@@ -17,7 +19,9 @@ import { RegisterComponent } from '../../pages/register/register.component';
   ],
   declarations: [
     LoginComponent,
-    RegisterComponent
+    RegisterComponent,
+    LandingComponent,
+    ResultlistComponent
     
   ]
 })
