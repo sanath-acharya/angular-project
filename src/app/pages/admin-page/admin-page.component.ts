@@ -64,7 +64,7 @@ export class AdminPageComponent implements OnInit {
   }
 
   onSearchClick(){
-    this.AssociateService.searchby(this.searchText).subscribe(
+    this.AssociateService.searchbyfirstname(this.searchText).subscribe(
       (response)=>{
         console.log(response);
         console.log("this is inside onsearch funtion");

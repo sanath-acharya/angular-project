@@ -9,33 +9,232 @@
     integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
     crossorigin="anonymous"></script> -->
 
+<!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous"> -->
+
 <div class="header bg-gradient-danger pb-8 pt-5 pt-md-8">
     <div class="container-fluid">
         <div class="header-body">
-            <!-- Card stats -->
+            
 
         </div>
     </div>
 </div>
 
+<div class="text-center">
+    <button class="btn btn-primary" routerLink="/admin"> back</button>
 
-<div class="container-fluid mt--4">
+    <button class="btn btn-primary" routerLink="/addAssociate"> Add Associates</button>
+</div>
+<div class="pl-lg-4">
 
-    <div class="row justify-content-center">
 
-        <div class="col-xl-6 mb-5 mb-xl-0">
-            <div class="card bg-secondary shadow">
-                <div class="card-header bg-white">
-                    <div class="row align-items-center">
-                        <div class="col">
-                            <h6 class="text-uppercase text-muted ls-1 mb-1"></h6>
-                            <h2 class="mb-0">Add Associate</h2>
-                        </div>
+    <div class="row">
+        <div class="col-lg-6">
+
+            <label for="drpSearchBy" class="col-md-3 col-form-label">Category:</label>
+            <select name="searchBy" id="drpSearchBy" class="form-control  col-lg-7" [(ngModel)]="searchby">
+
+                <option value="associateFirstName">First Name</option>
+                <option value="associateLastName"> Last name</option>
+                <option value="associateEmail"> Emial </option>
+                <option value="associateMobile"> Mobile</option>
+
+            </select>
+
+        </div>
+        <div class="col-lg-6">
+            <label for="txtSearchText" class="col-md-3 col-form-label">SearchBy</label>
+            <div class="input-group input-group-rounded input-group-merge">
+                <input type="search" class=" form-control-rounded form-control  fa fa-search col-lg-7  "
+                    id="txtSearchText"  [(ngModel)]="searchText" aria-label="Search">
+                <div class="input-group-append">
+                    <div class="input-group-text">
+                        <span class="fa fa-search" (click)="onSearchClick()"></span>
                     </div>
                 </div>
-                <div class="card-body">
-                    <form role="form" [formGroup]="addAssociateForm">
+            </div>
 
+
+
+        </div>
+
+    </div>
+</div>
+
+
+<div class="card-header border-0">
+    <h3 class="mb-0">Employee Table</h3>
+</div>
+<div class="table-responsive">
+    <!-- <div> -->
+
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>
+                    <h5 class="text-dark mb-0">
+                        associateFirstName
+                    </h5>
+                </th>
+                <th>
+                    <h5 class="text-dark mb-0">
+                        associateLastName
+                    </h5>
+                </th>
+                <th>
+                    <h5 class="text-dark mb-0">
+                        associateEmail
+                    </h5>
+                </th>
+                <th>
+                    <h5 class="text-dark mb-0">
+                        associateMobile
+                    </h5>
+                </th>
+                <th>
+                    <h5 class="text-dark mb-0">
+                        Update associate
+                    </h5>
+                </th>
+                <th>
+                    <h5 class="text-dark mb-0">
+                        Delete associate
+                    </h5>
+                </th>
+            </tr>
+
+        </thead>
+
+        <tbody>
+            <!-- <div class="accordion" id="accordion1"> -->
+            <!-- <td>{{employee.associateFirstName | searchTitle:employee.gender}}</td> -->
+            <!-- </a> -->
+            <!-- <div class="collapse" id="accortion2" data-parent="#accordion1" >
+                        <div class="card card-body">
+                            Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad
+                            squid. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente
+                            ea proident.
+                        </div>
+                    </div> -->
+            <!-- <a class= "collapsed"  data-toggle="collapse" data-target="#accortion2" > -->
+            <tr *ngFor="let employee of Associateinfo;let i=index">
+
+
+                <td>
+                    <h5 class="text-dark mb-0">
+                        {{employee.associateFirstName}}
+                    </h5>
+
+                </td>
+
+
+                <td>
+                    <h5 class="text-dark mb-0">
+                        {{employee.associateLastName}}
+                    </h5>
+
+                </td>
+
+                <td>
+                    <h5 class="text-dark mb-0">
+                        {{employee.associateEmail}}
+                    </h5>
+                </td>
+
+
+                <td>
+                    <h5 class="text-dark mb-0">
+                        {{employee.associateMobile}}
+                    </h5>
+                </td>
+
+
+
+
+                <td>
+                    <button class="btn btn-success" (click)="onRemoveconfirm($event,i)">edit</button>
+
+                </td>
+                <td>
+                    <button class="btn btn-danger" data-toggle="modal" data-target="#deletemodal"> Remove</button>
+
+                </td>
+            </tr>
+
+        </tbody>
+
+    </table>
+</div>
+
+<button class="btn btn-primary" routerLink="/admin"> back</button>
+
+
+<div class="modal fade" role="dialog" id="deletemodal">
+    <div class="modal-dialog">
+        <div class="modal-content">
+
+            <div class="modal-header">
+                <div class="modal-title">delete project</div>
+                <button type="button" class="close" data-dismiss="modal"><span>&times;</span></button>
+
+            </div>
+            <div class="modal-body">
+                <div class="form-group row modal-body">
+                    <label class="col-sm-4 col-form-label">project id</label>
+                    <div class="col-sm-8">
+                        <!-- <form>
+                         <input [(ngModel)]="deleteAssociate.associateFirstName" name="associateName" disabled="disabled"
+                            type="text" class="form-control-plain-text" placeholder="name"> 
+                        </form> -->
+                    </div>
+                </div>
+            </div>
+
+            <div class="modal-footer">
+                <button class="btn btn-success" data-dismiss="modal" (click)="onRemoveconfirm()">update</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Button trigger modal -->
+<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+    Launch demo modal
+</button>
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                ...
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary">Save changes</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- 
+    <form role="form" [formGroup]="addAssociateForm">
+        <div role="dialog" id="newModal" class="modal">
+            <div class="modal-dialog">
+                <div class="modal-content" style="width:700px">
+                    <div class="modal-header">
+                        <div class="modal-title">update enties</div>
+                        <button class="close" type="button" data-dismiss="modal"> <span> &times;</span></button>
+
+                    </div>
+                    <div class="modal-body">
                         <div class="form-group form-row" [ngClass]="{'has-error' : forErrors.associateFirstName}">
 
 
@@ -184,178 +383,35 @@
                                 </span>
                             </div>
                         </div>
-
-                        <div class="text-center">
-                            <button type="button" class="btn btn-primary mt-4" (click)="onRegister(AssociateModel)">Add
-                                Associate </button>
-                        </div>
-
-
-
-                    </form>
-
-                    {{addAssociateForm.value| json}}
-                </div>
-
-            </div>
-        </div>
-    </div>
-</div>
-
-
-
-
-<div class="pl-lg-4">
-
-
-
-
-    <div class="row">
-        <div class="col-lg-6">
-
-            <label for="drpSearchBy" class="col-md-3 col-form-label">Category:</label>
-            <select name="searchBy" id="drpSearchBy" class="form-control  col-lg-7" [(ngModel)]="searchby">
-
-                <option value="projectId"> Project id</option>
-                <option value="name"> project name</option>
-                <option value="email"> project phone</option>
-                <option value="phone"> project id</option>
-
-            </select>
-
-        </div>
-        <div class="col-lg-6">
-            <label for="drpSearchBy" class="col-md-3 col-form-label">SearchBy:</label>
-            <div class="input-group input-group-rounded input-group-merge">
-                <input type="search" class=" form-control-rounded form-control  fa fa-search col-lg-7  "
-                    id="txtSearchText" name="searchText" [(ngModel)]="searchText" aria-label="Search">
-                <div class="input-group-append">
-                    <div class="input-group-text">
-                        <span class="fa fa-search" (click)="onSearchClick()"></span>
                     </div>
+                    <div class="modal-footer">
+                        <button class="btn btn-warning" data-dismiss="modal"> Cancel
+
+                        </button>
+                        <button class="btn btn-success" data-dismiss="modal" (click)="onSaveClick()">save</button>
+
+                    </div>
+
                 </div>
             </div>
 
-
-
-        </div>
-
-    </div>
-</div>
-
-
-<div class="card-header border-0">
-    <h3 class="mb-0">Employee Table</h3>
-</div>
-<div class="table-responsive">
-    <div>
-
-        <table class="table table-striped">
-            <thead>
-                <tr>
-                    <th>
-                        <h5 class="text-dark mb-0">
-                            associateFirstName
-                        </h5>
-                    </th>
-                    <th>
-                        <h5 class="text-dark mb-0">
-                            associateLastName
-                        </h5>
-                    </th>
-                    <th>
-                        <h5 class="text-dark mb-0">
-                            associateEmail
-                        </h5>
-                    </th>
-                    <th>
-                        <h5 class="text-dark mb-0">
-                            associateMobile
-                        </h5>
-                    </th>
-                    <th>
-                        <h5 class="text-dark mb-0">
-                            Update associate
-                        </h5>
-                    </th>
-                    <th>
-                        <h5 class="text-dark mb-0">
-                            Delete associate
-                        </h5>
-                    </th>
-                </tr>
-
-            </thead>
-
-            <tbody>
-                <!-- <div class="accordion" id="accordion1"> -->
-                <tr *ngFor="let employee of Associateinfo;let i=index">
-                    <!-- <td>{{employee.associateFirstName | searchTitle:employee.gender}}</td> -->
-
-
-                    <!-- <a class= "collapsed"  data-toggle="collapse" data-target="#accortion2" > -->
-                    <td>
-                        <h5 class="text-dark mb-0">
-                            {{employee.associateFirstName}}
-                        </h5>
-
-                    </td>
-                    <!-- </a> -->
-                    <!-- <div class="collapse" id="accortion2" data-parent="#accordion1" >
-                        <div class="card card-body">
-                            Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad
-                            squid. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente
-                            ea proident.
-                        </div>
-                    </div> -->
-
-
-                    <td>
-                        <h5 class="text-dark mb-0">
-                            {{employee.associateLastName}}
-                        </h5>
-
-                    </td>
-
-
-                    <td>
-                        <h5 class="text-dark mb-0">
-                            {{employee.associateEmail}}
-                        </h5>
-                    </td>
-
-
-                    <!-- <td>
-                                <h5 class="text-dark mb-0">
-                            {{employee.password}}
-                            </h5>
-                        </td> -->
-
-
-                    <td>
-                        <h5 class="text-dark mb-0">
-                            {{employee.associateMobile}}
-                        </h5>
-                    </td>
+        </div> -->
 
 
 
 
-                    <td>
-                        <button class="btn btn-success">Update</button>
+<!-- <div class="text-center">
+                    <button type="button" class="btn btn-primary mt-4" (click)="onRegister(AssociateModel)">Add
+                        Associate </button>
+                        <button type="button" class="btn btn-primary mt-4" routerLink="/viewAssociate">view
+                                Associate </button>
+                </div> -->
 
-                    </td>
-                    <td>
-                        <button class="btn btn-danger">Remove</button>
 
-                    </td>
-                </tr>
-    <!-- </div> -->
-    </tbody>
 
-    </table>
-</div>
+<!-- </form> -->
 
+{{addAssociateForm.value| json}}
 
 
 

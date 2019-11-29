@@ -21,6 +21,9 @@ import { JwtUnAuthorizedInterceptorServiceService } from 'src/app/jwt-un-authori
 // import { ToastrModule } from 'ngx-toastr';
 import{JwtModule} from '@auth0/angular-jwt';
 import { CountriesService } from 'src/app/service/countries.service';
+import { ViewAssociateComponent } from 'src/app/pages/view-associate/view-associate.component';
+import { EditAssociateComponent } from 'src/app/pages/edit-associate/edit-associate.component';
+import { SkillupdateComponent } from 'src/app/pages/skillupdate/skillupdate.component';
 @NgModule({
   imports: [
     CommonModule,
@@ -46,7 +49,10 @@ import { CountriesService } from 'src/app/service/countries.service';
     AddAssociateComponent,
     SearchComponent,
     AdminPageComponent,
-    AddSkillComponent
+    AddSkillComponent,
+    ViewAssociateComponent,
+    EditAssociateComponent,
+    SkillupdateComponent
     
   ],
   providers: [ CountriesService

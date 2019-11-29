@@ -23,8 +23,10 @@ import { AdminPageComponent } from './pages/admin-page/admin-page.component';
 import { AddSkillComponent } from './pages/add-skill/add-skill.component';
 
 import {CountriesService} from './service/countries.service';
-import { SkillupdateComponent } from './skillupdate/skillupdate.component';
+import { SkillupdateComponent } from './pages/skillupdate/skillupdate.component';
 import { LandingComponent } from './pages/landing/landing.component';
+import { ViewAssociateComponent } from './pages/view-associate/view-associate.component';
+import { EditAssociateComponent } from './pages/edit-associate/edit-associate.component';
 
 
 
@@ -46,7 +48,8 @@ import { LandingComponent } from './pages/landing/landing.component';
     AppComponent,
     AdminLayoutComponent,
     AuthLayoutComponent,
-    FilterPipe,
+    FilterPipe
+    
     
     
     
