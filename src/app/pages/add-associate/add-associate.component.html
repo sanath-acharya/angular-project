@@ -152,11 +152,11 @@
 
 
                 <td>
-                    <button class="btn btn-success" (click)="onRemoveconfirm($event,i)">edit</button>
+                    <button class="btn btn-success" (click)="onEdit($event,i)">update</button>
 
                 </td>
                 <td>
-                    <button class="btn btn-danger" data-toggle="modal" data-target="#deletemodal"> Remove</button>
+                    <button class="btn btn-danger" (click)="onRemoveconfirm($event,employee.associateId)"> Remove</button>
 
                 </td>
             </tr>
@@ -191,38 +191,22 @@
             </div>
 
             <div class="modal-footer">
-                <button class="btn btn-success" data-dismiss="modal" (click)="onRemoveconfirm()">update</button>
+                <button class="btn btn-success" data-dismiss="modal" (click)="onEdit()">update</button>
+                <button class="btn btn-success" data-dismiss="modal" (click)="onRemoveconfirm($event,employee.associateEmail)">rempve</button>
+         
             </div>
         </div>
     </div>
 </div>
 
-<!-- Button trigger modal -->
-<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
-    Launch demo modal
-</button>
 
-<!-- Modal -->
-<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-    aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="modal-body">
-                ...
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary">Save changes</button>
-            </div>
-        </div>
-    </div>
-</div>
+
+
+
+
+
+
+
 
 <!-- 
     <form role="form" [formGroup]="addAssociateForm">
@@ -410,8 +394,6 @@
 
 
 <!-- </form> -->
-
-{{addAssociateForm.value| json}}
 
 
 

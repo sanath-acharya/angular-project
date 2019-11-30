@@ -24,6 +24,7 @@ import { CountriesService } from 'src/app/service/countries.service';
 import { ViewAssociateComponent } from 'src/app/pages/view-associate/view-associate.component';
 import { EditAssociateComponent } from 'src/app/pages/edit-associate/edit-associate.component';
 import { SkillupdateComponent } from 'src/app/pages/skillupdate/skillupdate.component';
+import { ModalModule } from 'ngx-bootstrap/modal';
 @NgModule({
   imports: [
     CommonModule,
@@ -33,6 +34,7 @@ import { SkillupdateComponent } from 'src/app/pages/skillupdate/skillupdate.comp
     HttpClientModule,
     NgbModule,
     ClipboardModule
+    
     // JwtModule.forRoot({
     //   config:{
     //     tokenGetter:()=>{

@@ -1,4 +1,5 @@
 export  class Associate {
+  associateId:number;
    associateFirstName: string;
    associateLastName: string;
 
@@ -13,7 +14,7 @@ export  class Associate {
  
 
   constructor(
-
+    associateId:number,
     associateFirstName: string,
     associateLastName: string,
 

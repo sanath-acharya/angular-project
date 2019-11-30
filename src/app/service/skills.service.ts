@@ -17,7 +17,7 @@ export class SkillsService {
   addSkill(model){
    return  this.http.post("/api/saveSkills",model);
   }
-  removebyname(id:number):Observable<string>{
+  removebyid(id:number):Observable<string>{
     return this.http.delete<string>("api/id?id="+id);
 
   }

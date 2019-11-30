@@ -26,3 +26,4 @@ export const AdminLayoutRoutes: Routes = [
     { path: 'editAssociate',          component: EditAssociateComponent},
     { path: 'skillupdate',          component: SkillupdateComponent}
 ];
+ 

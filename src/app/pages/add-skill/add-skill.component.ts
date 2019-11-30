@@ -14,7 +14,7 @@ export class AddSkillComponent implements OnInit {
   // skillname:string;
   // skillCategory:string;
   skills:Skills[];
-  skillModel:Skills=new Skills("","");
+  skillModel:Skills=new Skills(0,"","");
   constructor( private fb:FormBuilder,private skillService: SkillsService) { }
   
  
@@ -26,8 +26,8 @@ export class AddSkillComponent implements OnInit {
          
   }
 
-  onremove(id:number){
-    this.skillService.removebyname(id).subscribe(response=>{
+  onRemoveSkills(id:number){
+    this.skillService.removebyid(id).subscribe(response=>{
      
     },(error)=>{
       console.log(error)

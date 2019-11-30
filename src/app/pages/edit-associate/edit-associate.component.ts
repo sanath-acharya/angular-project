@@ -16,7 +16,7 @@ import { ThrowStmt } from '@angular/compiler';
 
 
 export class EditAssociateComponent implements OnInit {
-  private AssociateModel: Associate = new Associate("", "", "", "", null, "", "", "", "");
+  private AssociateModel: Associate = new Associate(0,"", "", "", "", null, "", "", "", "");
   stateInfo: any[] = [];
   countryInfo: any[] = [];
   cityInfo: any[] = [];
@@ -157,13 +157,21 @@ export class EditAssociateComponent implements OnInit {
 
 
 
-  onRegister(Amodel) {
+  onUpdate(Amodel) {
 
     this.addAssociateForm["submitted"] = true;
     console.log("Inside register")
     console.log(this.addAssociateForm);
 
-    this.addAssociate.updateAfterEdit(Amodel);
+    this.addAssociate.updateAfterEdit(Amodel).subscribe(response=>{
+      console.log(response)
+      this.router.navigateByUrl("/viewAssociate");
+    
+    },(error)=>{
+      console.log(error);
+     
+    });
+    
     // .subscribe(response => {
     //   this.router.navigateByUrl("/viewAssociate");
     // });

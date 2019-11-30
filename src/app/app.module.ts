@@ -30,6 +30,7 @@ import { EditAssociateComponent } from './pages/edit-associate/edit-associate.co
 
 
 
+
 @NgModule({
   imports: [
     BrowserAnimationsModule,
@@ -41,6 +42,7 @@ import { EditAssociateComponent } from './pages/edit-associate/edit-associate.co
     RouterModule,
     ReactiveFormsModule,
     AppRoutingModule,
+   
    
 
   ],

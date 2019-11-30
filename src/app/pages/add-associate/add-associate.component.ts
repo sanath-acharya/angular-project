@@ -11,14 +11,14 @@ import { AddAssociateService } from 'src/app/service/add-associate.service';
 })
 export class AddAssociateComponent   implements OnInit {
   private Associateinfo: Associate[] ;
-  private editModel:Associate=new Associate("","","","",0,"","","","");
+  private editModel:Associate=new Associate(0,"","","","",0,"","","","");
   searchText="searchvalue";
   searchby="associateFirstName";
   stateInfo: any[] = [];
   countryInfo: any[] = [];
   cityInfo: any[] = [];
   deleteIndex:number;
-  deleteAssociate:Associate=new Associate("","","","",0,"","","","");
+  deleteAssociate:Associate=new Associate(0,"","","","",0,"","","","");
 
   constructor(
     private AssociateService:AddAssociateService,
@@ -56,25 +56,29 @@ export class AddAssociateComponent   implements OnInit {
     this.editModel=this.Associateinfo[index];
     
   
-    this.AssociateService.updateAssociate(index,this.editModel);
+    this.AssociateService.updateAssociate(this.editModel);
     
 
 
   } 
-  onRemove(event,index:number){
-    this.deleteIndex=index;
-    this.deleteAssociate.associateFirstName= this.Associateinfo[index].associateFirstName;
-    this.deleteAssociate.associateLastName=this.Associateinfo[index].associateLastName;
-    this.deleteAssociate.associateEmail=this.Associateinfo[index].associateEmail;
-    this.deleteAssociate.associateMobile=this.Associateinfo[index].associateMobile;
+  // onRemove(event,index:number){
+  //   this.deleteIndex=index;
+  //   this.deleteAssociate.associateFirstName= this.Associateinfo[index].associateFirstName;
+  //   this.deleteAssociate.associateLastName=this.Associateinfo[index].associateLastName;
+  //   this.deleteAssociate.associateEmail=this.Associateinfo[index].associateEmail;
+  //   this.deleteAssociate.associateMobile=this.Associateinfo[index].associateMobile;
     
 
 
-  }
-  onRemoveconfirm(event,iny:number){
+  // }
+  onRemoveconfirm(event,associateId:number){
     console.log("tis. is ts");
-    console.log(iny);
-    this.AssociateService.deletebyid(iny);
+    console.log(associateId);
+    this.AssociateService.deletebyid(associateId).subscribe((resoponse)=>{
+      console.log( resoponse);
+    },(error)=>{
+      console.log(error);
+    })
     // .subscribe((response)=>{
     //   // this.deleteAssociate.associateFirstName=null;
     //   // this.deleteAssociate.associateMobile=null;

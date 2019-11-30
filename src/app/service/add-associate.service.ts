@@ -2,7 +2,7 @@ import { Associates } from './../associates';
 import { Router } from '@angular/router';
 
 import { HttpClient } from '@angular/common/http';
-import { Injectable } from '@angular/core';
+import { Injectable,TemplateRef  } from '@angular/core';
 import { Associate } from '../model/associate';
 import { Observable } from 'rxjs';
 
@@ -10,8 +10,12 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class AddAssociateService {
-  editModeltoupdate:Associate=new  Associate("", "", "", "", null, "", "", "", "");
+  editModeltoupdate:Associate=new  Associate(0,"", "", "", "", null, "", "", "", "");
+ 
   constructor(private http:HttpClient,private route:Router) { }
+
+  
+
 
   addAssociate(model){
     console.log(model);
@@ -45,7 +49,7 @@ export class AddAssociateService {
  
  
 
-  updateAssociate(index:number,editModel:Associate){
+  updateAssociate(editModel:Associate){
     this.editModeltoupdate=editModel;
     
 
@@ -53,21 +57,21 @@ export class AddAssociateService {
 
     // return this.http.put<Associate>("/api/",tochangemodel);
   }
-  updateAfterEdit(model:Associate){
+  updateAfterEdit(model:Associate):Observable<any>{
 
     console.log(model)
     console.log("this is tob be edited");
-     this.http.put("/api/updateAssociate",model);
-     this.route.navigateByUrl("/viewAssociate");
+    return this.http.put<any>("/api/updateAssociate",model);
+   
 
 
   }
-  deletebyid(email:number)
+  deletebyid(associateId:number):Observable<string>
   {
     
-    console.log("tis. is service")
-    console.log(email);
-      this.http.delete("/api/deleteAssociate/"+email)
+    console.log("tis. is service");
+    console.log(associateId);
+      return this.http.delete<string>("/api/deleteAssociate/"+associateId);
       console.log("after. is service")
   }
   getModalofEdit():Associate{
