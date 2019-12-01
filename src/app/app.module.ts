@@ -1,4 +1,7 @@
 
+
+import { HomeComponent } from './../../../service/src/app/home/home.component';
+
 import { JwtHelperService } from '@auth0/angular-jwt';
 import { JwtInterceptorService } from './jwt-interceptor.service';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -27,6 +30,9 @@ import { SkillupdateComponent } from './pages/skillupdate/skillupdate.component'
 import { LandingComponent } from './pages/landing/landing.component';
 import { ViewAssociateComponent } from './pages/view-associate/view-associate.component';
 import { EditAssociateComponent } from './pages/edit-associate/edit-associate.component';
+import { ResultlistComponent } from './pages/resultlist/resultlist.component';
+import { LoginComponent } from './pages/login/login.component';
+import { TablesComponent } from './pages/tables/tables.component';
 
 
 
@@ -42,7 +48,7 @@ import { EditAssociateComponent } from './pages/edit-associate/edit-associate.co
     RouterModule,
     ReactiveFormsModule,
     AppRoutingModule,
-   
+    
    
 
   ],
@@ -50,25 +56,39 @@ import { EditAssociateComponent } from './pages/edit-associate/edit-associate.co
     AppComponent,
     AdminLayoutComponent,
     AuthLayoutComponent,
-    FilterPipe
+    FilterPipe,
+    LandingComponent,
+    HomeComponent,
+    ResultlistComponent,
+    LoginComponent,
+    AdminPageComponent,
+    AddAssociateComponent, AddSkillComponent,
+    ViewAssociateComponent,
+    EditAssociateComponent,
+    SkillupdateComponent
     
-    
-    
+    ,TablesComponent
     
    
   
     
+  ],
+  exports:[
+    LandingComponent
   ],
   providers: [
     {
       provide:HTTP_INTERCEPTORS,
       useClass:JwtInterceptorService,
       multi:true
-    },{
-      provide:HTTP_INTERCEPTORS,
-      useClass:JwtUnAuthorizedInterceptorServiceService,
-      multi:true
     }
+    // ,
+
+    // {
+    //   provide:HTTP_INTERCEPTORS,
+    //   useClass:JwtUnAuthorizedInterceptorServiceService,
+    //   multi:true
+    // }
    
   ],
   bootstrap: [AppComponent]

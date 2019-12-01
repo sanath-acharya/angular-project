@@ -20,7 +20,7 @@ import { LandingComponent } from 'src/app/pages/landing/landing.component';
   declarations: [
     LoginComponent,
     RegisterComponent,
-    LandingComponent,
+    // LandingComponent,
     ResultlistComponent
     
   ]

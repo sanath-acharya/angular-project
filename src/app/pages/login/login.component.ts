@@ -14,6 +14,7 @@ import { AssociateLoginModel } from 'src/app/model/associate-login-model';
 
 export class LoginComponent implements OnInit, OnDestroy {
   constructor( private logservice:LoginService,private router:Router) {}
+errorstring=""
   loginmodel:LoginModel=new LoginModel("","");
 
   associatemodel:AssociateLoginModel=new AssociateLoginModel("","",);
@@ -25,38 +26,58 @@ export class LoginComponent implements OnInit, OnDestroy {
   
   ngOnDestroy() {
   }
+
+
   onlogin(model,model2){
     console.log("Before Login")
     console.log(model);
     console.log("inside ts Login")
+    this.errorstring=""
+
+    
     this.logservice.login(model).subscribe(
+      
       response=>{
     //  var res=response.json();
         // console.log(response);
         
         if(response!=null){
-          this.router.navigateByUrl("/admin");
-        }else{
+
+          sessionStorage.setItem('type','admin')
+          this.router.navigate(['/admin']);
+        }
+        else{
 
 
           this.logservice.loginAssociate(model2).subscribe(response=>{
-            
-            if(response!=null){
-              console.log("success ")
-              this.router.navigateByUrl("/employee");
+            console.log("Inside Emplyee LoGIN")
+            console.log(response)
+            if(response){
+              sessionStorage.setItem('type','employee')
+              this.router.navigate(['/admin']);
             }else{
+              this.errorstring="Invalid Credentials! Please try again"
+              sessionStorage.removeItem('currentUser')
               console.log("null after associate login ")
             }
             
           },(error)=>{
+            sessionStorage.removeItem('currentUser')
             alert("invalid username and passoword")
 
           })
         }
        
-      //  return response;
+       return response;
         
+       },(error)=>{
+        console.log("in login ts")
+        sessionStorage.removeItem('currentUser')
+         console.log(error)
+         console.log("after ts")
+
        });
+
   }
 
 }

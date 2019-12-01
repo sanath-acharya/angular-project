@@ -8,6 +8,6 @@ import { ResultlistComponent } from 'src/app/pages/resultlist/resultlist.compone
 export const AuthLayoutRoutes: Routes = [
     { path: 'login',          component: LoginComponent },
     { path: 'register',       component: RegisterComponent },
-    { path: 'landing',       component: LandingComponent },
+    // { path: 'landing',       component: LandingComponent },
     { path: 'home',       component: ResultlistComponent }
 ];

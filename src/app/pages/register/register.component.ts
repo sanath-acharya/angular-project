@@ -12,7 +12,7 @@ import { Router } from '@angular/router';
 export class RegisterComponent implements OnInit {
 
   debugger;
-  private AssociateModel:Associate=new Associate("","","","" ,0,"" ,"","","");
+  private AssociateModel:Associate=new Associate(0,"","","","" ,0,"" ,"","","");
   constructor(
     
     private router:Router,

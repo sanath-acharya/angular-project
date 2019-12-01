@@ -10,6 +10,7 @@ import { AddAssociateService } from 'src/app/service/add-associate.service';
   styleUrls: ['./add-associate.component.scss']
 })
 export class AddAssociateComponent   implements OnInit {
+  load=0
   private Associateinfo: Associate[] ;
   private editModel:Associate=new Associate(0,"","","","",0,"","","","");
   searchText="searchvalue";
@@ -29,11 +30,23 @@ export class AddAssociateComponent   implements OnInit {
 
   
   ngOnInit() {
+    // if(this.load==0){
+      this.getdata();
+      // this.load=1
+    }
+    
 
 
+    
+  
 
+
+  
+
+  getdata(){
     this.AssociateService.getAssociate().subscribe(
       response=>{
+        
       // console.log(response);
       // if(response!=null){
          
@@ -42,13 +55,18 @@ export class AddAssociateComponent   implements OnInit {
         console.log(response)
         //  console.log( this.usersJson)
         //  console.log(this.usersJson[0][0])
-        this.Associateinfo=response;
+        this.setassociateinfo(response);
+        // this.Associateinfo=response;
 
+      },(error)=>{
+        console.log(error);
+        alert("Authentication failed");
       }
     );
+  }
 
-
-
+  setassociateinfo(response){
+    this.Associateinfo=response;
   }
   
   onEdit(event,index:number){
@@ -108,7 +126,7 @@ console.log("working 3" )
           this.router.navigateByUrl['/viewAssociate']
   
           // console.log(this.searchresult)
-          
+          // this.ngOnInit()
         },(error)=>{
           console.log(error);
         }

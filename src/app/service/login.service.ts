@@ -22,17 +22,31 @@ export class LoginService {
  public  login( loginModel:LoginModel):Observable<any>
  {
    // this.http=new HttpClient(this.httpBackend)
-   
+   //sessionStorage.currentUser=JSON.stringify('dummy');
+   sessionStorage.setItem('currentUser','dummy');
     return this.http.post<LoginModel>("http://localhost:8098/api/login",loginModel)
     .pipe(map(user =>{
         // var res=user.json();
  
-      if(user){
-        // sessionStorage.currentuser=user.email;
-        this.currrentuser=user.userEmail;
+      if(user){console.log("inside success full login")
+        sessionStorage.currentUser=JSON.stringify(user);
+        
+        // console.log(sessionStorage.currentUser);
+        // this.currrentuser=user.userEmail;
+        // sessionStorage.setItem('user',user.userEmail)
+        // if(sessionStorage.getItem('user')){
+
+        // }
+        
       }
       // console.log(user.userEmail+"hlleodsafjh");
       return user;
+
+    },(error)=>{
+      sessionStorage.removeItem('currentUser')
+      console.log("in service ts")
+      console.log(error)
+      console.log("in after service ts")
 
     }
     ));
@@ -46,7 +60,7 @@ export class LoginService {
         // var res=user.json();
         console.log("return from  login service of associatae from spring")
       if(user){
-        // sessionStorage.currentuser=user.email;
+        sessionStorage.currentUser=JSON.stringify(user);
         // this.currrentuser=user.associateEmail;
         console.log(user)
       }
@@ -60,7 +74,7 @@ export class LoginService {
 
   public logout(){
     this.currrentuser=null;
-    // sessionStorage.removeItem("currentuser");
+    sessionStorage.removeItem("currentUser");
   }
 
 //   // public isAuthenticated():boolean{

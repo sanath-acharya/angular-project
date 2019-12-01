@@ -1,7 +1,7 @@
 import { Associates } from './../associates';
 import { Router } from '@angular/router';
 
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable,TemplateRef  } from '@angular/core';
 import { Associate } from '../model/associate';
 import { Observable } from 'rxjs';
@@ -24,6 +24,13 @@ export class AddAssociateService {
     return this.http.post("/api/saveAssociate",model);
   }
   getAssociate():Observable<Associate[]>{
+    // var currentUser={token:""};
+    // var header=new HttpHeaders();
+    // header=header.set("Authorization","Bearer");
+    // if(sessionStorage.currentUser!=null){
+    //   currentUser=JSON.parse(sessionStorage.currentUser);
+    //   header=header.set("Authorization","Bearer"+currentUser.token);
+    // }
     return this.http.get<Associate[]>("/api/associate/all");
   }
 
@@ -53,7 +60,7 @@ export class AddAssociateService {
     this.editModeltoupdate=editModel;
     
 
-    this.route.navigateByUrl("/editAssociate");
+    this.route.navigate(["/editAssociate"]);
 
     // return this.http.put<Associate>("/api/",tochangemodel);
   }

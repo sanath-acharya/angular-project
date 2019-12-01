@@ -11,7 +11,7 @@ import { CountriesService } from 'src/app/service/countries.service';
   styleUrls: ['./view-associate.component.scss']
 })
 export class ViewAssociateComponent implements OnInit {
-  private AssociateModel: Associate = new Associate("", "", "", "", null, "", "", "", "");
+  private AssociateModel: Associate = new Associate(0,"", "", "", "", null, "", "", "", "");
   stateInfo: any[] = [];
   countryInfo: any[] = [];
   cityInfo: any[] = [];

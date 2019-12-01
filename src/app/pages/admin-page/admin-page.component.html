@@ -5,7 +5,7 @@
 
 
 
-
+            <button type="button" class="btn btn-danger" style="float: right;" (click)="logout()">Log Out</button>
 
 
 
@@ -53,10 +53,15 @@
 
 <div class="card-header text-center border-0 pt-10 pt-md-6 pb-0 pb-md-6">
     <div class="row-mt-8">
-        <button type="button" class="btn btn-success float-left mr-8 col-lg-3 row-mt-10" routerLink="/viewAssociate">View
+        <button type="button" class="btn btn-success float-left mr-8 col-lg-3 row-mt-10" *ngIf="type=='admin'"  routerLink="/viewAssociate">View
             and Add
             Associate</button>
-        <button type="button" class="btn btn-success float-left col-lg-3" routerLink="/addSkills">Add skills</button>
+            <div>
+                <router-outlet></router-outlet>
+            </div>
+            <!-- *ngIf="sessionStorage.getItem('type')==='admin'" -->
+        <button type="button" class="btn btn-success float-left col-lg-3" *ngIf="type=='admin'"  routerLink="/addSkills">Add skills</button>
+        <button type="button" class="btn btn-success float-left col-lg-3" *ngIf="type=='employee'" routerLink="/updateskills">Update skills</button>
     </div>
 </div>
 

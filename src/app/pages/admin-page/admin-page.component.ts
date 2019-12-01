@@ -21,7 +21,7 @@ export class AdminPageComponent implements OnInit {
   associate:any;
   searchby="asociatename";
   searchText="";
- 
+  type=""
   private searchresult:Associate[] ;
 
   // =new Associate("","","","",0,"","","","");
@@ -60,7 +60,7 @@ export class AdminPageComponent implements OnInit {
   ngOnInit() {
     
     this.getdata();
-    
+    this.type=sessionStorage.getItem('type');
   }
 
   onSearchClick(){
@@ -126,6 +126,12 @@ export class AdminPageComponent implements OnInit {
   
         });
     
+    }
+
+    logout(){
+      sessionStorage.removeItem('type')
+      sessionStorage.removeItem('currentUser')
+      this.router.navigate(['login'])
     }
     
   

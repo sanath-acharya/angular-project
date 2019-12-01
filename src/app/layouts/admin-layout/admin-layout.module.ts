@@ -58,6 +58,11 @@ import { ModalModule } from 'ngx-bootstrap/modal';
     
   ],
   providers: [ CountriesService
+  //   , {
+  //   provide:HTTP_INTERCEPTORS,
+  //   useClass:JwtInterceptorService,
+  //   multi:true
+  // }
     
   ]
 })
