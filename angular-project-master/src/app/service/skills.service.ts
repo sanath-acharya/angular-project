@@ -17,13 +17,13 @@ export class SkillsService {
   addSkill(model){
    return  this.http.post("/api/saveSkills",model);
   }
-  removebyid(id:number):Observable<string>{
-    return this.http.delete<string>("api/id?id="+id);
+  removebyid(id:number):Observable<any>{
+    return this.http.delete<any>("api/deleteSkill/"+id);
 
   }
   //###################################3
   onRemoveAssociateSkill(sid:number){
-    return this.http.delete("/api/"+sid);
+    return this.http.delete("/api/deleteBySid/"+sid);
   }
   
 }

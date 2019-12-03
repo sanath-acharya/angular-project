@@ -1,85 +1,79 @@
-
-
-
-
-
-
 <div class="header bg-gradient-danger pb-6 pt-5 pt-md-6">
-    <div class="container-fluid">
-        <div class="header-body">
-            <!-- Card stats -->
-
+        <div class="container-fluid">
+            <div class="header-body">
+                <!-- Card stats -->
+    
+            </div>
         </div>
     </div>
-</div>
-
-
-<div class="col-md-12 col-xl-10 mx-auto">
-
-    <div class="card-header"><h1> New Skills </h1> </div>
-    <div class="card-body">
-        <div class="col-md-12">
-            <form>
-                <table>
-                    <tr>
-                        <td>
-                            <input type="text" placeholder="skill category" name="skillName" class="form-control"
-                                [(ngModel)]="skillModel.skillName">
-                        </td>
-                        <td>
-                            <select [(ngModel)]="skillModel.skillCategory" name="skillCategory" class="form-control ">
-                                <option value="angular"> Angular</option>
-                                <option value="angular"> Spring</option>
-                                <option value="angular"> C++</option>
-                            </select>
-                        </td>
-                        <td>
-                            <button type="button" class="btn btn-block btn-primary btn-success"
-                                (click)="onaddSkill()"><span class="glyphicon glyphicon-plus"></span> Add
-                                Skills</button>
-                        </td>
-                    </tr>
-                </table>
-            </form>
-        </div>
-    </div>
-
-
-    <div class="row mt-5">
-        <div class="col">
-            <div class="card bg-default shadow">
-                <div class="card-header bg-transparent border-0">
-                    <h3 class="text-white mb-0">Add New Skills</h3>
-                </div>
-                <div class="table-responsive">
-                    <table class="table align-items-center table-dark table-flush">
-                        <thead>
+    
+    
+    <div class="col-md-12 col-xl-10 mx-auto">
+    
+        <div class="card-header"><h1> New Skills </h1> </div>
+        <div class="card-body">
+            <div class="col-md-12">
+                <form>
+                    <table>
+                        <tr>
                             
-                            <tr >
-                                <th  scope="col"><h3 class="text-white mb-0">Skill Category</h3></th>
-                                <th scope="col"><h3 class="text-white mb-0">Skill Name</h3></th>
-                                <th scope="col"><h3 class="text-white mb-0">Remove</h3></th>
-                                <th scope="col"></th>
-                                <th scope="col"></th>
-                            </tr>
-                       
-                        </thead>
-                        <tbody>
-                            <tr *ngFor="let skill of skills ;let i=index">
-
-                                <td>{{skill.skillName}}</td>
-                                <td>{{skill.skillCategory}}</td>
-                                <td><button title="delete the skill " class="btn btn-danger" type="button"
-                                        (click)="onRemoveSkills(skill.skillId)"> Remove</button>
+                                <td  scope="col"><select name="selected_Category" [(ngModel)]="skillModel.skillCategory" [(ngModel)]="selected_Category" (change)="onCategorySelected(selected_Category)">
+                                    <option *ngFor="let category of skillCategory">{{category}}</option>
+                                </select>
                                 </td>
-                            </tr>
-
-                        </tbody>
+                          
+                            
+                                <td>
+                                    <select id="state_dropdown" name="selected_skillname"[(ngModel)]="skillModel.skillName"  [(ngModel)]="selected_skillname" (change)="onSkillSelected(selected_skillname)">
+                                        <option *ngFor="let name of skillName">{{name}}</option>
+                                    </select>
+                                </td>
+                          
+                            <td>
+                                <button type="button" class="btn btn-block btn-primary btn-success"
+                                    (click)="onaddSkill()"><span class="glyphicon glyphicon-plus"></span> Add
+                                    Skills</button>
+                            </td>
+                        </tr>
                     </table>
+                </form>
+            </div>
+        </div>
+    
+    
+        <div class="row mt-5">
+            <div class="col">
+                <div class="card bg-default shadow">
+                    <div class="card-header bg-transparent border-0">
+                        <h3 class="text-white mb-0">Add New Skills</h3>
+                    </div>
+                    <div class="table-responsive">
+                        <table class="table align-items-center table-dark table-flush">
+                            <thead>
+                                
+                                <tr >
+                                    <th scope="col"><h3 class="text-white mb-0">Skill category</h3></th>
+                                    <th scope="col"><h3 class="text-white mb-0">Skill Name</h3></th>
+                                    <th scope="col"><h3 class="text-white mb-0">Remove</h3></th>
+                                    <th scope="col"></th>
+                                    <th scope="col"></th>
+                                </tr>
+                           
+                            </thead>
+                            <tbody>
+                                <tr *ngFor="let skill of skills ;let i=index">
+    
+                                    <td>{{skill.skillCategory}}</td>
+                                    <td>{{skill.skillName}}</td>
+                                    <td><button title="delete the skill " class="btn btn-danger" type="button"
+                                            (click)="onRemoveSkills(skill.skillId)"> Remove</button>
+                                    </td>
+                                </tr>
+    
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-
-
-</div>

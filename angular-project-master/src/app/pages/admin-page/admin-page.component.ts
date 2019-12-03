@@ -31,7 +31,9 @@ export class AdminPageComponent implements OnInit {
  
   // = new Associate("", "", "", "",null, "", "", "", "");
 
-  constructor(private AssociateService:AddAssociateService,private router:Router,private skillService:SkillsService ,private associateSkill:AssociateSkillServiceService) { 
+  constructor(private AssociateService:AddAssociateService,
+    private router:Router,private skillService:SkillsService ,
+    private associateSkill:AssociateSkillServiceService) { 
     
     
     

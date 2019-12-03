@@ -106,6 +106,8 @@ export class LoginService {
   public logout(){
     this.currrentuser=null;
     sessionStorage.removeItem("currentUser");
+    sessionStorage.removeItem("id");
+    sessionStorage.removeItem("user");
   }
 
 //   // public isAuthenticated():boolean{
