@@ -7,7 +7,7 @@ import { map } from 'rxjs/operators';
   providedIn: 'root'
 })
 export class AssociateSkillServiceService {
-  assoSkillModel:AssociateAndSkills;
+  assoSkillModel:AssociateAndSkills=new AssociateAndSkills("","","","","","",null,null);
   constructor(private http:HttpClient){
       
   }
@@ -44,5 +44,11 @@ getAssociteSkillmodel(){
 }
 setAssociateSkillModel(model:AssociateAndSkills){
   this.assoSkillModel=model;
+}
+
+//###############################
+updateAssociateSkillByASid(aid:number,sid:number,model:AssociateAndSkills){
+  return this.http.put("/api/"+aid+"/"+sid,model);
+
 }
 }

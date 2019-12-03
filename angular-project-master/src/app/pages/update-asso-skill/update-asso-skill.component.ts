@@ -1,5 +1,5 @@
-import { Router } from '@angular/router';
 
+import { Router } from '@angular/router';
 import { UserDetailsService } from './../../user-details.service';
 
 import { Component, OnInit } from '@angular/core';
@@ -17,16 +17,13 @@ import { Skills } from 'src/app/model/skills';
   templateUrl: './update-asso-skill.component.html',
   styleUrls: ['./update-asso-skill.component.scss']
 })
-
-
-
-
-export class SkillupdateComponent implements OnInit {
+export class UpdateAssoSkillComponent implements OnInit {
   skillUpdateForm: FormGroup;
   submitted = false;
   name = 'Angular 5';
   aid:number
-  AssociateSkill:AssociateAndSkills=new AssociateAndSkills("","","","","","",new Associate(0,"", "", "", "", null, "", "", "", ""),new Skills(0,"", ""));
+  AssociateSkill:AssociateAndSkills;
+  // =new AssociateAndSkills("","","","","","",null,null);
   constructor(private formBuilder: FormBuilder,
     private loginservice:LoginService,
     private associateskillService:AssociateSkillServiceService,
@@ -35,7 +32,7 @@ export class SkillupdateComponent implements OnInit {
     ) { }
 
   ngOnInit() {
-    // this.associateskillService.
+    this.AssociateSkill=this.associateskillService.getAssociteSkillmodel();
     
 
 
@@ -74,9 +71,19 @@ onRate($event:{oldValue:number, newValue:number, starRating:StarRatingComponent}
 
 
 onUpdateChange(model){
-  this.associateskillService.setAssociateSkillModel(model);
+
+// console.log("aid  is")
+// console.log(this.aid)
+// // this.AssociateSkill.
+this.associateskillService.updateAssociateSkillByASid(this.aid,1,model).subscribe(response=>{
+  this.router.navigate(["/admin"])
+  return response;
+  console.log("this is in skill update ts file success")
+  },error=>{
+    console.log("this is in skill update ts of error")
+  }
+  )
   
-  this.router.navigate(["/"])
 
 }
 }

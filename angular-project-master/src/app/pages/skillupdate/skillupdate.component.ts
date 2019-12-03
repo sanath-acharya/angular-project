@@ -1,3 +1,4 @@
+import { Router } from '@angular/router';
 import { UserDetailsService } from './../../user-details.service';
 
 import { Component, OnInit } from '@angular/core';
@@ -24,7 +25,8 @@ export class SkillupdateComponent implements OnInit {
   constructor(private formBuilder: FormBuilder,
     private loginservice:LoginService,
     private associateskillService:AssociateSkillServiceService,
-    private Uservice :UserDetailsService
+    private Uservice :UserDetailsService,
+    private router:Router
     ) { }
 
   ngOnInit() {
@@ -77,6 +79,7 @@ console.log("aid  is")
 console.log(this.aid)
 // this.AssociateSkill.
 this.associateskillService.addToAssociateSkill(this.aid,1,this.AssociateSkill).subscribe(response=>{
+  this.router.navigate(["/admin"])
   return response;
   console.log("this is in skill update ts file success")
   },error=>{

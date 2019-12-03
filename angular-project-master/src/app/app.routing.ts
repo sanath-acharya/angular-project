@@ -19,6 +19,8 @@ import { EditAssociateComponent } from './pages/edit-associate/edit-associate.co
 import { CanActivateGuardService } from './can-activate-guard.service';
 import { TablesComponent } from './pages/tables/tables.component';
 import { ViewAssociateSkillsComponent } from './pages/view-associate-skills/view-associate-skills.component';
+import { UserProfileComponent } from './pages/user-profile/user-profile.component';
+import { UpdateAssoSkillComponent } from './pages/update-asso-skill/update-asso-skill.component';
 
 // const routes: Routes =[
 //   {
@@ -70,6 +72,11 @@ const routes: Routes =[
       
         
     },{
+      path:'userprofile',
+      component:UserProfileComponent,
+      canActivate:[CanActivateGuardService]
+    }
+    ,{
       path:'viewAssociate',
       component:AddAssociateComponent,
       canActivate:[CanActivateGuardService]
@@ -80,8 +87,8 @@ const routes: Routes =[
       canActivate:[CanActivateGuardService]
     },
     {
-      path:'updateskills',
-      component:SkillupdateComponent,
+      path:'updateAssociateSkils',
+      component:UpdateAssoSkillComponent,
       canActivate:[CanActivateGuardService]
   },{
     path:'addSkills',

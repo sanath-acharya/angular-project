@@ -1,3 +1,4 @@
+import { Router } from '@angular/router';
 import { UserDetailsService } from './../../user-details.service';
 import { Skills } from 'src/app/model/skills';
 import { Component, OnInit } from '@angular/core';
@@ -20,7 +21,8 @@ export class ViewAssociateSkillsComponent implements OnInit {
   //  =new AssociateAndSkills(0,"","","","","","",new Associate(0,"", "", "", "", null, "", "", "", ""),new Skills(0,"",""));
   constructor(private skillService:SkillsService,
     private AssocitesSkills:AssociateSkillServiceService,
-    private Uservice:UserDetailsService) { }
+    private Uservice:UserDetailsService,
+    private router:Router) { }
  
   ngOnInit() {
     let aaid=sessionStorage.getItem("id");
@@ -32,8 +34,9 @@ export class ViewAssociateSkillsComponent implements OnInit {
    })
   }
 
-  onupdate(){
-
+  onupdate(model:AssociateAndSkills){
+    this.AssocitesSkills.setAssociateSkillModel(model);
+    this.router.navigate(["/updateAssociateSkils"])
 
   }
   onRemove(id:number){
