@@ -1,0 +1,26 @@
+<table class="table">
+    <thead class="table align-items-center table-flush">
+        <tr >
+            <th scope="col">#</th>
+            <th scope="col">Skill Category</th>
+            <th scope="col">Skill Name</th>
+            <th scope="col">Your Rating</th>
+            <th scope="col">start date</th>
+            <th scope="col">end date</th>
+            <th scope="col">Update</th>
+            <th scope="col">Delete</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let associatesSkill of associateSkills">
+            <th >{{associatesSkill.SkillsInfo.skillCategory}}</th>
+            <td>{{associatesSkill.SkillsInfo.skillName}}</td>
+            <td>{{associatesSkill.rating}}</td>
+            <td>{{associatesSkill.startDate}}</td>
+            <td>{{associatesSkill.endDate}}</td>
+            <td><button class="btn btn-primary mt-4" (click)="onupdate()">update </button>
+                <button type="button" class="btn btn-danger mt-4" (click)="onRemove(associatesSkill.SkillsInfo.skillId)">Remove </button></td>
+            <td></td>
+        </tr>
+    </tbody>
+</table>

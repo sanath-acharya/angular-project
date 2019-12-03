@@ -1,0 +1,195 @@
+<div class="header bg-gradient-danger pb-8 pt-5 pt-md-8">
+        <div class="container-fluid">
+            <div class="header-body">
+                <!-- Card stats -->
+    
+            </div>
+        </div>
+    </div>
+    
+    
+    <div class="container-fluid mt--4">
+    
+        <div class="row justify-content-center">
+    
+            <div class="col-xl-6 mb-5 mb-xl-0">
+                <div class="card bg-secondary shadow">
+                    <div class="card-header bg-white">
+                        <div class="row align-items-center">
+                            <div class="col">
+                                <h6 class="text-uppercase text-muted ls-1 mb-1"></h6>
+                                <h2 class="mb-0">Add Associate</h2>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <form role="form" [formGroup]="addAssociateForm">
+    
+                            <div class="form-group form-row" [ngClass]="{'has-error' : forErrors.associateFirstName}">
+    
+    
+                                <label for="associateFirstName" class="col-md-3 col-form-label">First Name:</label>
+                                <div class="col-lg-7">
+                                    <input class="form-control" formControlName="associateFirstName"
+                                        [(ngModel)]="AssociateModel.associateFirstName" placeholder=" first Name"
+                                        type="text" (blur)="logValidationErrors()" />
+                                    <span class="help-block" *ngIf="forErrors.associateFirstName">
+    
+                                        <span class="text-danger"> {{forErrors.associateFirstName}}</span>
+                                    </span>
+    
+                                </div>
+    
+                            </div>
+    
+                            <div class="form-group form-row" [ngClass]="{'has-error' : forErrors.associateLastName}">
+                                <label for="associateLastName" class="col-md-3 col-form-label">Last Name:</label>
+                                <div class="col-lg-7">
+                                    <input class="form-control" [(ngModel)]="AssociateModel.associateLastName"
+                                        formControlName="associateLastName" placeholder=" Last Name" type="text"
+                                        (blur)="logValidationErrors()" />
+                                    <span class="help-block" *ngIf="forErrors.associateLastName">
+    
+                                        <span class="text-danger"> {{forErrors.associateLastName}}</span>
+                                    </span>
+                                </div>
+                            </div>
+    
+    
+                            <div class="form-group form-row" [ngClass]="{'has-error' : forErrors.associateEmail}">
+                                <label for="associateEmail" class="col-md-3 col-form-label">Email:</label>
+                                <div class="col-lg-7">
+                                    <input class="form-control" formControlName="associateEmail"
+                                        [(ngModel)]="AssociateModel.associateEmail" placeholder="Email " type="email"
+                                        (blur)="logValidationErrors()">
+                                    <span class="help-block" *ngIf="forErrors.associateEmail">
+    
+                                        <span class="text-danger"> {{forErrors.associateEmail}}</span>
+                                    </span>
+                                </div>
+                            </div>
+    
+    
+                            <div class="form-group form-row" [ngClass]="{'has-error' : forErrors.password}">
+                                <label for="password" class="col-md-3 col-form-label">Password:</label>
+                                <div class="col-lg-7">
+                                    <input class="form-control" formControlName="password"
+                                        [(ngModel)]="AssociateModel.password" placeholder="password" type="password"
+                                        (blur)="logValidationErrors()">
+                                    <span class="help-block" *ngIf="forErrors.password">
+    
+                                        <span class="text-danger"> {{forErrors.password}}</span>
+                                    </span>
+                                </div>
+                            </div>
+    
+    
+                            <div class="form-group form-row" [ngClass]="{'has-error' : forErrors.associateMobile}">
+                                <label for="associateMobile" class="col-md-3 col-form-label">Mobile number:</label>
+                                <div class="col-lg-7">
+                                    <input class="form-control" formControlName="associateMobile" id="associateMobile"
+                                        [(ngModel)]="AssociateModel.associateMobile" placeholder="phone number" type="tel"
+                                        (blur)="logValidationErrors()">
+                                    <span class="help-block" *ngIf="forErrors.associateMobile">
+    
+                                        <span class="text-danger"> {{forErrors.associateMobile}}</span>
+                                    </span>
+                                </div>
+                            </div>
+    
+                            <div class="form-group form-row" [ngClass]="{'has-error' : forErrors.dob}">
+                                <label for="dob" class="col-md-3 col-form-label">Date of Birth:</label>
+                                <div class="col-lg-7">
+                                    <input class="form-control" formControlName="dob" id="dob"
+                                        [(ngModel)]="AssociateModel.dob" placeholder="date of birth" type="date"
+                                        (blur)="logValidationErrors()">
+                                    <span class="help-block" *ngIf="forErrors.dob">
+    
+                                        <span class="text-danger"> {{forErrors.dob}}</span>
+                                    </span>
+                                </div>
+                            </div>
+    
+                            <div class="form-group form-row" [ngClass]="{'has-error' : forErrors.gender}">
+                                <label for="gender" class="col-md-3 col-form-label">gender:</label>
+                                <div class="col-lg-7">
+    
+                                    <div *ngFor="let gender of genders">
+                                        <div class="form-check">
+                                            <label [for]="gender" class="form-check-label">{{gender}} &nbsp;&nbsp;&nbsp;
+                                                &nbsp;&nbsp;&nbsp;
+    
+                                                <input type="radio" class="form-check-input" formControlName="gender"
+                                                    [(ngModel)]="AssociateModel.gender" [id]="gender" [value]="gender"
+                                                    (blur)="logValidationErrors()" />
+    
+                                            </label>
+                                            <span class="help-block" *ngIf="forErrors.gender">
+    
+                                                <span class="text-danger"> {{forErrors.gender}}</span>
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+    
+    
+                            <div class="form-group form-row" [ngClass]="{'has-error' : forErrors.country}">
+                                <label for="country" class="col-md-3 col-form-label">country:</label>
+                                <div class="col-lg-7">
+                                    <div class="form-group">
+                                        <label>Select Country</label>
+                                        <select class="form-control" (change)="onChangeCountry($event.target.value)"
+                                            [id]="country" formControlName="country" [(ngModel)]="AssociateModel.country"
+                                            placeholder="country" (blur)="logValidationErrors()">
+                                            <option *ngFor="let country of countryInfo; let i = index"
+                                                value="{{country.CountryName}}" id="country">
+                                                {{country.CountryName}}</option>
+                                        </select>
+                                    </div>
+                                    <span class="help-block" *ngIf="forErrors.country">
+    
+                                        <span class="text-danger"> {{forErrors.country}}</span>
+                                    </span>
+                                </div>
+                            </div>
+    
+    
+    
+    
+                            <div class="form-group form-row" [ngClass]="{'has-error' : forErrors.location}">
+                                <label for="location" class="col-md-3 col-form-label">location:</label>
+                                <div class="col-lg-7">
+    
+                                    <select class="form-control" id="location" formControlName="location"
+                                        [(ngModel)]="AssociateModel.location" placeholder="location"
+                                        (blur)="logValidationErrors()">
+                                        <option *ngIf="stateInfo == ''" value="-1">--Select State--</option>
+                                        <option *ngFor="let state of stateInfo; let j = index" value="{{state.StateName}}">
+                                            {{state.StateName}}</option>
+                                    </select>
+                                    <span class="help-block" *ngIf="forErrors.location">
+                                        <span class="text-danger"> {{forErrors.location}}</span>
+                                    </span>
+                                </div>
+                            </div>
+    
+                            <div class="text-center">
+                                <button type="button" class="btn btn-primary mt-4" (click)="onUpdate(AssociateModel)">Add
+                                    Associate </button>
+                                    <button type="button" class="btn btn-primary mt-4" routerLink="/viewAssociate">view
+                                            Associate </button>
+                            </div>
+    
+    
+    
+                        </form>
+    
+                        {{addAssociateForm.value| json}}
+                    </div>
+    
+                </div>
+            </div>
+        </div>
+    </div>
+    

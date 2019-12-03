@@ -1,0 +1,63 @@
+<div class="col-8-md">
+
+
+    <div ng-app="mymodule">
+        <div ng-controller="myController">
+            <!-- <input type="text" ng-model="searchText.name" placeholder="search.name" />
+            <input type="text" ng-model="searchText.city" placeholder="search.city" />
+            <input type="checkbox" ng-model="exactMatch" /> Exact match -->
+            <br> <br> <br> <br> <br> <br> <br> <br>
+
+            <input type="text"  placeholder="search employees"  (input)="search()" [(ngModel)]="searchText" />
+            <table class="table table-striped">
+                <thead>
+                    <th>fistname</th>
+                    <th> last name</th>
+                    <th>email</th>
+                    <th>password</th>
+                    <th> mobile number name</th>
+                    <th>date of birth</th>
+                    <th>gender</th>
+                    <th> location</th>
+                    <th>country</th>
+                    
+
+
+                </thead>
+                <tbody>
+                    <tr *ngFor="let employee of associate ">
+                        <!-- <td>{{employee.associateFirstName | searchTitle:employee.gender}}</td> -->
+                        <td>
+                            {{employee.associateLastName}}
+
+                        </td>
+                        <td>
+                            {{employee.associateEmail}}
+                        </td>
+                        <td>
+                            {{employee.password}}
+                        </td>
+                        <td>
+                            {{employee.associateMobile}}
+                        </td>
+                        <td>
+                            {{employee.dob}}
+                        </td>
+                        <td>
+                            {{employee.gender}}
+                        </td>
+                        <td>
+                            {{employee.location}}
+                        </td>
+                        <td>
+                            {{employee.country}}
+                        </td>
+
+                    </tr>
+                </tbody>
+            </table>
+
+        </div>
+    </div>
+
+</div>

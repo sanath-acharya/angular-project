@@ -1,0 +1,72 @@
+import { AddSkillComponent } from './../../pages/add-skill/add-skill.component';
+import { SearchComponent } from './../../pages/search/search.component';
+import { AddAssociateComponent } from './../../pages/add-associate/add-associate.component';
+import { NgModule } from '@angular/core';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';import { RouterModule } from '@angular/router';
+import { CommonModule } from '@angular/common';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+
+import { ClipboardModule } from 'ngx-clipboard';
+
+import { AdminLayoutRoutes } from './admin-layout.routing';
+import { DashboardComponent } from '../../pages/dashboard/dashboard.component';
+import { IconsComponent } from '../../pages/icons/icons.component';
+
+import { UserProfileComponent } from '../../pages/user-profile/user-profile.component';
+import { TablesComponent } from '../../pages/tables/tables.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { AdminPageComponent } from 'src/app/pages/admin-page/admin-page.component';
+import { JwtInterceptorService } from 'src/app/jwt-interceptor.service';
+import { JwtUnAuthorizedInterceptorServiceService } from 'src/app/jwt-un-authorized-interceptor-service.service';
+// import { ToastrModule } from 'ngx-toastr';
+import{JwtModule} from '@auth0/angular-jwt';
+import { CountriesService } from 'src/app/service/countries.service';
+import { ViewAssociateComponent } from 'src/app/pages/view-associate/view-associate.component';
+import { EditAssociateComponent } from 'src/app/pages/edit-associate/edit-associate.component';
+import { SkillupdateComponent } from 'src/app/pages/skillupdate/skillupdate.component';
+import { ModalModule } from 'ngx-bootstrap/modal';
+import{ RatingModule } from  'ng-starrating';
+@NgModule({
+  imports: [
+    CommonModule,
+    RouterModule.forChild(AdminLayoutRoutes),
+    FormsModule,
+    ReactiveFormsModule,
+    HttpClientModule,
+    NgbModule,
+    ClipboardModule,
+    RatingModule
+    
+    // JwtModule.forRoot({
+    //   config:{
+    //     tokenGetter:()=>{
+    //       return (sessionStorage.getItem("currentUser")?JSON.parse(sessionStorage.getItem("currentUesr")).token:null);
+    //     }
+    //   }
+    // })
+  ],
+  declarations: [
+    DashboardComponent,
+    UserProfileComponent,
+    TablesComponent,
+    IconsComponent,
+    AddAssociateComponent,
+    SearchComponent,
+    AdminPageComponent,
+    AddSkillComponent,
+    ViewAssociateComponent,
+    EditAssociateComponent,
+    SkillupdateComponent
+    
+  ],
+  providers: [ CountriesService
+  //   , {
+  //   provide:HTTP_INTERCEPTORS,
+  //   useClass:JwtInterceptorService,
+  //   multi:true
+  // }
+    
+  ]
+})
+
+export class AdminLayoutModule {}

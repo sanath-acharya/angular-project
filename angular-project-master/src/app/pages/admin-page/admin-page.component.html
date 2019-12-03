@@ -1,0 +1,135 @@
+<div class="header bg-gradient-danger pb-8 pt-6 pt-md-6">
+        <div class="container-fluid">
+            <div class="header-body">
+                <!-- Card stats -->
+    
+    
+    
+                <button type="button" class="btn btn-danger" style="float: right;" (click)="logout()">Log Out</button>
+    
+    
+    
+            </div>
+        </div>
+    </div>
+    
+    <div class="pl-lg-4">
+    
+    
+    
+    
+        <div class="row">
+            <div class="col-lg-6 "  style="float: right;">
+    
+                <label for="drpSearchBy" class="col-md-3 col-form-label">Category:</label>
+                <select name="searchBy" id="drpSearchBy" class="form-control  col-lg-7" [(ngModel)]="searchby">
+    
+                    <option value="projectId"> Associate id</option>
+                    <option value="name"> Associate name</option>
+                    <option value="email"> Country</option>
+                    <option value="phone"> Skill</option>
+    
+                </select>
+    
+            </div>
+            <div class="col-lg-6 ">
+                <label for="drpSearchBy" class="col-md-3 col-form-label">SearchBy:</label>
+                <div class="input-group input-group-rounded input-group-merge">
+                    <input type="search" class=" form-control-rounded form-control  fa fa-search col-lg-7  "
+                        id="txtSearchText" name="searchText" [(ngModel)]="searchText" aria-label="Search">
+                    <div class="input-group-append">
+                        <div class="input-group-text">
+                            <span class="fa fa-search" (click)="onSearchClick()"></span>
+                        </div>
+                    </div>
+                </div>
+    
+    
+    
+            </div>
+    
+        </div>
+    </div>
+    
+    <div class="card-header text-center border-0 pt-10 pt-md-6 pb-0 pb-md-6">
+        <div class="row-mt-8">
+            <button type="button" class="btn btn-success float-left mr-8 col-lg-3 row-mt-10" *ngIf="type=='admin'"
+                routerLink="/viewAssociate">View
+                and Add
+                Associate</button>
+            <div>
+                <router-outlet></router-outlet>
+            </div>
+            <!-- *ngIf="sessionStorage.getItem('type')==='admin'" -->
+            <button type="button" class="btn btn-success float-left col-lg-3" *ngIf="type=='admin'"
+                routerLink="/addSkills">Add skills</button>
+                <button type="button" class="btn btn-success float-left col-lg-3" *ngIf="type=='employee'"
+                routerLink="/viewSkills">View skills</button>
+            <button type="button" class="btn btn-success float-left col-lg-3" *ngIf="type=='employee'"
+                routerLink="/EditSkills">Add skills</button>
+        </div>
+    </div>
+    
+    
+    <div class="card-header border-0">
+        <h3 class="mb-0">Employee Table</h3>
+    </div>
+    <div class="table-responsive">
+        <table class="table align-items-center table-flush">
+            <thead>
+                <th scope="col"></th>
+                <th scope="col"> associate FirstName</th>
+                <th scope="col">associate LastName</th>
+                <th scope="col"> associate Email</th>
+                <th scope="col">associate Mobile</th>
+                <th scope="col">Update associate</th>
+                <th scope="col">Delete associate</th>
+                <th scope="col"></th>
+            </thead>
+            <tbody>
+    
+    
+                <tr *ngFor="let employee of AssociateSkill;let i=index">
+                    <!-- <td>{{employee.associateFirstName | searchTitle:employee.gender}}</td> -->
+                    <td>
+    
+                    </td>
+    
+                    <td>
+                        <h5 class="text-dark mb-0">
+                            {{employee.certification}}
+                        </h5>
+    
+                        <span class="mb-0 text-sm">Argon Design System</span>
+    
+                    </td>
+                    <td>
+                        <h5 class="text-dark mb-0">
+                            {{employee.rating}}
+                        </h5>
+    
+                    </td>
+    
+                    <td>
+                        <h5 class="text-dark mb-0">
+                            {{employee.sid.skillName}}
+                        </h5>
+                    </td>
+    
+                    <td>
+                        <h5 class="text-dark mb-0">
+                            {{employee.aid.associateFirstName}}
+                        </h5>
+                    </td>
+    
+                    <td>
+                        <button class="btn btn-success">Update</button>
+    
+                    </td>
+                    <td>
+                        <button class="btn btn-danger">Remove</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>

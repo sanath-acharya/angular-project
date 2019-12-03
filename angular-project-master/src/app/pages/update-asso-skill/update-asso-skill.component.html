@@ -1,0 +1,102 @@
+
+<div class="header bg-gradient-danger pb-8 pt-5 pt-md-8">
+        <div class="container-fluid">
+            <div class="header-body">
+                <!-- Card stats -->
+    
+            </div>
+        </div>
+    </div>
+    <div class="container-fluid mt--4">
+        <div class="row justify-content-center">
+            <div class="col-xl-6 mb-5 mb-xl-0">
+                <div class="card bg-secondary shadow">
+                    <div class="card-header bg-white">
+                        <div class="row align-items-center">
+                            <div class="col">
+                                <h6 class="text-uppercase text-muted ls-1 mb-1"></h6>
+                                <h2 class="mb-0">Update Skill</h2>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-body">
+    
+                        <form role="form" [formGroup]="skillUpdateForm" >
+                            
+                            <div class="form-group form-row">
+                                <label for="certification" class="col-md-3 col-form-label">Certification: </label>
+                                <div class="col-lg-7">
+                                    <input class="form-control" formControlName="certification" name="certification" type="text" [(ngModel)]="AssociateSkill.certification"
+                                        [ngClass]="{ 'is-invalid': submitted && f.certification.errors }">
+                                        <div *ngIf="submitted && f.certification.errors" class="invalid-feedback">
+                                            <div *ngIf="f.certification.errors.required">Certification is required</div>
+                                        </div>
+                                </div>
+                            </div>
+    
+                             <div class="form-group form-row">
+                                <label for="start-date" class="col-md-3 col-form-label">Start Date:</label>
+                                <div class="col-lg-7">
+                                    <input class="form-control" formControlName="startDate" id="dob" name="startDate"
+                                        placeholder="start date" type="date" [(ngModel)]="AssociateSkill.startDate"
+                                         [ngClass]="{ 'is-invalid': submitted && f.startDate.errors }">
+                                        <div *ngIf="submitted && f.startDate.errors" class="invalid-feedback">
+                                            <div *ngIf="f.startDate.errors.required">Start Date is required</div>
+                                        </div>
+                                </div>
+                            </div>
+    
+                            <div class="form-group form-row">
+                                <label for="end-date" class="col-md-3 col-form-label">End Date:</label>
+                                <div class="col-lg-7">
+                                    <input class="form-control" formControlName="endDate" id="dob" placeholder="end date" name="endDate"
+                                        type="date" [(ngModel)]="AssociateSkill.endDate" [ngClass]="{ 'is-invalid': submitted && f.endDate.errors }">
+                                        <div *ngIf="submitted && f.endDate.errors" class="invalid-feedback">
+                                            <div *ngIf="f.endDate.errors.required">End Date is required</div>
+                                        </div>
+                                </div>
+                            </div>
+    
+                            <div class="form-group form-row">
+                                <label for="duration" class="col-md-3 col-form-label">Duration: </label>
+                                <div class="col-lg-7">
+                                    <input class="form-control" formControlName="duration" [(ngModel)]="AssociateSkill.duration" type="text" name="duration"
+                                    [ngClass]="{ 'is-invalid': submitted && f.duration.errors }">
+                                    <div *ngIf="submitted && f.duration.errors" class="invalid-feedback">
+                                        <div *ngIf="f.duration.errors.required">Duration is required</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group form-row">
+                                <label for="expierence" class="col-md-3 col-form-label">Expierence: </label>
+                                <div class="col-lg-7">
+                                    <input class="form-control" formControlName="expierence" type="text" [(ngModel)]="AssociateSkill.experience" name="experience" 
+                                    [ngClass]="{ 'is-invalid': submitted && f.expierence.errors }">
+                                    <div *ngIf="submitted && f.expierence.errors" class="invalid-feedback">
+                                        <div *ngIf="f.expierence.errors.required">Expierence is required</div>
+                                    </div>
+                                </div>
+                            </div>
+    
+                        <!-- <div class="form-group form-row">
+                                <label for="expertise" class="col-md-3 col-form-label">Rate Your: </label>
+                                <div class="col-lg-7">
+                                    <star-rating value="5"  [ngModelOptions]="{standalone: true}" [(ngModel)]="AssociateSkill.rating" name="rating" checkedcolor="gold" uncheckedcolor="grey" size="45px"    readonly="false" (rate)="onRate($event)"></star-rating>
+                                </div>
+                            </div>  -->
+    
+    
+                            <div class="text-center">
+                                <button class="btn btn-primary mt-4" routerLink="/viewSkills" (click)="onUpdateChange(AssociateSkill)">Submit </button>&nbsp;&nbsp;&nbsp;
+                                <button type="button" class="btn btn-danger mt-4" routerLink="/viewSkills" >Back </button>
+                            </div>
+    
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    
+    </div>
+    
+    

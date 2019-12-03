@@ -1,0 +1,48 @@
+import { UserDetailsService } from './../../user-details.service';
+import { Skills } from 'src/app/model/skills';
+import { Component, OnInit } from '@angular/core';
+import { SkillsService } from 'src/app/service/skills.service';
+import { AssociateAndSkills } from 'src/app/model/associate-and-skills';
+import { AssociateSkillServiceService } from 'src/app/service/associate-skill-service.service';
+import { Associate } from 'src/app/model/associate';
+import { LoginService } from 'src/app/service/login.service';
+
+@Component({
+  selector: 'app-view-associate-skills',
+  templateUrl: './view-associate-skills.component.html',
+  styleUrls: ['./view-associate-skills.component.scss']
+})
+export class ViewAssociateSkillsComponent implements OnInit {
+
+  aid:number
+
+  associateSkills:AssociateAndSkills[];
+  //  =new AssociateAndSkills(0,"","","","","","",new Associate(0,"", "", "", "", null, "", "", "", ""),new Skills(0,"",""));
+  constructor(private skillService:SkillsService,
+    private AssocitesSkills:AssociateSkillServiceService,
+    private Uservice:UserDetailsService) { }
+ 
+  ngOnInit() {
+    let aaid=sessionStorage.getItem("id");
+    this.aid= +aaid;
+   this.AssocitesSkills.getALLAssociateSkillsById(this.aid).subscribe(response=>{
+      this.associateSkills= response;
+   },error=>{
+
+   })
+  }
+
+  onupdate(){
+
+
+  }
+  onRemove(id:number){
+    this.skillService.onRemoveAssociateSkill(id).subscribe(response=>{
+      console.log("deleted")
+    })
+
+  }
+  // getAssociateSkillbyId(){
+  //    this.AssocitesSkills.getAssociateSkillsByid(this.associateSkills.SkillsInfo.SkillsInfo);
+  // }
+}
