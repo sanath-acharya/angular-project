@@ -35,6 +35,8 @@ export class SkillupdateComponent implements OnInit {
 
 
     this.skillUpdateForm = this.formBuilder.group({
+      skillGroup: ['', Validators.required],
+      skillName: ['', Validators.required],
       certification: ['', Validators.required],
       startDate: ['', Validators.required],
       endDate: ['', Validators.required],

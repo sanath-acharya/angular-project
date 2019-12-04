@@ -7,6 +7,7 @@ import { AssociateAndSkills } from 'src/app/model/associate-and-skills';
 import { AssociateSkillServiceService } from 'src/app/service/associate-skill-service.service';
 import { Associate } from 'src/app/model/associate';
 import { LoginService } from 'src/app/service/login.service';
+import { getLocaleDateFormat } from '@angular/common';
 
 @Component({
   selector: 'app-view-associate-skills',
@@ -25,6 +26,11 @@ export class ViewAssociateSkillsComponent implements OnInit {
     private router:Router) { }
  
   ngOnInit() {
+    this.getdata();
+  }
+
+
+  getdata(){
     let aaid=sessionStorage.getItem("id");
     this.aid= +aaid;
    this.AssocitesSkills.getALLAssociateSkillsById(this.aid).subscribe(response=>{
@@ -32,8 +38,8 @@ export class ViewAssociateSkillsComponent implements OnInit {
    },error=>{
 
    })
-  }
 
+  }
   onupdate(model:AssociateAndSkills){
     this.AssocitesSkills.setAssociateSkillModel(model);
     this.router.navigate(["/updateAssociateSkils"])
@@ -42,8 +48,8 @@ export class ViewAssociateSkillsComponent implements OnInit {
   onRemove(sid:number){
     console.log(sid)
     this.skillService.onRemoveAssociateSkill(sid).subscribe(response=>{
-      
-      this.router.navigate(["/viewSkills"])
+      this.getdata();
+      // this.router.navigate(["/viewSkills"])
       console.log("deleted")
     })
 

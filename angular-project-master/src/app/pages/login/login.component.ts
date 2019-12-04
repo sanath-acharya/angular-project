@@ -1,3 +1,4 @@
+import { AssociateAndSkills } from './../../../../../../argon-dashboard-angular-master/src/app/model/associate-and-skills';
 import { Associates } from './../../associates';
 import { Router, RouterLink } from '@angular/router';
 import { LoginService } from './../../service/login.service';
@@ -5,6 +6,7 @@ import { LoginModel } from '../../model/login-model';
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { AssociateLoginModel } from 'src/app/model/associate-login-model';
 import { pipe } from 'rxjs';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 
 
 @Component({
@@ -14,8 +16,11 @@ import { pipe } from 'rxjs';
 })
 
 export class LoginComponent implements OnInit, OnDestroy {
-  constructor( private logservice:LoginService,private router:Router) {}
+  constructor( private logservice:LoginService,
+    private router:Router,private formBuilder: FormBuilder) {}
 errorstring=""
+loginForm: FormGroup;
+submitted = false;
   loginmodel:LoginModel=new LoginModel("","");
 
   associatemodel:AssociateLoginModel=new AssociateLoginModel("","",);
@@ -23,13 +28,19 @@ errorstring=""
   loginError:string="";
  
   ngOnInit() {
+
+    this.loginForm = this.formBuilder.group({
+      email: ['', [Validators.required, Validators.email]],
+       password: ['', [Validators.required, Validators.minLength(5)]]
+   });
   }
   
   ngOnDestroy() {
   }
-  
+  get f() { return this.loginForm.controls; }
 
   onlogin(model,model2){
+    
     console.log("Before Login")
     console.log(model);
     console.log("inside ts Login")
@@ -84,6 +95,21 @@ errorstring=""
 
   }
 
+  onSubmit(model,model2) {
+    this.submitted = true;
+
+    // stop here if form is invalid
+    if (this.loginForm.invalid) {
+        return;
+    }
+    else{
+ this.onlogin(model,model2);
+    }
+
+    // display form values on success
+   // alert('SUCCESS!! :-)\n\n' + JSON.stringify(this.loginForm.value, null, 4));
+  }
+ 
 
 
 }

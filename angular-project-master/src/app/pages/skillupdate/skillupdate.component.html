@@ -23,6 +23,33 @@
     
                         <form role="form" [formGroup]="skillUpdateForm" >
                             
+                                <div class="form-group form-row">
+                                        <label for="skillGroup" class="col-md-3 col-form-label">Skill-Group: </label>
+                                        <div class="col-lg-7">
+                                            <select class="form-control" formControlName="skillGroup" type="text"
+                                                [ngClass]="{ 'is-invalid': submitted && f.skillGroup.errors }">
+            
+                                            </select>
+            
+                                            <div *ngIf="submitted && f.skillGroup.errors" class="invalid-feedback">
+                                                <div *ngIf="f.skillGroup.errors.required">Skill-Group is required</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group form-row">
+                                        <label for="skillName" class="col-md-3 col-form-label">Skill-Name: </label>
+                                        <div class="col-lg-7">
+                                            <select class="form-control" formControlName="skillName" type="text"
+                                                [ngClass]="{ 'is-invalid': submitted && f.skillName.errors }">
+                                                </select>
+            
+                                            <div *ngIf="submitted && f.skillName.errors" class="invalid-feedback">
+                                                <div *ngIf="f.skillName.errors.required">Skill-Name is required</div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+
                             <div class="form-group form-row">
                                 <label for="certification" class="col-md-3 col-form-label">Certification: </label>
                                 <div class="col-lg-7">

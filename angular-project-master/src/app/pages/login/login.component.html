@@ -39,13 +39,17 @@
             <small>Sign in with credentials</small>
             <p style="color: red;">{{errorstring}}</p>
           </div>
-          <form role="form">
+          <form role="form"  [formGroup]="loginForm"  (ngSubmit)="onSubmit(loginmodel,associatemodel)">
             <div class="form-group mb-3">
               <div class="input-group input-group-alternative">
                 <div class="input-group-prepend">
                   <span class="input-group-text"><i class="ni ni-email-83"></i></span>
                 </div>
-                <input class="form-control" [(ngModel)]="loginmodel.userEmail" [(ngModel)]="associatemodel.associateEmail" placeholder="Email" type="email" name="email">
+                <input class="form-control" [(ngModel)]="loginmodel.userEmail" [(ngModel)]="associatemodel.associateEmail" placeholder="Email" type="email" name="email" formControlName="email" [ngClass]="{ 'is-invalid': submitted && f.email.errors }">
+                <div *ngIf="submitted && f.email.errors" class="invalid-feedback">
+                  <div *ngIf="f.email.errors.required">Email is required</div>
+                  <div *ngIf="f.email.errors.email">Email must be a valid email address</div>
+                </div>
               </div>
             </div>
             <div class="form-group">
@@ -53,12 +57,17 @@
                 <div class="input-group-prepend">
                   <span class="input-group-text"><i class="ni ni-lock-circle-open"></i></span>
                 </div>
-                <input class="form-control" [(ngModel)]="loginmodel.userPassword"   [(ngModel)]="associatemodel.password" placeholder="Password" type="password" name="password">
+                <input class="form-control" [(ngModel)]="loginmodel.userPassword"   [(ngModel)]="associatemodel.password" placeholder="Password" type="password" name="password"   formControlName="password"                                   
+                [ngClass]="{ 'is-invalid': submitted && f.password.errors }">
+              <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
+                <div *ngIf="f.password.errors.required">Password is required</div>
+                <div *ngIf="f.password.errors.minlength">Password must be atleast 5 charaters</div>
+              </div>
               </div>
             </div>
-            
+            <!-- (click)="onlogin(loginmodel,associatemodel)" -->
             <div class="text-center">
-              <button type="button"  (click)="onlogin(loginmodel,associatemodel)" class="btn btn-primary my-4">Sign in</button>
+              <button type="submit"   class="btn btn-primary my-4">Sign in</button>
               <a href="http://localhost:4200/home"><button type="button"  class="btn btn-primary my-4">Back</button></a>
             </div>
 
