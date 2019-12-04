@@ -60,7 +60,7 @@ const routes: Routes =[
   },
     
       {
-        path:'search',
+        path:'search/:id',
         component:ResultlistComponent
     },{
       path:'login',

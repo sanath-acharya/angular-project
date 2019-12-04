@@ -66,11 +66,11 @@ export class AdminPageComponent implements OnInit {
   }
 
   onSearchClick(){
-    this.AssociateService.searchbyfirstname(this.searchText).subscribe(
+    this.associateSkill.search(this.searchText).subscribe(
       (response)=>{
         console.log(response);
         console.log("this is inside onsearch funtion");
-        this.AssociateModel=response;
+        this.AssociateSkill=response;
 
         console.log(Array.of(response));
         this.router.navigateByUrl['/admin']
@@ -100,26 +100,8 @@ export class AdminPageComponent implements OnInit {
 
 
     
-      this.AssociateService.getAssociate().subscribe(
-        response=>{
-        // console.log(response);
-        // if(response!=null){
-           
-           
-          //  this.usersJson= Array.of(response);
-          console.log(response)
-          //  console.log( this.usersJson)
-          //  console.log(this.usersJson[0][0])
-          this.AssociateModel=response;
-  
-        }
-      );
-      this.skillService.getSkills().subscribe(
-        (response:Skills[])=>{
-          this.skillsList=response;
-          
-        }
-      );
+      
+      
       this.associateSkill.getAllAssociateSkills().subscribe(
         (response:AssociateAndSkills[])=>{
           console.log("this is inside ts file above response")
@@ -133,6 +115,7 @@ export class AdminPageComponent implements OnInit {
     logout(){
       sessionStorage.removeItem('type')
       sessionStorage.removeItem('currentUser')
+      sessionStorage.removeItem('id')
       this.router.navigate(['login'])
     }
     

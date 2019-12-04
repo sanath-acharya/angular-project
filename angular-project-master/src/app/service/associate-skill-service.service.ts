@@ -21,13 +21,13 @@ export class AssociateSkillServiceService {
   return this.http.get<AssociateAndSkills[]>("/api/associateSkills/"+id);
  
 }
-onRemoveAssociateSkill(id:number){
-  return this.http.delete("/api/deleteAssociateSkillByAid/"+id)
+onRemoveAssociateSkill(sid:number){
+  return this.http.delete("/api/deleteBySid/"+sid)
 
 }
 
-getALLAssociateSkillsById(id:number){
-return this.http.get<AssociateAndSkills[]>("/api/associateSkills/"+id);
+getALLAssociateSkillsById(aid:number){
+return this.http.get<AssociateAndSkills[]>("/api/AssociateSkill/"+aid);
 }
 //#####################INSIDE SKILL UPDATE COMPONENT
  addToAssociateSkill(associateId:number,skillId:number,model:AssociateAndSkills){
@@ -51,4 +51,10 @@ updateAssociateSkillByASid(aid:number,sid:number,model:AssociateAndSkills){
   return this.http.put("/api/"+aid+"/"+sid,model);
 
 }
+
+//##########################################search on result list
+
+  search(search:string){
+    return this.http.get<AssociateAndSkills[]>("/api/search/"+search);
+  }
 }

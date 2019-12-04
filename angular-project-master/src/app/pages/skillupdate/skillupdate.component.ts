@@ -78,7 +78,7 @@ onUpdateChange(){
 console.log("aid  is")
 console.log(this.aid)
 // this.AssociateSkill.
-this.associateskillService.addToAssociateSkill(this.aid,1,this.AssociateSkill).subscribe(response=>{
+this.associateskillService.addToAssociateSkill(this.aid,13,this.AssociateSkill).subscribe(response=>{
   this.router.navigate(["/admin"])
   return response;
   console.log("this is in skill update ts file success")

@@ -2,34 +2,46 @@
         <div class="container">
             <div class="header-body text-center mb-7">
                 <div class="row justify-content-center">
-                    <h1 class="text-white">Welcome to Skill Tracker</h1>
-    
+                     <h1 class="text-white">Skill Tracker</h1>
+                    <!-- <img src="../../../assets/img/brand/ski.png"> -->
                 </div>
+    
             </div>
         </div>
-        <div class="separator separator-bottom separator-skew zindex-100">
-            <svg x="0" y="0" viewBox="0 0 2560 100" preserveAspectRatio="none" version="1.1"
-                xmlns="http://www.w3.org/2000/svg">
-                <polygon class="fill-default" points="2560 0 2560 100 0 100"></polygon>
-            </svg>
-        </div>
+        <!-- <div class="separator separator-bottom separator-skew zindex-100">
+                <svg x="0" y="0" viewBox="0 0 2560 100" preserveAspectRatio="none" version="1.1"
+                    xmlns="http://www.w3.org/2000/svg">
+                    <polygon class="fill-default" points="2560 0 2560 100 0 100"></polygon>
+                </svg>
+        </div> -->
     
+        
+       
+            <div class="searchbox">
     
+                <div class="input-group-prepend">
+                    <span class="input-group-text"><i class="fas fa-search"></i></span>
     
+                    <input #searchBox type="search" placeholder="Search . . ." (keyup)="search(searchBox.value)"
+                        autofocus>
+                </div>
+            </div>
     
+           
+        
+    
+        <!-- <form class="navbar-search navbar-search-dark form-inline mr-3 d-none d-md-flex ml-lg-auto">
+                    <div class="form-group mb-0" [ngClass]="{ 'focused': focus === true }">
+                      <div class="input-group input-group-alternative">
+                        <div class="input-group-prepend">
+                          <span class="input-group-text"><i class="fas fa-search"></i></span>
+                        </div>
+                        
+                        <input class="form-control" #searchBox placeholder="Search" type="text" (keyup)="search(searchBox.value)"
+                        (focus)="focus = true"
+                        (blur)="focus = false">
+                      </div>
+                    </div>
+                  </form> -->
     </div>
     
-    <form class="float-right col-lg-10 row-lg-12">
-    
-            <!-- class="input-group input-group-rounded input-group-merge  " -->
-        <div >
-          <input type="search" class="form-control  form-control-underlined col-lg-9 row-lg-12  "
-                placeholder="Search" aria-label="Search" routerLink='/search'>
-          
-        </div>
-    </form>
-    
-    
-    
-    
-  

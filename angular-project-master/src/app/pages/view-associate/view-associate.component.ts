@@ -160,6 +160,7 @@ export class ViewAssociateComponent implements OnInit {
 
     this.addAssociate.addAssociate(Amodel).subscribe(response => {
       alert("Sucessfull")
+      this.router.navigate(["/viewAssociate"])
     });
     
 

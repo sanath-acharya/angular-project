@@ -39,8 +39,10 @@ export class ViewAssociateSkillsComponent implements OnInit {
     this.router.navigate(["/updateAssociateSkils"])
 
   }
-  onRemove(id:number){
-    this.skillService.onRemoveAssociateSkill(id).subscribe(response=>{
+  onRemove(sid:number){
+    console.log(sid)
+    this.skillService.onRemoveAssociateSkill(sid).subscribe(response=>{
+      this.router.navigate(["/viewSkills"])
       console.log("deleted")
     })
 

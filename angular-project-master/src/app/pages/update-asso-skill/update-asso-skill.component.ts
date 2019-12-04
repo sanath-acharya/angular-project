@@ -21,7 +21,7 @@ export class UpdateAssoSkillComponent implements OnInit {
   skillUpdateForm: FormGroup;
   submitted = false;
   name = 'Angular 5';
-  aid:number
+ 
   AssociateSkill:AssociateAndSkills;
   // =new AssociateAndSkills("","","","","","",null,null);
   constructor(private formBuilder: FormBuilder,
@@ -71,11 +71,12 @@ onRate($event:{oldValue:number, newValue:number, starRating:StarRatingComponent}
 
 
 onUpdateChange(model){
-
+let aaid=sessionStorage.getItem('id')
+let aid= +aaid;
 // console.log("aid  is")
 // console.log(this.aid)
 // // this.AssociateSkill.
-this.associateskillService.updateAssociateSkillByASid(this.aid,1,model).subscribe(response=>{
+this.associateskillService.updateAssociateSkillByASid(aid,13,model).subscribe(response=>{
   this.router.navigate(["/admin"])
   return response;
   console.log("this is in skill update ts file success")

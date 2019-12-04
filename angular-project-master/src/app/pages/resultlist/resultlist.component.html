@@ -10,13 +10,22 @@
     
     
             </div>
+                  
+<div class="searchbox">
+        <input [(ngModel)]="searchTerm" type="search"   (keyup)="search()" autofocus>
+    </div>
+    <div>
+        <ol>
+            <!-- <li *ngFor="let user of searchResult;">{{user.name}}</li> -->
+        </ol>
+    </div>
     
             <!-- </div> -->
-        </div>
+        <!-- </div> -->
     </div>
     
     
-    
+  
     
     <div class="pl-lg-4 ">
         <div class="row">

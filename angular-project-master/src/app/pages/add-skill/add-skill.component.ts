@@ -1,3 +1,4 @@
+import { Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormArray, FormControl, FormBuilder } from '@angular/forms';
 import { SkillsService } from 'src/app/service/skills.service';
@@ -15,7 +16,9 @@ export class AddSkillComponent implements OnInit {
   // skillCategory:string;
   skills: Skills[];
   skillModel: Skills = new Skills(0, "", "");
-  constructor(private fb: FormBuilder, private skillService: SkillsService) { }
+  constructor(private fb: FormBuilder, 
+    private skillService: SkillsService,
+    private router:Router) { }
 
 
   
@@ -38,6 +41,7 @@ export class AddSkillComponent implements OnInit {
 
   onRemoveSkills(id: number) {
     this.skillService.removebyid(id).subscribe(response => {
+      this.getdata();
 
     }, (error) => {
       console.log(error)
@@ -46,6 +50,7 @@ export class AddSkillComponent implements OnInit {
   onaddSkill() {
     this.skillService.addSkill(this.skillModel).subscribe((responce) => {
       this.skills.push(this.skillModel);
+      this.getdata();
     }, (error) => {
       console.log(error)
 

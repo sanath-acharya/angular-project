@@ -1,3 +1,4 @@
+import { ActivatedRoute } from "@angular/router";
 import { Component, OnInit } from '@angular/core';
 import { AssociateAndSkills } from 'src/app/model/associate-and-skills';
 import { AssociateSkillServiceService } from 'src/app/service/associate-skill-service.service';
@@ -7,11 +8,28 @@ import { AssociateSkillServiceService } from 'src/app/service/associate-skill-se
   templateUrl: './resultlist.component.html',
   styleUrls: ['./resultlist.component.scss']
 })
+
+
 export class ResultlistComponent implements OnInit {
-  private AssociateSkill:AssociateAndSkills[];
-  constructor(private associateSkill:AssociateSkillServiceService) { }
+ 
+  searchTerm: string;
+  searchResult = [];
+
+  AssociateSkill:AssociateAndSkills[];
+  constructor(
+    private activatedRoute: ActivatedRoute,
+    private associateSkill:AssociateSkillServiceService
+    
+  ) { }
 
   ngOnInit() {
+
+    // this.activatedRoute.paramMap.subscribe(params => {
+    //   this.searchTerm = params.get("id");
+    // });
+    // this.search();
+
+
     this.associateSkill.getAllAssociateSkills().subscribe(
       (response:AssociateAndSkills[])=>{
         console.log("this is inside ts file above response")
@@ -20,5 +38,17 @@ export class ResultlistComponent implements OnInit {
 
       });
   }
+
+
+  
+  search(){
+    if (this.searchTerm.trim()) {
+
+    this.associateSkill.search(this.searchTerm).subscribe(response=>{
+      this.AssociateSkill=response;
+      })
+  }
+  }
+
 
 }
