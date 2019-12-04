@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { AssociateAndSkills } from '../model/associate-and-skills';
 import { map } from 'rxjs/operators';
+import { Skills } from '../model/skills';
 
 @Injectable({
   providedIn: 'root'
@@ -57,4 +58,12 @@ updateAssociateSkillByASid(aid:number,sid:number,model:AssociateAndSkills){
   search(search:string){
     return this.http.get<AssociateAndSkills[]>("/api/search/"+search);
   }
+//##############################from the skill update component
+  getSkill(){
+    return this.http.get<Skills[]>("/api/skills/all")
+  }
+  getSkillname(skillcategory){
+    return this.http.get<any>("/api/searchskill/"+skillcategory)
+  }
+
 }

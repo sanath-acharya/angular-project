@@ -73,6 +73,7 @@ onRate($event:{oldValue:number, newValue:number, starRating:StarRatingComponent}
 onUpdateChange(model){
 let aaid=sessionStorage.getItem('id')
 let aid= +aaid;
+console.log(aid);
 // console.log("aid  is")
 // console.log(this.aid)
 // // this.AssociateSkill.

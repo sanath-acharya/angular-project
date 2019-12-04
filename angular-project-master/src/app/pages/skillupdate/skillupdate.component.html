@@ -21,26 +21,35 @@
                     </div>
                     <div class="card-body">
     
-                        <form role="form" [formGroup]="skillUpdateForm" >
+                        <form role="form" [formGroup]="skillUpdateForm" (ngSubmit)="onUpdateChange( )" >
                             
                                 <div class="form-group form-row">
                                         <label for="skillGroup" class="col-md-3 col-form-label">Skill-Group: </label>
+                                        <div >
+                                                
+                                                </div>
                                         <div class="col-lg-7">
-                                            <select class="form-control" formControlName="skillGroup" type="text"
-                                                [ngClass]="{ 'is-invalid': submitted && f.skillGroup.errors }">
-            
+                                            <select  class="form-control" formControlName="skillGroup" type="text"(blur)="getskillName()"
+                                                [ngClass]="{ 'is-invalid': submitted && f.skillGroup.errors }" [(ngModel)]="skillCategory" (ngModel)="AssociateSkill.SkillsInfo.skillCategory" >
+                                                <option *ngFor="let s of skill" value='{{s.skillCategory}}'>{{s.skillCategory}}</option>
+                                              
+                                                
                                             </select>
             
                                             <div *ngIf="submitted && f.skillGroup.errors" class="invalid-feedback">
                                                 <div *ngIf="f.skillGroup.errors.required">Skill-Group is required</div>
+                                                
                                             </div>
+                                            
                                         </div>
                                     </div>
                                     <div class="form-group form-row">
                                         <label for="skillName" class="col-md-3 col-form-label">Skill-Name: </label>
                                         <div class="col-lg-7">
-                                            <select class="form-control" formControlName="skillName" type="text"
+                                            <select class="form-control" formControlName="skillName"  type="text" (ngModel)="AssociateSkill.SkillsInfo.skillName"
                                                 [ngClass]="{ 'is-invalid': submitted && f.skillName.errors }">
+                                                <option *ngFor="let sk of skillName" value='{{sk.skillName}}'  >{{sk.skillName}}</option>
+                                                
                                                 </select>
             
                                             <div *ngIf="submitted && f.skillName.errors" class="invalid-feedback">
@@ -114,7 +123,7 @@
     
     
                             <div class="text-center">
-                                <button class="btn btn-primary mt-4" routerLink="/viewSkills" (click)="onUpdateChange()">Submit </button>&nbsp;&nbsp;&nbsp;
+                                <button class="btn btn-primary mt-4" type="submit">Submit </button>&nbsp;&nbsp;&nbsp;
                                 <button type="button" class="btn btn-danger mt-4" routerLink="/viewSkills" >Back </button>
                             </div>
     

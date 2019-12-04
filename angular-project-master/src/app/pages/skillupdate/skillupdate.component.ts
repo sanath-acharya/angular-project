@@ -20,17 +20,22 @@ export class SkillupdateComponent implements OnInit {
   skillUpdateForm: FormGroup;
   submitted = false;
   name = 'Angular 5';
+  sid:number;
   aid:number
+  skillName:Skills[];
+  skill:Skills[];
+  skillCategory:string
   AssociateSkill:AssociateAndSkills=new AssociateAndSkills("","","","","","",new Associate(0,"", "", "", "", null, "", "", "", ""),new Skills(0,"", ""));
-  constructor(private formBuilder: FormBuilder,
+  constructor(private formBuilder: FormBuilder, 
     private loginservice:LoginService,
     private associateskillService:AssociateSkillServiceService,
     private Uservice :UserDetailsService,
     private router:Router
     ) { }
 
+  
   ngOnInit() {
-    
+    this.getAllSkillCategory();
 
 
 
@@ -56,6 +61,9 @@ export class SkillupdateComponent implements OnInit {
     // stop here if form is invalid
     if (this.skillUpdateForm.invalid) {
         return;
+    }else{
+      this.onUpdateChange();
+
     }
 
     // display form values on success
@@ -73,14 +81,15 @@ onUpdateChange(){
   let aaid=sessionStorage.getItem("id");
   this.aid= +aaid;
 
-
+  console.log("thi si sisisdfia")
 // this.Uservice.getuserid();
-
+console.log(this.sid)
+console.log(this.AssociateSkill);
 
 console.log("aid  is")
 console.log(this.aid)
 // this.AssociateSkill.
-this.associateskillService.addToAssociateSkill(this.aid,13,this.AssociateSkill).subscribe(response=>{
+this.associateskillService.addToAssociateSkill(this.aid,this.sid,this.AssociateSkill).subscribe(response=>{
   this.router.navigate(["/admin"])
   return response;
   console.log("this is in skill update ts file success")
@@ -91,4 +100,21 @@ this.associateskillService.addToAssociateSkill(this.aid,13,this.AssociateSkill).
   
 
 }
+
+getAllSkillCategory(){
+  this.associateskillService.getSkill().subscribe(
+    (response)=>{
+      this.skill=response;
+      console.log(this.skill)
+    }
+  );
+}
+getskillName(){
+  this.associateskillService.getSkillname(this.skillCategory).subscribe(
+    response=>{
+       this.skillName=response;   
+    })
+  }
+
+   
 }
