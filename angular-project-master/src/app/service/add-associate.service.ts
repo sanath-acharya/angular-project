@@ -33,6 +33,9 @@ export class AddAssociateService {
     // }
     return this.http.get<Associate[]>("/api/associate/all");
   }
+  getAssociatebyId(aid:number){
+    return this.http.get<Associate>("/api/associate/"+aid);
+  }
 
   searchbyfirstname(searchtext:string):Observable<Associate[]>{
     

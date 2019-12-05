@@ -112,12 +112,6 @@ export class AdminPageComponent implements OnInit {
     
     }
 
-    logout(){
-      sessionStorage.removeItem('type')
-      sessionStorage.removeItem('currentUser')
-      sessionStorage.removeItem('id')
-      this.router.navigate(['login'])
-    }
     
   
 

@@ -25,6 +25,7 @@ export class SkillupdateComponent implements OnInit {
   skillName:Skills[];
   skill:Skills[];
   skillCategory:string
+  skillname:string
   AssociateSkill:AssociateAndSkills=new AssociateAndSkills("","","","","","",new Associate(0,"", "", "", "", null, "", "", "", ""),new Skills(0,"", ""));
   constructor(private formBuilder: FormBuilder, 
     private loginservice:LoginService,
@@ -80,8 +81,10 @@ onRate($event:{oldValue:number, newValue:number, starRating:StarRatingComponent}
 onUpdateChange(){
   let aaid=sessionStorage.getItem("id");
   this.aid= +aaid;
-
   console.log("thi si sisisdfia")
+  console.log(this.skillname)
+  console.log(this.skillCategory)
+  this.AssociateSkill
 // this.Uservice.getuserid();
 console.log(this.sid)
 console.log(this.AssociateSkill);

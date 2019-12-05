@@ -30,14 +30,14 @@
                                 </td>
                           
                             <td>
-                                <button type="button" class="btn btn-block btn-primary btn-success"
+                                <button type="button" class="btn btn-block btn-primary btn-outline-success"
                                     (click)="onaddSkill()"><span class="glyphicon glyphicon-plus"></span> Add
                                     Skills</button>
 
 
                             </td>
                             <td>
-                                <button class="btn btn-success" routerLink="/admin"> back</button>
+                                <button class="btn btn-outline-default" routerLink="/admin"> back</button>
                             </td>
                         </tr>
                     </table>
@@ -48,20 +48,20 @@
     
         <div class="row mt-5">
             <div class="col">
-                <div class="card bg-default shadow">
+                <div class="card shadow">
                     <div class="card-header bg-transparent border-0">
-                        <h3 class="text-white mb-0">Add New Skills</h3>
+                        <h3 class="text-dark mb-0">Add New Skills</h3>
                     </div>
                     <div class="table-responsive">
-                        <table class="table align-items-center table-dark table-flush">
+                        <table class="table align-items-center  table-flush">
                             <thead>
                                 
                                 <tr >
-                                    <th scope="col"><h3 class="text-white mb-0">Skill category</h3></th>
-                                    <th scope="col"><h3 class="text-white mb-0">Skill Name</h3></th>
-                                    <th scope="col"><h3 class="text-white mb-0">Remove</h3></th>
+                                    <th scope="col"><h3 class="text-dark mb-0">Skill category</h3></th>
+                                    <th scope="col"><h3 class="text-dark mb-0">Skill Name</h3></th>
+                                    <th scope="col"><h3 class="text-dark mb-0">Remove</h3></th>
                                     <th scope="col"></th>
-                                    <th scope="col"></th>
+                                    
                                 </tr>
                            
                             </thead>
@@ -70,7 +70,7 @@
     
                                     <td>{{skill.skillCategory}}</td>
                                     <td>{{skill.skillName}}</td>
-                                    <td><button title="delete the skill " class="btn btn-danger" type="button"
+                                    <td><button title="delete the skill " class="btn btn-outline-danger" type="button"
                                             (click)="onRemoveSkills(skill.skillId)"> Remove</button>
                                     </td>
                                 </tr>

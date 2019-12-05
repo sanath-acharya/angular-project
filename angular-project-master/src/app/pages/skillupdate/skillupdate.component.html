@@ -29,11 +29,11 @@
                                                 
                                                 </div>
                                         <div class="col-lg-7">
-                                            <select  class="form-control" formControlName="skillGroup" type="text"(blur)="getskillName()"
-                                                [ngClass]="{ 'is-invalid': submitted && f.skillGroup.errors }" [(ngModel)]="skillCategory" (ngModel)="AssociateSkill.SkillsInfo.skillCategory" >
+                                            <select  class="form-control" formControlName="skillGroup" type="text"(blur)="getskillName()" 
+                                                [ngClass]="{ 'is-invalid': submitted && f.skillGroup.errors }" [(ngModel)]="skillCategory"  >
                                                 <option *ngFor="let s of skill" value='{{s.skillCategory}}'>{{s.skillCategory}}</option>
                                               
-                                                
+                                                <!-- (ngModel)="AssociateSkill.SkillsInfo.skillName"(ngModel)="AssociateSkill.SkillsInfo.skillCategory" -->
                                             </select>
             
                                             <div *ngIf="submitted && f.skillGroup.errors" class="invalid-feedback">
@@ -46,7 +46,7 @@
                                     <div class="form-group form-row">
                                         <label for="skillName" class="col-md-3 col-form-label">Skill-Name: </label>
                                         <div class="col-lg-7">
-                                            <select class="form-control" formControlName="skillName"  type="text" (ngModel)="AssociateSkill.SkillsInfo.skillName"
+                                            <select class="form-control" formControlName="skillName"  type="text" [(ngModel)]="skillname"
                                                 [ngClass]="{ 'is-invalid': submitted && f.skillName.errors }">
                                                 <option *ngFor="let sk of skillName" value='{{sk.skillName}}'  >{{sk.skillName}}</option>
                                                 
@@ -123,8 +123,8 @@
     
     
                             <div class="text-center">
-                                <button class="btn btn-primary mt-4" type="submit">Submit </button>&nbsp;&nbsp;&nbsp;
-                                <button type="button" class="btn btn-danger mt-4" routerLink="/viewSkills" >Back </button>
+                                <button class="btn btn-outline-primary mt-4" type="submit">Submit </button>&nbsp;&nbsp;&nbsp;
+                                <button type="button" class="btn btn-outline-danger mt-4" routerLink="/viewSkills" >Back </button>
                             </div>
     
                         </form>

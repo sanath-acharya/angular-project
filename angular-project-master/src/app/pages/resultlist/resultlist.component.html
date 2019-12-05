@@ -1,132 +1,127 @@
 <div class="header bg-gradient-danger py-4 py-lg-6">
         <div class="container">
-                <button type="button" class="btn btn-info" style="float: right;" routerLink='/login'>Login</button>
+            <button type="button" class="btn btn-outline-default" style="float: right;" routerLink='/login'>Login</button>
             <!-- <div class="header-body text-center mb-5"> -->
             <div class="row justify-content-center">
                 <h1 class="text-white">Advanced Search </h1>
-                
-    
-    
     
     
             </div>
-                  
-<div class="searchbox">
-        <input [(ngModel)]="searchTerm" type="search"   (keyup)="search()" autofocus>
-    </div>
-    <div>
-        <ol>
-            <!-- <li *ngFor="let user of searchResult;">{{user.name}}</li> -->
-        </ol>
-    </div>
+        </div>
     
-            <!-- </div> -->
-        <!-- </div> -->
-    </div>
+        <!-- <div class="searchbox"> -->
+        <div class="searchbox ">
+            <div class="input-group-prepend  ">
     
-    
-  
-    
-    <div class="pl-lg-4 ">
-        <div class="row">
-            <div class="col-lg-6">
-                <label for="drpSearchBy" class="col-md-3 col-form-label text-white">Category:</label>
-                <select name="searchBy" id="drpSearchBy" class="form-control  col-lg-7" [(ngModel)]="searchby">
-                    <option value="associateFirstName"> FirstName</option>
-                    <option value="associateLastName">  LastName</option>
-                    <option value="AssociateEmail">  Email</option>
-                    <option value="associateMobile"> Mobile number</option>
-                </select>
-            </div>
-            <div class="col-lg-6">
-                <label for="drpSearchBy" class="col-md-3 col-form-label text-white">SearchBy:</label>
-                <div class="input-group input-group-rounded input-group-merge">
-                    <input type="search" class=" form-control-rounded form-control  fa fa-search col-lg-7  "
-                        id="txtSearchText" name="searchText" [(ngModel)]="searchText" aria-label="Search">
-                    <div class="input-group-append">
-                        <div class="input-group-text">
-                            <span class="fa fa-search" (click)="onSearchClick()"></span>
-                        </div>
-                    </div>
-                </div>
+                <input [(ngModel)]="searchTerm" type="search" (keyup)="search()" class="form-control" autofocus>
             </div>
         </div>
     </div>
     
+    <div class="container-fluid mt--4 ">
+        <!-- Table -->
+        <div class="row">
+            <div class="col">
+                <div class="card shadow">
+                    <div class="card-header border-0">
+                        <h3 class="mb-0">Associate Table</h3>
+                    </div>
     
     
-    <div class="card-header border-0 mt-7">
-        <h3 class="mb-0">Employee Table</h3>
-        <div class="table-responsive">
-            <div>
+                    <div class="table-responsive">
+                        <div>
     
-                <table class="table table-striped">
-                    <thead>
-                        <tr>
-                            <th>
-                                <h5 class="text-dark mb-0">
-                                    associateFirstName
-                                </h5>
-                            </th>
-                            <th>
-                                <h5 class="text-dark mb-0">
-                                    associateLastName
-                                </h5>
-                            </th>
-                            <th>
-                                <h5 class="text-dark mb-0">
-                                    associateEmail
-                                </h5>
-                            </th>
-                            <th>
-                                <h5 class="text-dark mb-0">
-                                    associateMobile
-                                </h5>
-                            </th>
+                            <table class="table table-striped">
+                                <thead>
+                                    <tr>
+                                        <th>
+                                            <h5 class="text-dark mb-0">
+                                                First Name
+                                            </h5>
+                                        </th>
+                                        <th>
+                                            <h5 class="text-dark mb-0">
+                                                Last Name
+                                            </h5>
+                                        </th>
+                                        <th>
+                                            <h5 class="text-dark mb-0">
+                                                Email
+                                            </h5>
+                                        </th>
+                                        <th>
+                                            <h5 class="text-dark mb-0">
+                                                Country
+                                            </h5>
+                                        </th>
+                                        <th>
+                                            <h5 class="text-dark mb-0">
+                                                Skill Name
+                                            </h5>
+                                        </th>
     
-                        </tr>
+                                        <th>
+                                            <h5 class="text-dark mb-0">
+                                                Skill Category
+                                            </h5>
+                                        </th>
+                                    </tr>
     
-                    </thead>
+                                </thead>
     
-                    <tbody>
-                        <tr *ngFor="let employee of AssociateSkill;let i=index">
-                            <!-- <td>{{employee.associateFirstName | searchTitle:employee.gender}}</td> -->
-    
-    
-                            <td>
-                                <h5 class="text-dark mb-0">
-                                    {{employee.certification}}
-                                </h5>
-    
-                            </td>
-                            <td>
-                                <h5 class="text-dark mb-0">
-                                    {{employee.rating}}
-                                </h5>
-    
-                            </td>
+                                <tbody>
+                                    <tr *ngFor="let employee of AssociateSkill;let i=index">
+                                        <!-- <td>{{employee.associateFirstName | searchTitle:employee.gender}}</td> -->
     
     
-                            <td>
-                                <h5 class="text-dark mb-0">
-                                    {{employee.sid.skillName}}
-                                </h5>
-                            </td>
+                                        <td>
+                                            <h5 class="text-dark mb-0">
+                                                {{employee.aid.associateFirstName}}
+                                            </h5>
     
-                            <td>
-                                <h5 class="text-dark mb-0">
-                                    {{employee.aid.associateFirstName}}
-                                </h5>
-                            </td>
+                                        </td>
+                                        <td>
+                                            <h5 class="text-dark mb-0">
+                                                {{employee.aid.associateLastName}}
+                                            </h5>
+    
+                                        </td>
+    
+                                        <td>
+                                            <h5 class="text-dark mb-0">
+                                                {{employee.aid.associateEmail}}
+                                            </h5>
+    
+                                        </td>
+                                        <td>
+                                            <h5 class="text-dark mb-0">
+                                                {{employee.aid.country}}
+                                            </h5>
+    
+                                        </td>
+    
+                                        <td>
+                                            <h5 class="text-dark mb-0">
+                                                {{employee.sid.skillName}}
+                                            </h5>
+                                        </td>
+    
+                                        <td>
+                                            <h5 class="text-dark mb-0">
+                                                {{employee.sid.skillCategory}}
+                                            </h5>
+                                        </td>
     
     
     
     
-                        </tr>
-                    </tbody>
+                                    </tr>
+                                </tbody>
     
-                </table>
+                            </table>
+                        </div>
+                    </div>
+                </div>
             </div>
-    
         </div>
     </div>

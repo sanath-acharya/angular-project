@@ -12,12 +12,15 @@ export class NavbarComponent implements OnInit {
   public focus;
   public listTitles: any[];
   public location: Location;
+  type=""
   constructor(location: Location,  private element: ElementRef, private router: Router) {
     this.location = location;
   }
 
   ngOnInit() {
     this.listTitles = ROUTES.filter(listTitle => listTitle);
+    this.type=sessionStorage.getItem('type');
+
   }
   getTitle(){
     var titlee = this.location.prepareExternalUrl(this.location.path());
@@ -32,5 +35,13 @@ export class NavbarComponent implements OnInit {
     }
     return 'Dashboard';
   }
+
+  logout(){
+    sessionStorage.removeItem('type')
+    sessionStorage.removeItem('currentUser')
+    sessionStorage.removeItem('id')
+    this.router.navigate(['login'])
+  }
+  
 
 }
