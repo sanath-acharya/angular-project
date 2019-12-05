@@ -65,8 +65,8 @@
                                 </tr>
                            
                             </thead>
-                            <tbody>
-                                <tr *ngFor="let skill of skills ;let i=index">
+                            <tbody> 
+                                <tr *ngFor="let skill of skills | paginate : {itemsPerPage:3,currentPage:p} ;let i=index">
     
                                     <td>{{skill.skillCategory}}</td>
                                     <td>{{skill.skillName}}</td>
@@ -76,6 +76,7 @@
                                 </tr>
     
                             </tbody>
+                            <pagination-controls (pageChange)="p=$event"> </pagination-controls>
                         </table>
                     </div>
                 </div>

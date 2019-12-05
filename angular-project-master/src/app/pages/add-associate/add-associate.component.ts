@@ -20,7 +20,7 @@ export class AddAssociateComponent   implements OnInit {
   cityInfo: any[] = [];
   deleteIndex:number;
   deleteAssociate:Associate=new Associate(0,"","","","",0,"","","","");
-
+  p:number=1;
   constructor(
     private AssociateService:AddAssociateService,
     

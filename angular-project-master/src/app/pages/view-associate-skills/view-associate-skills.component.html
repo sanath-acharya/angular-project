@@ -39,7 +39,7 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr *ngFor="let associatesSkill of associateSkills">
+                                <tr *ngFor="let associatesSkill of associateSkills | paginate : {itemsPerPage:3,currentPage:p} ">
                                     <th>{{associatesSkill.sid.skillCategory}}</th>
                                     <td>{{associatesSkill.sid.skillName}}</td>
                                     <td>{{associatesSkill.certification}}</td>
@@ -55,6 +55,7 @@
                                     </td>
                                 </tr>
                             </tbody>
+                            <pagination-controls (pageChange)="p=$event"> </pagination-controls>
                         </table>
     
     

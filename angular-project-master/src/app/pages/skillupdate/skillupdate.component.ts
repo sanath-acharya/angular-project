@@ -77,31 +77,44 @@ onRate($event:{oldValue:number, newValue:number, starRating:StarRatingComponent}
     Unchecked Color: ${$event.starRating.uncheckedcolor}`);
 }
 
-
+sk:Skills=new Skills(0,"","");
 onUpdateChange(){
   let aaid=sessionStorage.getItem("id");
   this.aid= +aaid;
   console.log("thi si sisisdfia")
   console.log(this.skillname)
   console.log(this.skillCategory)
-  this.AssociateSkill
+  // this.AssociateSkill
 // this.Uservice.getuserid();
-console.log(this.sid)
-console.log(this.AssociateSkill);
+// console.log(this.AssociateSkill);
 
-console.log("aid  is")
-console.log(this.aid)
+console.log("sid  is")
+// console.log(this.aid)
+
+this.associateskillService.getSkillfromSkillCategoryAndSkillName(this.skillname,this.skillCategory).subscribe(response=>{
+  console.log("thi is dataa")
+  console.log(response)
+  this.sk=response;
+  console.log("this sk form db form skill id")
+  console.log(this.sk)
+  // this.sid
+  this.sid=this.sk['skillId'];
+  console.log(this.sid)
+  this.addskills();
+})
 // this.AssociateSkill.
-this.associateskillService.addToAssociateSkill(this.aid,this.sid,this.AssociateSkill).subscribe(response=>{
-  this.router.navigate(["/admin"])
-  return response;
-  console.log("this is in skill update ts file success")
-  },error=>{
-    console.log("this is in skill update ts of error")
-  }
-  )
   
 
+}
+addskills(){
+  this.associateskillService.addToAssociateSkill(this.aid,this.sid,this.AssociateSkill).subscribe(response=>{
+    this.router.navigate(["/admin"])
+    return response;
+    console.log("this is in skill update ts file success")
+    },error=>{
+      console.log("this is in skill update ts of error")
+    }
+    )
 }
 
 getAllSkillCategory(){

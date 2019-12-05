@@ -11,6 +11,7 @@ import { AssociateSkillServiceService } from 'src/app/service/associate-skill-se
 
 
 export class ResultlistComponent implements OnInit {
+  p:number=1;
  
   searchTerm: string;
   searchResult = [];

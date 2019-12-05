@@ -10,6 +10,7 @@ import { Router } from "@angular/router";
 })
 
 export class LandingComponent implements OnInit {
+  p:number=1;
 
   constructor(private router: Router) {}
 

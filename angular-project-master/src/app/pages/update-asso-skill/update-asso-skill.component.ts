@@ -21,7 +21,9 @@ export class UpdateAssoSkillComponent implements OnInit {
   skillUpdateForm: FormGroup;
   submitted = false;
   name = 'Angular 5';
- 
+  skillCategory1;
+  skillName1;
+  p:number=1;
   AssociateSkill:AssociateAndSkills;
   // =new AssociateAndSkills("","","","","","",null,null);
   constructor(private formBuilder: FormBuilder,
@@ -33,11 +35,15 @@ export class UpdateAssoSkillComponent implements OnInit {
 
   ngOnInit() {
     this.AssociateSkill=this.associateskillService.getAssociteSkillmodel();
-    
-
-
-
+    console.log("this.is the date to be updated")
+    console.log(this.AssociateSkill)
+    this.skillCategory1=this.AssociateSkill['sid']['skillCategory']
+    this.skillName1=this.AssociateSkill['sid']['skillName']
+console.log(this.skillCategory1)
+console.log(this.skillName1)
     this.skillUpdateForm = this.formBuilder.group({
+      skillGroup: ['', Validators.required],
+      skillName: ['', Validators.required],
       certification: ['', Validators.required],
       startDate: ['', Validators.required],
       endDate: ['', Validators.required],
@@ -74,6 +80,7 @@ onUpdateChange(model){
 let aaid=sessionStorage.getItem('id')
 let aid= +aaid;
 console.log(aid);
+
 // console.log("aid  is")
 // console.log(this.aid)
 // // this.AssociateSkill.

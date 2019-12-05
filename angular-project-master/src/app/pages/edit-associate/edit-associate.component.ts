@@ -22,7 +22,7 @@ export class EditAssociateComponent implements OnInit {
   cityInfo: any[] = [];
   addAssociateForm: FormGroup;
   genders = ["male", "female"];
-
+  p:number=1;
 
   constructor(
     private AssociateService:AddAssociateService,

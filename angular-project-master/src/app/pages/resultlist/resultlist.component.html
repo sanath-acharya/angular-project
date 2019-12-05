@@ -70,7 +70,7 @@
                                 </thead>
     
                                 <tbody>
-                                    <tr *ngFor="let employee of AssociateSkill;let i=index">
+                                    <tr *ngFor="let employee of AssociateSkill | paginate : {itemsPerPage:3,currentPage:p} ;let i=index">
                                         <!-- <td>{{employee.associateFirstName | searchTitle:employee.gender}}</td> -->
     
     
@@ -117,7 +117,7 @@
     
                                     </tr>
                                 </tbody>
-    
+                                <pagination-controls (pageChange)="p=$event"> </pagination-controls>
                             </table>
                         </div>
                     </div>

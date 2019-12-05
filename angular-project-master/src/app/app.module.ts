@@ -1,7 +1,7 @@
 import { UserDetailsService } from './user-details.service';
 import { HomeComponent } from './../../../../service/src/app/home/home.component';
 
-
+import {NgxPaginationModule} from 'ngx-pagination';
 import { JwtHelperService } from '@auth0/angular-jwt';
 import { JwtInterceptorService } from './jwt-interceptor.service';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -51,7 +51,8 @@ import { UpdateAssoSkillComponent } from './pages/update-asso-skill/update-asso-
     RouterModule,
     ReactiveFormsModule,
     AppRoutingModule,
-    RatingModule
+    RatingModule,
+    NgxPaginationModule
    
 
   ],

@@ -16,6 +16,7 @@ export class AddSkillComponent implements OnInit {
   // skillCategory:string;
   skills: Skills[];
   skillModel: Skills = new Skills(0, "", "");
+  p:number=1;
   constructor(private fb: FormBuilder, 
     private skillService: SkillsService,
     private router:Router) { }

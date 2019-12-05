@@ -23,7 +23,7 @@ export class AdminPageComponent implements OnInit {
   searchText="";
   type=""
   private searchresult:Associate[] ;
-
+  p:number=1;
   // =new Associate("","","","",0,"","","","");
   private AssociateModel: Associate[] ;
   private skillsList:Skills[];
@@ -65,6 +65,15 @@ export class AdminPageComponent implements OnInit {
     this.type=sessionStorage.getItem('type');
   }
 
+  search(){
+    if (this.searchText.trim()) {
+
+    this.associateSkill.search(this.searchText).subscribe(response=>{
+      this.AssociateSkill=response;
+      })
+  }
+  }
+  
   onSearchClick(){
     this.associateSkill.search(this.searchText).subscribe(
       (response)=>{

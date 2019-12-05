@@ -16,7 +16,8 @@ import { getLocaleDateFormat } from '@angular/common';
 })
 export class ViewAssociateSkillsComponent implements OnInit {
 
-  aid:number
+  aid:number;
+  p:number=1;
 
   associateSkills:AssociateAndSkills[];
   //  =new AssociateAndSkills(0,"","","","","","",new Associate(0,"", "", "", "", null, "", "", "", ""),new Skills(0,"",""));
@@ -46,6 +47,7 @@ export class ViewAssociateSkillsComponent implements OnInit {
 
   }
   onRemove(sid:number){
+    console.log("this.is to be deleted")
     console.log(sid)
     this.skillService.onRemoveAssociateSkill(sid).subscribe(response=>{
       this.getdata();

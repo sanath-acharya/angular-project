@@ -14,6 +14,7 @@ export class UserProfileComponent implements OnInit {
   id;
   associate:Associate;
   associateSkills:AssociateAndSkills[];
+  p:number=1;
   constructor(private router:ActivatedRoute,
     private associateSkill:AssociateSkillServiceService,
     private associateSerivice:AddAssociateService) { }

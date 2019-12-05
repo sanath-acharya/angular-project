@@ -23,7 +23,7 @@ export class SkillsService {
   }
   //###################################3
   onRemoveAssociateSkill(sid:number){
-    return this.http.delete("/api/deleteBySid/"+sid);
+    return this.http.delete("/api/deleteByASid/"+sid);
   }
   
 }
