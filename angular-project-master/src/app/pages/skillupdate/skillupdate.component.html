@@ -80,7 +80,7 @@
                             <div class="col-lg-7">
                                 <input class="form-control" formControlName="startDate" id="dob" name="startDate"
                                     placeholder="start date" type="date" [(ngModel)]="AssociateSkill.startDate"
-                                    [ngClass]="{ 'is-invalid': submitted && f.startDate.errors }">
+                                    [ngClass]="{ 'is-invalid': submitted && f.startDate.errors }" max="2019-12-07">
                                 <div *ngIf="submitted && f.startDate.errors" class="invalid-feedback">
                                     <div *ngIf="f.startDate.errors.required">Start Date is required</div>
                                 </div>
@@ -92,7 +92,7 @@
                             <div class="col-lg-7">
                                 <input class="form-control" formControlName="endDate" id="dob" placeholder="end date"
                                     name="endDate" type="date" [(ngModel)]="AssociateSkill.endDate"
-                                    [ngClass]="{ 'is-invalid': submitted && f.endDate.errors }">
+                                    [ngClass]="{ 'is-invalid': submitted && f.endDate.errors }" max="2019-12-07">
                                 <div *ngIf="submitted && f.endDate.errors" class="invalid-feedback">
                                     <div *ngIf="f.endDate.errors.required">End Date is required</div>
                                 </div>

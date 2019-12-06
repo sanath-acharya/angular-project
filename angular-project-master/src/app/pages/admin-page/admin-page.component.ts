@@ -67,13 +67,13 @@ export class AdminPageComponent implements OnInit {
 
   search(){
     if (this.searchText.trim()) {
-
+     
     this.associateSkill.search(this.searchText).subscribe(response=>{
       this.AssociateSkill=response;
       })
   }
   }
-  
+
   onSearchClick(){
     this.associateSkill.search(this.searchText).subscribe(
       (response)=>{

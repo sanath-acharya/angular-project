@@ -6,7 +6,7 @@
   <div class="container-fluid d-flex align-items-center">
     <div class="row">
       <div class="col-lg-7 col-md-10">
-        <h1 class="display-2 text-white">Hello Sanath </h1>
+        <h1 class="display-2 text-white">hello </h1>
         <!-- <p class="text-white mt-0 mb-5">This is your profile page. You can see the progress you've made with your work and manage your projects or assigned tasks</p>
         <a href="#!" class="btn btn-info">Edit profile</a> -->
       </div>
@@ -34,7 +34,7 @@
 
           </div>
         </div>
-        <div class="card-body">
+        <div class="card-body" >
           <form>
             <h6 class="heading-small text-muted mb-4">User information</h6>
             <div class="pl-lg-4">
@@ -43,7 +43,7 @@
                   <div class="form-group">
                     <label class="form-control-label" for="input-username">Associate ID</label>
                     <input type="text" id="input-associateID" class="form-control form-control-alternative"
-                      placeholder="associateID">
+                      placeholder="associateID" >
                   </div>
                 </div>
                 <div class="col-lg-6">
@@ -59,8 +59,9 @@
                   <div class="form-group">
                     <label class="form-control-label" for="input-first-name">Associate First name</label>
                     <input type="text" id="input-first-name" class="form-control form-control-alternative"
-                      placeholder="First name">
+                    value="{{associate.associateFirstName}}">
                   </div>
+                  <h1> {{associate.associateFirstName}}</h1>
                 </div>
                 <div class="col-lg-6">
                   <div class="form-group">
@@ -98,26 +99,28 @@
             </div>
             <hr class="my-4" />
             <!-- Description -->
-            <h6 class="heading-small text-muted mb-4" *ngFor="let AssociateSkill of associateSkills" >Skill Details</h6>
+            <h6 class="heading-small text-muted mb-4">Skill Details</h6>
+
 
             <div class="pl-lg-4">
               <div class="form-group">
 
 
+                <div *ngFor="let AssociateSkill of associateSkills">
 
                   <div class="row">
                     <div class="col-lg-6">
                       <div class="form-group">
                         <label class="form-control-label" for="input-country">Skill Category</label>
-                        <input  id="input-skillCategory" class="form-control form-control-alternative"
-                          placeholder="AssociateSkill.sid.skillName">
+                        <input id="input-skillCategory" class="form-control form-control-alternative"
+                          value="{{AssociateSkill.sid.skillCategory}}">
                       </div>
                     </div>
                     <div class="col-lg-6">
                       <div class="form-group">
                         <label class="form-control-label" for="input-city">Skill Name</label>
                         <input type="text" id="input-skillName" class="form-control form-control-alternative"
-                          placeholder="skillName">
+                          value="{{AssociateSkill.sid.skillName}}" placeholder="category">
                       </div>
                     </div>
 
@@ -130,35 +133,36 @@
 
 
 
-                
+
+                </div>
               </div>
-            </div>
 
 
-            <h6 class="heading-small text-muted mb-4">Skill Info</h6>
-            <div class="pl-lg-4">
-              <div class="form-group">
+              <h6 class="heading-small text-muted mb-4">Skill Info</h6>
+              <div class="pl-lg-4">
+                <div class="form-group">
 
-                <div class="row">
-                  <div class="col-lg-4">
-                    <div class="form-group">
-                      <label class="form-control-label" for="input-country">Certification</label>
-                      <input  id="input-certification" placeholder="{{AssociateSkill.sid.skillName}}" class="form-control form-control-alternative"
-                         readonly="readonly">
+                  <div class="row">
+                    <div class="col-lg-4">
+                      <div class="form-group">
+                        <label class="form-control-label" for="input-country">Certification</label>
+                        <input id="input-certification" value="{{AssociateSkill.Certification}}"
+                          class="form-control form-control-alternative" readonly="readonly">
+                      </div>
                     </div>
-                  </div>
-                  <div class="col-lg-4">
-                    <div class="form-group">
-                      <label class="form-control-label" for="input-city">Duration</label>
-                      <input type="text" id="input-duration" class="form-control form-control-alternative"
-                        placeholder="duration">
+                    <div class="col-lg-4">
+                      <div class="form-group">
+                        <label class="form-control-label" for="input-city">Duration</label>
+                        <input type="text" id="input-duration" class="form-control form-control-alternative"
+                          value="{{AssociateSkill.duration}}">
+                      </div>
                     </div>
-                  </div>
-                  <div class="col-lg-4">
-                    <div class="form-group">
-                      <label class="form-control-label" for="input-city">Experience</label>
-                      <input type="text" id="input-experience" class="form-control form-control-alternative"
-                        placeholder="Experience">
+                    <div class="col-lg-4">
+                      <div class="form-group">
+                        <label class="form-control-label" for="input-city">Experience</label>
+                        <input type="text" id="input-experience" class="form-control form-control-alternative"
+                          value="{{AssociateSkill.experience}}">
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -170,11 +174,3 @@
     </div>
   </div>
 </div>
-
-
-
-
-
-
-
-

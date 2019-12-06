@@ -16,6 +16,8 @@ export class UserProfileComponent implements OnInit {
   associateSkills:AssociateAndSkills[];
   eid;
   p:number=1;
+
+  aaid;
   constructor(private router:ActivatedRoute,
     private associateSkill:AssociateSkillServiceService,
     private associateSerivice:AddAssociateService) { }
@@ -43,10 +45,12 @@ export class UserProfileComponent implements OnInit {
   
         this.eid= +eeid;
         this.getdata(this.eid)
+        this.aaid=this.eid;
       }
       
     }else{
       let iid= +this.id;
+      this.aaid=this.eid;
       this.getdata(iid)
       console.log(iid)
       
@@ -69,6 +73,7 @@ export class UserProfileComponent implements OnInit {
 
   this.associateSerivice.getAssociatebyId(aid).subscribe(response=>{
     this.associate=response;
+    console.log(this.associate)
   })
  }
 }

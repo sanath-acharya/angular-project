@@ -27,7 +27,7 @@
                     <label for="txtSearchText" class="col-md-3 col-form-label">SearchBy</label>
                     <div class="input-group input-group-rounded input-group-merge">
                         <input type="search" class=" form-control-rounded form-control  fa fa-search col-lg-7  "
-                            id="txtSearchText" [(ngModel)]="searchText" aria-label="Search">
+                            id="txtSearchText" [(ngModel)]="searchText" aria-label="Search" (keyup)="onSearchClick()">
                         <div class="input-group-append">
                             <div class="input-group-text">
                                 <span class="fa fa-search" (click)="onSearchClick()"></span>

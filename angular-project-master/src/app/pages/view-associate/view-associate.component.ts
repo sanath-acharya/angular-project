@@ -32,10 +32,12 @@ export class ViewAssociateComponent implements OnInit {
     'associateFirstName': {
       'required': 'First Name is required.',
       'minlength': 'First Name must be greater than 2 charactors',
-      'maxlength': 'First Name must be less than 10 charecters.'
+      'maxlength': 'First Name must be less than 10 charecters.',
+      'pattern' :'Should only contain Characters'
     },
     'associateLastName': {
-      'required': 'Last name is required'
+      'required': 'Last name is required',
+      'pattern' :'Should only contain Characters'
 
     },
     'associateEmail': {
@@ -43,7 +45,8 @@ export class ViewAssociateComponent implements OnInit {
       'emailDomain': 'email should be gmail.com'
 
     }, 'associateMobile': {
-      'required': 'mobile number is required'
+      'required': 'mobile number is required',
+      'pattern':'Number must start with 6'
 
     },
 
@@ -92,7 +95,7 @@ export class ViewAssociateComponent implements OnInit {
 
       associateEmail: ['', [Validators.required, emailDomain]],
       password: [null, Validators.required],
-      associateMobile: [null, Validators.required],
+      associateMobile: [null, Validators.required,Validators.pattern('^[6-9]\d{9}$')],
       dob: [null, Validators.required],
       gender: [null, Validators.required],
       location: [null, Validators.required],
