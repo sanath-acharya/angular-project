@@ -48,8 +48,8 @@ setAssociateSkillModel(model:AssociateAndSkills){
 }
 
 //###############################
-updateAssociateSkillByASid(aid:number,sid:number,model:AssociateAndSkills){
-  return this.http.put("/api/"+aid+"/"+sid,model);
+updateAssociateSkillByASid(model:AssociateAndSkills){
+  return  this.http.put("/api/updateAssociateSkills",model);
 
 }
 

@@ -28,37 +28,35 @@
 
                             </div>
                             <div class="col-lg-7">
-                                <select class="form-control" formControlName="skillGroup" type="text"
-                                    (blur)="getskillName()"
-                                    [ngClass]="{ 'is-invalid': submitted && f.skillGroup.errors }"
-                                    [(ngModel)]="skillCategory">
-                                    <option *ngFor="let s of skill" value='{{s.skillCategory}}'>{{s.skillCategory}}
-                                    </option>
+                                <input class="form-control" formControlName="skillGroup" [value]="skillCategory1"
+                                
+                                                                 [placeholder]="skillCategory1"  readonly   >
+                                    <!-- <option *ngFor="let s of skill" value='{{s.skillCategory}}'>{{s.skillCategory}}
+                                    </option> -->
 
                                     <!-- (ngModel)="AssociateSkill.SkillsInfo.skillName"(ngModel)="AssociateSkill.SkillsInfo.skillCategory" -->
-                                </select>
+                                <!-- </select>
 
                                 <div *ngIf="submitted && f.skillGroup.errors" class="invalid-feedback">
                                     <div *ngIf="f.skillGroup.errors.required">Skill-Group is required</div>
 
-                                </div>
+                                </div> -->
 
                             </div>
                         </div>
                         <div class="form-group form-row">
                             <label for="skillName" class="col-md-3 col-form-label">Skill-Name: </label>
                             <div class="col-lg-7">
-                                <select class="form-control" formControlName="skillName" type="text"
-                                    [(ngModel)]="skillname"
-                                    [ngClass]="{ 'is-invalid': submitted && f.skillName.errors }">
-                                    <option *ngFor="let sk of skillName" value='{{sk.skillName}}'>{{sk.skillName}}
-                                    </option>
+                                <input class="form-control" formControlName="skillName" [value]="skillName1"
+                                     [placeholder]="skillName1" readonly />
+                                    <!-- <option *ngFor="let sk of skillName" value='{{sk.skillName}}'>{{sk.skillName}}
+                                    </option> -->
 
-                                </select>
+                                
 
-                                <div *ngIf="submitted && f.skillName.errors" class="invalid-feedback">
+                                <!-- <div *ngIf="submitted && f.skillName.errors" class="invalid-feedback">
                                     <div *ngIf="f.skillName.errors.required">Skill-Name is required</div>
-                                </div>
+                                </div> -->
                             </div>
                         </div>
 

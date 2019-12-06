@@ -84,10 +84,10 @@ console.log(aid);
 // console.log("aid  is")
 // console.log(this.aid)
 // // this.AssociateSkill.
-this.associateskillService.updateAssociateSkillByASid(aid,13,model).subscribe(response=>{
+this.associateskillService.updateAssociateSkillByASid(model).subscribe(response=>{
+  console.log("this is in skill update ts file success")
   this.router.navigate(["/admin"])
   return response;
-  console.log("this is in skill update ts file success")
   },error=>{
     console.log("this is in skill update ts of error")
   }
