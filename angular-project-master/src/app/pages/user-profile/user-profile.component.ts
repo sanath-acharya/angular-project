@@ -14,6 +14,7 @@ export class UserProfileComponent implements OnInit {
   id;
   associate:Associate;
   associateSkills:AssociateAndSkills[];
+  eid;
   p:number=1;
   constructor(private router:ActivatedRoute,
     private associateSkill:AssociateSkillServiceService,
@@ -24,11 +25,39 @@ export class UserProfileComponent implements OnInit {
       this.id=params.id
      
     } );
+
+    let eeid=sessionStorage.getItem('id');
+    console.log("htis is from session storage")
+    console.log(eeid)
+   
+
+    
+    
     // this.userType = this.router.snapshot.queryParamMap.get("userType");
     // this.router.queryParams.id
-    let iid= +this.id;
-    console.log(iid)
-    this.getdata(iid)
+    if(this.id==undefined){
+
+      if(eeid==null){
+
+      }else{
+  
+        this.eid= +eeid;
+        this.getdata(this.eid)
+      }
+      
+    }else{
+      let iid= +this.id;
+      this.getdata(iid)
+      console.log(iid)
+      
+    }
+    
+    console.log("this is eeid from session storage")
+    console.log(this.eid);
+    console.log("this.is from the url")
+    console.log(this.id)
+    
+
 
   }
   

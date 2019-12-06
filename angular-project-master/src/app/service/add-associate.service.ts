@@ -76,12 +76,12 @@ export class AddAssociateService {
 
 
   }
-  deletebyid(associateId:number):Observable<string>
+  deletebyId(associateId:number)
   {
     
     console.log("tis. is service");
     console.log(associateId);
-      return this.http.delete<string>("/api/deleteAssociate/"+associateId);
+      return this.http.delete("/api/deleteAssociate/"+associateId);
       console.log("after. is service")
   }
   getModalofEdit():Associate{

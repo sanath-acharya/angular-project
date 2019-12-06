@@ -13,6 +13,7 @@ export class NavbarComponent implements OnInit {
   public listTitles: any[];
   public location: Location;
   type=""
+  
   constructor(location: Location,  private element: ElementRef, private router: Router) {
     this.location = location;
   }
@@ -20,6 +21,8 @@ export class NavbarComponent implements OnInit {
   ngOnInit() {
     this.listTitles = ROUTES.filter(listTitle => listTitle);
     this.type=sessionStorage.getItem('type');
+    
+    console.log(this.type);
 
   }
   getTitle(){

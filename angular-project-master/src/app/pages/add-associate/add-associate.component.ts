@@ -92,8 +92,10 @@ export class AddAssociateComponent   implements OnInit {
   onRemoveconfirm(event,associateId:number){
     console.log("tis. is ts");
     console.log(associateId);
-    this.AssociateService.deletebyid(associateId).subscribe((resoponse)=>{
+    this.AssociateService.deletebyId(associateId).subscribe((resoponse)=>{
       console.log( resoponse);
+
+      this.getdata();
     },(error)=>{
       console.log(error);
     })
