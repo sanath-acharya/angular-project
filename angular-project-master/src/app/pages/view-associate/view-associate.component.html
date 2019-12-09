@@ -33,7 +33,7 @@
                                 <div class="col-lg-7">
                                     <input class="form-control" formControlName="associateFirstName"
                                         [(ngModel)]="AssociateModel.associateFirstName" placeholder=" First Name"
-                                        type="text" (blur)="logValidationErrors()" pattern="[aA-zZ\s]$/" />
+                                        type="text" (blur)="logValidationErrors()" pattern="^[a-zA-Z]*$" />
                                     <span class="help-block" *ngIf="forErrors.associateFirstName">
     
                                         <span class="text-danger"> {{forErrors.associateFirstName}}</span>
@@ -48,7 +48,7 @@
                                 <div class="col-lg-7">
                                     <input class="form-control" [(ngModel)]="AssociateModel.associateLastName"
                                         formControlName="associateLastName" placeholder=" Last Name" type="text"
-                                        (blur)="logValidationErrors()" pattern="[aA-zZ\s]$/"/>
+                                        (blur)="logValidationErrors()" pattern="^[a-zA-Z]*$"/>
                                     <span class="help-block" *ngIf="forErrors.associateLastName">
     
                                         <span class="text-danger"> {{forErrors.associateLastName}}</span>
@@ -157,7 +157,7 @@
     
     
     
-    
+<!--     
                             <div class="form-group form-row" [ngClass]="{'has-error' : forErrors.location}">
                                 <label for="location" class="col-md-3 col-form-label">location:</label>
                                 <div class="col-lg-7">
@@ -173,7 +173,7 @@
                                         <span class="text-danger"> {{forErrors.location}}</span>
                                     </span>
                                 </div>
-                            </div>
+                            </div> -->
     
                             <div class="text-center">
                                 <button type="button" class="btn btn-outline-primary mt-4" (click)="onRegister(AssociateModel)">Add

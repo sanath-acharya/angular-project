@@ -1,7 +1,7 @@
 import { Associates } from './../associates';
 import { Router } from '@angular/router';
 
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpBackend } from '@angular/common/http';
 import { Injectable,TemplateRef  } from '@angular/core';
 import { Associate } from '../model/associate';
 import { Observable } from 'rxjs';
@@ -12,7 +12,9 @@ import { Observable } from 'rxjs';
 export class AddAssociateService {
   editModeltoupdate:Associate=new  Associate(0,"", "", "", "", null, "", "", "", "");
  
-  constructor(private http:HttpClient,private route:Router) { }
+  constructor(private http:HttpClient,private route:Router,
+    private http1:HttpClient,
+    private httpBackend:HttpBackend) { }
 
   
 
@@ -23,7 +25,14 @@ export class AddAssociateService {
 
     return this.http.post("/api/saveAssociate",model);
   }
-  getAssociate():Observable<Associate[]>{
+  // getAssociatefeing():Observable<Associate[]>{
+
+  //   this.http1=new HttpClient(this.httpBackend)
+   
+  //   return this.http1.get<Associate[]>("/api/associate/all");
+  // }
+
+  getAssociatefeign():Observable<Associate[]>{
     // var currentUser={token:""};
     // var header=new HttpHeaders();
     // header=header.set("Authorization","Bearer");
@@ -31,8 +40,21 @@ export class AddAssociateService {
     //   currentUser=JSON.parse(sessionStorage.currentUser);
     //   header=header.set("Authorization","Bearer"+currentUser.token);
     // }
-    return this.http.get<Associate[]>("/api/associate/all");
+    return this.http.get<Associate[]>("http://localhost:9999/allAssociate");
   }
+
+  getAssociate():Observable<Associate[]>{
+  //   // var currentUser={token:""};
+  //   // var header=new HttpHeaders();
+  //   // header=header.set("Authorization","Bearer");
+  //   // if(sessionStorage.currentUser!=null){
+  //   //   currentUser=JSON.parse(sessionStorage.currentUser);
+  //   //   header=header.set("Authorization","Bearer"+currentUser.token);
+  //   // }
+  return this.http.get<Associate[]>("/api/associate/all");
+   }
+
+
   getAssociatebyId(aid:number){
     return this.http.get<Associate>("/api/associate/"+aid);
   }

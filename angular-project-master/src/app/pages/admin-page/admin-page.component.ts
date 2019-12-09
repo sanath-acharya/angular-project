@@ -10,9 +10,11 @@ import { Associate } from 'src/app/model/associate';
 import { AssociateAndSkills } from 'src/app/model/associate-and-skills';
 import { Router } from '@angular/router';
 import { TouchSequence } from 'selenium-webdriver';
+import { NavbarComponent } from 'src/app/components/navbar/navbar.component';
 
 
 @Component({
+ 
   selector: 'app-admin-page',
   templateUrl: './admin-page.component.html',
   styleUrls: ['./admin-page.component.scss']
@@ -33,38 +35,23 @@ export class AdminPageComponent implements OnInit {
 
   constructor(private AssociateService:AddAssociateService,
     private router:Router,private skillService:SkillsService ,
-    private associateSkill:AssociateSkillServiceService) { 
+    private associateSkill:AssociateSkillServiceService,
+   ) { 
+     
     
-    
-    
-    // [
-
-    //   { "associateFirstName":"ben","associateLastName":"skdsjf","associateEmail":"jejl@gmal.com","password":"pass","associateMobile":341341234,"dob":"22/22/2345","gender":"male","location":"22/22/2345","country":"male"},
-    //   { "associateFirstName":"ben","associateLastName":"skdsjf","associateEmail":"jejl@gmal.com","password":"pass","associateMobile":341341234,"dob":"22/22/2345","gender":"male","location":"22/22/2345","country":"male"},
-    //   { "associateFirstName":"ben","associateLastName":"skdsjf","associateEmail":"jejl@gmal.com","password":"pass","associateMobile":341341234,"dob":"22/22/2345","gender":"male","location":"22/22/2345","country":"male"}
-    // //     { "
-        
-    //     // associateFirstName:'ben',
-    //     // associateLastName:'skdsjf',
-    //     // associateEmail:'jejl@gmal.com',
-    //     // password:'pass',
-    //     // associateMobile:341341234,
-    //     // dob:'22/22/2345',
-    //     // gender:'male',
-    //     // location:'22/22/2345',
-    //     // country:'male'
-    //  ];
-
 
      
   }
 // addSkills:FormGroup;
   ngOnInit() {
-    
+   
+
     this.getdata();
     this.type=sessionStorage.getItem('type');
   }
-
+refresh(){
+  window.location.reload();
+}
   search(){
     if (this.searchText.trim()) {
      
@@ -109,7 +96,7 @@ export class AdminPageComponent implements OnInit {
 
 
     
-      
+     
       
       this.associateSkill.getAllAssociateSkills().subscribe(
         (response:AssociateAndSkills[])=>{

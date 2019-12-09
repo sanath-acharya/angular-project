@@ -30,8 +30,10 @@ export class NavbarComponent implements OnInit {
     console.log(this.type);
     if(this.type == "admin"){
       this.admin="admin"
+      console.log("this is  admin")
     
     }else{
+      console.log("this is lse block dosednt got to admin")
       this.AssociateService.getAssociatebyId(iid).subscribe(response=>{
 
         this.associate= response;
@@ -59,6 +61,7 @@ export class NavbarComponent implements OnInit {
     sessionStorage.removeItem('type')
     sessionStorage.removeItem('currentUser')
     sessionStorage.removeItem('id')
+    window.location.reload();
     this.router.navigate(['login'])
   }
   

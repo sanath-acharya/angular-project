@@ -37,10 +37,13 @@ submitted = false;
   
   ngOnDestroy() {
   }
+  refresh(){
+    window.location.reload();
+  }
   get f() { return this.loginForm.controls; }
 
   onlogin(model,model2){
-    
+   
     console.log("Before Login")
     console.log(model);
     console.log("inside ts Login")

@@ -1,162 +1,163 @@
 <div class="header bg-gradient-danger pb-8 pt-5 pt-md-8">
-        <div class="container-fluid">
-            <div class="header-body">
-    
-    
-            </div>
+    <div class="container-fluid">
+        <div class="header-body">
+
+
         </div>
-    
-    
-    
-        <div class="pl-lg-4">
-            <div class="row">
-                <div class="col-lg-6">
-    
-                    <label for="drpSearchBy" class="col-md-3 col-form-label">Category:</label>
-                    <select name="searchBy" id="drpSearchBy" class="form-control  col-lg-7" [(ngModel)]="searchby">
-    
-                        <option value="associateFirstName">First Name</option>
-                        <option value="associateLastName"> Last name</option>
-                        <option value="associateEmail"> Email </option>
-                        <option value="associateMobile"> Mobile</option>
-    
-                    </select>
-    
-                </div>
-                <div class="col-lg-6">
-                    <label for="txtSearchText" class="col-md-3 col-form-label">SearchBy</label>
-                    <div class="input-group input-group-rounded input-group-merge">
-                        <input type="search" class=" form-control-rounded form-control  fa fa-search col-lg-7  "
-                            id="txtSearchText" [(ngModel)]="searchText" aria-label="Search" (keyup)="onSearchClick()">
-                        <div class="input-group-append">
-                            <div class="input-group-text">
-                                <span class="fa fa-search" (click)="onSearchClick()"></span>
-                            </div>
+    </div>
+
+
+
+    <div class="pl-lg-4">
+        <div class="row">
+            <div class="col-lg-6">
+
+                <label for="drpSearchBy" class="col-md-3 col-form-label">Category:</label>
+                <select name="searchBy" id="drpSearchBy" class="form-control  col-lg-7" [(ngModel)]="searchby">
+
+                    <option value="associateFirstName">First Name</option>
+                    <option value="associateLastName"> Last name</option>
+                    <option value="associateEmail"> Email </option>
+                    <option value="associateMobile"> Mobile</option>
+
+                </select>
+
+            </div>
+            <div class="col-lg-6">
+                <label for="txtSearchText" class="col-md-3 col-form-label">SearchBy</label>
+                <div class="input-group input-group-rounded input-group-merge">
+                    <input type="search" class=" form-control-rounded form-control  fa fa-search col-lg-7  "
+                        id="txtSearchText" [(ngModel)]="searchText" aria-label="Search" (keyup)="onSearchClick()">
+                    <div class="input-group-append">
+                        <div class="input-group-text">
+                            <span class="fa fa-search" (click)="onSearchClick()"></span>
                         </div>
                     </div>
-    
-    
-    
                 </div>
-    
+
+
+
+            </div>
+
+        </div>
+    </div>
+</div>
+
+
+<div class="container-fluid mt--6">
+    <!-- Table -->
+    <div class="row">
+        <div class="col">
+            <div class="card shadow">
+                <div class="card-header border-0">
+                    <h3 class="mb-0">Employee Table</h3>
+
+                    <div class="text-right ">
+
+                        <button class="btn btn-outline-default" icon="ni ni-bold-left" routerLink="/admin"> <img
+                                src="./assets/img/brand/back.png"> </button>
+                        <button class="btn btn-outline-default" routerLink="/addAssociate"> Add Associates</button>
+                    </div>
+                </div>
+                <div class="table-responsive">
+                    <!-- <div> -->
+
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th>
+                                    <h5 class="text-dark mb-0">
+                                        FirstName
+                                    </h5>
+                                </th>
+                                <th>
+                                    <h5 class="text-dark mb-0">
+                                        LastName
+                                    </h5>
+                                </th>
+                                <th>
+                                    <h5 class="text-dark mb-0">
+                                        Email
+                                    </h5>
+                                </th>
+                                <th>
+                                    <h5 class="text-dark mb-0">
+                                        Mobile
+                                    </h5>
+                                </th>
+                                <th>
+                                    <h5 class="text-dark mb-0">
+                                        Update
+                                    </h5>
+                                </th>
+                                <th>
+                                    <h5 class="text-dark mb-0">
+                                        Delete
+                                    </h5>
+                                </th>
+                            </tr>
+
+                        </thead>
+
+                        <tbody>
+
+
+                            <tr
+                                *ngFor="let employee of Associateinfo | paginate : {itemsPerPage:3,currentPage:p};let i=index">
+
+
+                                <td>
+                                    <h5 class="text-dark mb-0">
+                                        {{employee.associateFirstName}}
+                                    </h5>
+
+                                </td>
+
+
+                                <td>
+                                    <h5 class="text-dark mb-0">
+                                        {{employee.associateLastName}}
+                                    </h5>
+
+                                </td>
+
+                                <td>
+                                    <h5 class="text-dark mb-0">
+                                        {{employee.associateEmail}}
+                                    </h5>
+                                </td>
+
+
+                                <td>
+                                    <h5 class="text-dark mb-0">
+                                        {{employee.associateMobile}}
+                                       
+                                    </h5>
+                                </td>
+
+
+
+
+                                <td>
+                                    <button class="btn btn-outline-success" (click)="onEdit($event,i)">Update</button>
+
+                                </td>
+                                <td>
+                                    <button class="btn btn-outline-danger"
+                                        (click)="onRemoveconfirm(employee.associateId)"> Remove</button>
+
+                                </td>
+                            </tr>
+
+                        </tbody>
+                        <pagination-controls (pageChange)="p=$event"> </pagination-controls>
+
+                    </table>
+                </div>
             </div>
         </div>
     </div>
-    
-    
-    <div class="container-fluid mt--6">
-        <!-- Table -->
-        <div class="row">
-            <div class="col">
-                <div class="card shadow">
-                    <div class="card-header border-0">
-                        <h3 class="mb-0">Employee Table</h3>
-    
-                        <div class="text-right ">
-                          
-                            <button class="btn btn-outline-default"  icon="ni ni-bold-left" routerLink="/admin"> <img src="./assets/img/brand/back.png"> </button>
-                            <button class="btn btn-outline-default" routerLink="/addAssociate"> Add Associates</button>
-                        </div>
-                    </div>
-                    <div class="table-responsive">
-                        <!-- <div> -->
-    
-                        <table class="table table-striped">
-                            <thead>
-                                <tr>
-                                    <th>
-                                        <h5 class="text-dark mb-0">
-                                            FirstName
-                                        </h5>
-                                    </th>
-                                    <th>
-                                        <h5 class="text-dark mb-0">
-                                            LastName
-                                        </h5>
-                                    </th>
-                                    <th>
-                                        <h5 class="text-dark mb-0">
-                                            Email
-                                        </h5>
-                                    </th>
-                                    <th>
-                                        <h5 class="text-dark mb-0">
-                                            Mobile
-                                        </h5>
-                                    </th>
-                                    <th>
-                                        <h5 class="text-dark mb-0">
-                                            Update
-                                        </h5>
-                                    </th>
-                                    <th>
-                                        <h5 class="text-dark mb-0">
-                                            Delete
-                                        </h5>
-                                    </th>
-                                </tr>
-    
-                            </thead>
-    
-                            <tbody>
-    
-    
-                                <tr *ngFor="let employee of Associateinfo | paginate : {itemsPerPage:3,currentPage:p};let i=index">
-    
-    
-                                    <td>
-                                        <h5 class="text-dark mb-0">
-                                            {{employee.associateFirstName}}
-                                        </h5>
-    
-                                    </td>
-    
-    
-                                    <td>
-                                        <h5 class="text-dark mb-0">
-                                            {{employee.associateLastName}}
-                                        </h5>
-    
-                                    </td>
-    
-                                    <td>
-                                        <h5 class="text-dark mb-0">
-                                            {{employee.associateEmail}}
-                                        </h5>
-                                    </td>
-    
-    
-                                    <td>
-                                        <h5 class="text-dark mb-0">
-                                            {{employee.associateMobile}}
-                                        </h5>
-                                    </td>
-    
-    
-    
-    
-                                    <td>
-                                        <button class="btn btn-outline-success" (click)="onEdit($event,i)">Update</button>
-    
-                                    </td>
-                                    <td>
-                                        <button class="btn btn-outline-danger"
-                                            (click)="onRemoveconfirm($event,employee.associateId)"> Remove</button>
-    
-                                    </td>
-                                </tr>
-    
-                            </tbody>
-                            <pagination-controls (pageChange)="p=$event"> </pagination-controls>
-    
-                        </table>
-                    </div>
-                </div>
-            </div>
-        </div>
-    
-    
-    
-        <!-- <button class="btn btn-primary" routerLink="/admin"> back</button> -->
-    
-    
+
+
+
+    <!-- <button class="btn btn-primary" routerLink="/admin"> back</button> -->

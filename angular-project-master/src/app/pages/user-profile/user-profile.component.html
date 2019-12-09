@@ -4,9 +4,9 @@
   <span class="mask bg-gradient-danger opacity-8"></span>
   <!-- Header container -->
   <div class="container-fluid d-flex align-items-center">
-    <div class="row">
-      <div class="col-lg-7 col-md-10">
-        <h1 class="display-2 text-white">hello </h1>
+    <div class="row" *ngFor="let skill of associateSkills; let i = index">
+      <div class="col-lg-7 col-md-10" *ngIf="i==0">
+        <h1 class="display-2 text-white">Hello {{skill.aid.associateFirstName}} </h1>
         <!-- <p class="text-white mt-0 mb-5">This is your profile page. You can see the progress you've made with your work and manage your projects or assigned tasks</p>
         <a href="#!" class="btn btn-info">Edit profile</a> -->
       </div>
@@ -34,43 +34,60 @@
 
           </div>
         </div>
-        <div class="card-body" >
+        <div class="card-body">
           <form>
             <h6 class="heading-small text-muted mb-4">User information</h6>
             <div class="pl-lg-4">
-              <div class="row">
+              <!-- <div class="row" *ngFor="let skill of associateSkills; let i = index">
                 <div class="col-lg-6">
-                  <div class="form-group">
+                  <div class="form-group" *ngIf="i==0">
                     <label class="form-control-label" for="input-username">Associate ID</label>
-                    <input type="text" id="input-associateID" class="form-control form-control-alternative"
-                      placeholder="associateID" >
+                    <input type="text" id="input-associateID" class="form-control form-control-alternative" disabled
+                      value="{{skill.aid.associateEmail}}">
                   </div>
                 </div>
                 <div class="col-lg-6">
-                  <div class="form-group">
+                  <div class="form-group" *ngIf="i==0">
                     <label class="form-control-label" for="input-email">Email address</label>
-                    <input type="email" id="input-email" class="form-control form-control-alternative"
-                      placeholder="Email">
+                    <input type="email" id="input-email" class="form-control form-control-alternative" disabled
+                      placeholder="Email" value="{{skill.aid.associateEmail}}">
                   </div>
                 </div>
-              </div>
-              <div class="row">
+              </div> -->
+              <div class="row" *ngFor="let skill of associateSkills; let i = index">
                 <div class="col-lg-6">
-                  <div class="form-group">
+                  <div class="form-group" *ngIf="i==0">
                     <label class="form-control-label" for="input-first-name">Associate First name</label>
-                    <input type="text" id="input-first-name" class="form-control form-control-alternative"
-                    value="{{associate.associateFirstName}}">
+                    <input type="text" id="input-first-name" class="form-control form-control-alternative" disabled
+                      placeholder="First name" value="{{skill.aid.associateFirstName}}">
                   </div>
-                  <h1> {{associate.associateFirstName}}</h1>
                 </div>
                 <div class="col-lg-6">
-                  <div class="form-group">
+                  <div class="form-group" *ngIf="i==0">
                     <label class="form-control-label" for="input-last-name">Associate Last name</label>
                     <input type="text" id="input-last-name" class="form-control form-control-alternative"
-                      placeholder="Last name">
+                      placeholder="Last name" disabled value="{{skill.aid.associateLastName}}">
                   </div>
                 </div>
               </div>
+
+              <div class="row" *ngFor="let skill of associateSkills; let i = index">
+                 
+                  <div class="col-lg-6">
+                    <div class="form-group" *ngIf="i==0">
+                      <label class="form-control-label" for="input-email">Email address</label>
+                      <input type="email" id="input-email" class="form-control form-control-alternative" disabled
+                        placeholder="Email" value="{{skill.aid.associateEmail}}">
+                    </div>
+                  </div>
+                  <div class="col-lg-6">
+                      <div class="form-group" *ngIf="i==0">
+                        <label class="form-control-label" for="input-email">Mobile</label>
+                        <input type="email" id="input-mobile" class="form-control form-control-alternative" disabled
+                          placeholder="Mobile" value="{{skill.aid.associateMobile}}">
+                      </div>
+                    </div>
+                </div>
             </div>
             <hr class="my-4" />
             <!-- Address -->
@@ -79,20 +96,20 @@
               <div class="row">
 
               </div>
-              <div class="row">
+              <div class="row" *ngFor="let skill of associateSkills; let i = index">
                 <div class="col-lg-6">
-                  <div class="form-group">
+                  <div class="form-group" *ngIf="i==0">
                     <label class="form-control-label" for="input-country">Country</label>
                     <input type="text" id="input-country" class="form-control form-control-alternative"
-                      placeholder="Country">
+                      placeholder="Country" disabled value="{{skill.aid.country}}">
                   </div>
                 </div>
-                <div class="col-lg-6">
+                <!-- <div class="col-lg-6">
                   <div class="form-group">
                     <label class="form-control-label" for="input-city">City</label>
                     <input type="text" id="input-city" class="form-control form-control-alternative" placeholder="City">
                   </div>
-                </div>
+                </div> -->
 
 
               </div>
@@ -100,74 +117,59 @@
             <hr class="my-4" />
             <!-- Description -->
             <h6 class="heading-small text-muted mb-4">Skill Details</h6>
-
-
-            <div class="pl-lg-4">
-              <div class="form-group">
-
-
-                <div *ngFor="let AssociateSkill of associateSkills">
-
+            <div class="row" *ngFor="let skill of associateSkills; let i = index">
+              <div class="pl-lg-4">
+                <div class="form-group">
                   <div class="row">
                     <div class="col-lg-6">
                       <div class="form-group">
                         <label class="form-control-label" for="input-country">Skill Category</label>
                         <input id="input-skillCategory" class="form-control form-control-alternative"
-                          value="{{AssociateSkill.sid.skillCategory}}">
+                          value="{{skill.sid.skillCategory}}" placeholder="category" disabled>
                       </div>
                     </div>
                     <div class="col-lg-6">
                       <div class="form-group">
                         <label class="form-control-label" for="input-city">Skill Name</label>
                         <input type="text" id="input-skillName" class="form-control form-control-alternative"
-                          value="{{AssociateSkill.sid.skillName}}" placeholder="category">
+                          value="{{skill.sid.skillName}}" placeholder="skillName" disabled>
                       </div>
                     </div>
-
                   </div>
-
-
-
-
-
-
-
-
-
                 </div>
               </div>
-
-
-              <h6 class="heading-small text-muted mb-4">Skill Info</h6>
+              <!-- <h6 class="heading-small text-muted mb-4">Skill Info</h6> -->
               <div class="pl-lg-4">
                 <div class="form-group">
-
                   <div class="row">
                     <div class="col-lg-4">
                       <div class="form-group">
                         <label class="form-control-label" for="input-country">Certification</label>
-                        <input id="input-certification" value="{{AssociateSkill.Certification}}"
-                          class="form-control form-control-alternative" readonly="readonly">
+                        <input id="input-certification" value="{{skill.certification}}" disabled
+                          class="form-control form-control-alternative">
                       </div>
                     </div>
                     <div class="col-lg-4">
                       <div class="form-group">
                         <label class="form-control-label" for="input-city">Duration</label>
-                        <input type="text" id="input-duration" class="form-control form-control-alternative"
-                          value="{{AssociateSkill.duration}}">
+                        <input type="text" id="input-duration" disabled class="form-control form-control-alternative"
+                          value="{{skill.duration}}" placeholder="duration">
                       </div>
                     </div>
                     <div class="col-lg-4">
                       <div class="form-group">
                         <label class="form-control-label" for="input-city">Experience</label>
                         <input type="text" id="input-experience" class="form-control form-control-alternative"
-                          value="{{AssociateSkill.experience}}">
+                          value="{{skill.experience}}" placeholder="Experience" disabled>
                       </div>
                     </div>
                   </div>
                 </div>
+                <hr class="my-4" />
               </div>
+
             </div>
+
           </form>
         </div>
       </div>

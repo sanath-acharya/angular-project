@@ -9,94 +9,106 @@ import { AddAssociateService } from 'src/app/service/add-associate.service';
   templateUrl: './add-associate.component.html',
   styleUrls: ['./add-associate.component.scss']
 })
-export class AddAssociateComponent   implements OnInit {
-  load=0
-  private Associateinfo: Associate[] ;
-  private editModel:Associate=new Associate(0,"","","","",0,"","","","");
-  searchText="searchvalue";
-  searchby="associateFirstName";
+export class AddAssociateComponent implements OnInit {
+  load = 0
+  private Associateinfo: Associate[];
+  private editModel: Associate = new Associate(0, "", "", "", "", 0, "", "", "", "");
+  searchText = "searchvalue";
+  searchby = "associateFirstName";
+  errorstring: string;
   stateInfo: any[] = [];
   countryInfo: any[] = [];
   cityInfo: any[] = [];
-  deleteIndex:number;
-  deleteAssociate:Associate=new Associate(0,"","","","",0,"","","","");
-  p:number=1;
+  deleteIndex: number;
+  deleteAssociate: Associate = new Associate(0, "", "", "", "", 0, "", "", "", "");
+  p: number = 1;
   constructor(
-    private AssociateService:AddAssociateService,
-    
+    private AssociateService: AddAssociateService,
+
     private router: Router
- 
+
   ) { }
 
-  
+
   ngOnInit() {
     // if(this.load==0){
-      this.getdata();
-      // this.load=1
-    }
-    
+    this.getdata();
+    // this.load=1
+  }
 
 
-    
-  
 
 
-  
 
-  getdata(){
-    this.AssociateService.getAssociate().subscribe(
-      response=>{
-        
-      // console.log(response);
-      // if(response!=null){
-         
-         
-        //  this.usersJson= Array.of(response);
-        console.log(response)
-        //  console.log( this.usersJson)
-        //  console.log(this.usersJson[0][0])
-        this.setassociateinfo(response);
-        // this.Associateinfo=response;
 
-      },(error)=>{
+
+
+
+  getdata() {
+    this.AssociateService.getAssociatefeign().subscribe(
+      response => {
+
+        // console.log(response);
+        // if(response!=null){
+
+
+        if (response) {
+          console.log("this. is data");
+          //  this.usersJson= Array.of(response);
+          console.log(response);
+          //  console.log( this.usersJson)
+          //  console.log(this.usersJson[0][0])
+
+
+          this.setassociateinfo(response);
+          // this.Associateinfo=response;
+
+        } else {
+          alert(this.errorstring = "server is down ");
+
+        }
+
+
+
+      }, (error) => {
         console.log(error);
         alert("Authentication failed");
       }
     );
   }
 
-  setassociateinfo(response){
-    this.Associateinfo=response;
+  setassociateinfo(response) {
+    this.Associateinfo = response;
   }
-  
-  onEdit(event,index:number){
 
-    this.editModel=this.Associateinfo[index];
-    
-  
+  onEdit(event, index: number) {
+
+    this.editModel = this.Associateinfo[index];
+
+
     this.AssociateService.updateAssociate(this.editModel);
-    
 
 
-  } 
+
+  }
   // onRemove(event,index:number){
   //   this.deleteIndex=index;
   //   this.deleteAssociate.associateFirstName= this.Associateinfo[index].associateFirstName;
   //   this.deleteAssociate.associateLastName=this.Associateinfo[index].associateLastName;
   //   this.deleteAssociate.associateEmail=this.Associateinfo[index].associateEmail;
   //   this.deleteAssociate.associateMobile=this.Associateinfo[index].associateMobile;
-    
+
 
 
   // }
-  onRemoveconfirm(event,associateId:number){
+  onRemoveconfirm(associateId) {
     console.log("tis. is ts");
     console.log(associateId);
-    this.AssociateService.deletebyId(associateId).subscribe((resoponse)=>{
-      console.log( resoponse);
+    this.AssociateService.deletebyId(associateId).subscribe((resoponse) => {
+      console.log(resoponse);
 
       this.getdata();
-    },(error)=>{
+    }, (error) => {
       console.log(error);
     })
     // .subscribe((response)=>{
@@ -111,84 +123,84 @@ export class AddAssociateComponent   implements OnInit {
     console.log("tis. after is ts")
   }
 
-  onSearchClick(){
+  onSearchClick() {
     console.log("working1")
-console.log(this.searchText)
-console.log("working2")
-console.log(this.searchby)
-console.log("working 3" )
-    if(this.searchby=="associateMobile"){
+    console.log(this.searchText)
+    console.log("working2")
+    console.log(this.searchby)
+    console.log("working 3")
+    if (this.searchby == "associateMobile") {
       this.AssociateService.searchbymobile(this.searchText).subscribe(
-        (response)=>{
+        (response) => {
           console.log(response);
           console.log("this is inside onsearch funtion");
-          this.Associateinfo=response;
-  
+          this.Associateinfo = response;
+
           console.log(Array.of(response));
           this.router.navigateByUrl['/viewAssociate']
-  
+
           // console.log(this.searchresult)
           // this.ngOnInit()
-        },(error)=>{
+        }, (error) => {
           console.log(error);
         }
       );
 
 
-    }else if(this.searchby=="associateFirstName"){
+    } else if (this.searchby == "associateFirstName") {
       this.AssociateService.searchbyfirstname(this.searchText).subscribe(
-        (response)=>{
+        (response) => {
           console.log(response);
           console.log("this is inside onsearch funtion");
-          this.Associateinfo=response;
-  
+          this.Associateinfo = response;
+
           console.log(Array.of(response));
           this.router.navigateByUrl['/viewAssociate']
-  
+
           // console.log(this.searchresult)
-          
-        },(error)=>{
+
+        }, (error) => {
           console.log(error);
         }
       );
 
-    }else if(this.searchby=="associateLastName"){
+    } else if (this.searchby == "associateLastName") {
       this.AssociateService.searchbylastname(this.searchText).subscribe(
-        (response)=>{
+        (response) => {
           console.log(response);
           console.log("this is inside onsearch funtion");
-          this.Associateinfo=response;
-  
+          this.Associateinfo = response;
+
           console.log(Array.of(response));
           this.router.navigateByUrl['/viewAssociate']
-  
+
           // console.log(this.searchresult)
-          
-        },(error)=>{
+
+        }, (error) => {
           console.log(error);
         }
       );
 
-    }else if(this.searchby=="associateEmail"){
+    } else if (this.searchby == "associateEmail") {
       this.AssociateService.searchbyemail(this.searchText).subscribe(
-        (response)=>{
+        (response) => {
           console.log(response);
           console.log("this is inside onsearch funtion");
-          this.Associateinfo=response;
-  
+          this.Associateinfo = response;
+
           console.log(Array.of(response));
           this.router.navigateByUrl['/viewAssociate']
-  
+
           // console.log(this.searchresult)
-          
-        },(error)=>{
+
+        }, (error) => {
           console.log(error);
         }
       );
 
     }
-   
-  
+
+
   }
 
 

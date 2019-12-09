@@ -31,9 +31,10 @@ export class ViewAssociateComponent implements OnInit {
   validationMessages = {
     'associateFirstName': {
       'required': 'First Name is required.',
+      'pattern' :'Should only contain Characters',
       'minlength': 'First Name must be greater than 2 charactors',
       'maxlength': 'First Name must be less than 10 charecters.',
-      'pattern' :'Should only contain Characters'
+     
     },
     'associateLastName': {
       'required': 'Last name is required',
@@ -46,7 +47,9 @@ export class ViewAssociateComponent implements OnInit {
 
     }, 'associateMobile': {
       'required': 'mobile number is required',
-      'pattern':'Number must start with 6'
+      'pattern':'Number must start with 6',
+      'minlength': 'mobile number must be 10 charactors',
+      'maxlength': 'mobile number must be 10 charecters.',
 
     },
 
@@ -95,7 +98,7 @@ export class ViewAssociateComponent implements OnInit {
 
       associateEmail: ['', [Validators.required, emailDomain]],
       password: [null, Validators.required],
-      associateMobile: [null, Validators.required,Validators.pattern('^[6-9]\d{9}$')],
+      associateMobile: [null, [Validators.required]],
       dob: [null, Validators.required],
       gender: [null, Validators.required],
       location: [null, Validators.required],

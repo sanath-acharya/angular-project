@@ -1,6 +1,6 @@
 //import { DashboardComponent } from './../../../../SkillTracker/src/app/dashboard/dashboard.component';
 import { UserDetailsService } from './user-details.service';
-import { HomeComponent } from './../../../../service/src/app/home/home.component';
+// import { HomeComponent } from './../../../../service/src/app/home/home.component';
 
 import {NgxPaginationModule} from 'ngx-pagination';
 import { JwtHelperService } from '@auth0/angular-jwt';
@@ -12,8 +12,7 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
 
 import { AppComponent } from './app.component';
-import { AdminLayoutComponent } from './layouts/admin-layout/admin-layout.component';
-import { AuthLayoutComponent } from './layouts/auth-layout/auth-layout.component';
+
 
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
@@ -21,7 +20,7 @@ import { AppRoutingModule } from './app.routing';
 import { ComponentsModule } from './components/components.module';
 import { JwtUnAuthorizedInterceptorServiceService } from './jwt-un-authorized-interceptor-service.service';
 import { AddAssociateComponent } from './pages/add-associate/add-associate.component';
-import { SearchComponent } from './pages/search/search.component';
+
 import { FilterPipe } from './filter-pipe';
 import { AdminPageComponent } from './pages/admin-page/admin-page.component';
 import { AddSkillComponent } from './pages/add-skill/add-skill.component';
@@ -59,11 +58,9 @@ import { UpdateAssoSkillsComponent } from './pages/update-asso-skills/update-ass
   ],
   declarations: [
     AppComponent,
-    AdminLayoutComponent,
-    AuthLayoutComponent,
     FilterPipe,
     LandingComponent,
-    HomeComponent,
+
     ResultlistComponent,
     LoginComponent,
     AdminPageComponent,

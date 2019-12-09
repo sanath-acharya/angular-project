@@ -73,7 +73,7 @@
                             <div class="form-group form-row" [ngClass]="{'has-error' : forErrors.password}">
                                 <label for="password" class="col-md-3 col-form-label">Password:</label>
                                 <div class="col-lg-7">
-                                    <input class="form-control" formControlName="password"
+                                    <input class="form-control" formControlName="password" readonly
                                         [(ngModel)]="AssociateModel.password" placeholder="password" type="password"
                                         (blur)="logValidationErrors()">
                                     <span class="help-block" *ngIf="forErrors.password">
@@ -157,7 +157,7 @@
     
     
     
-                            <div class="form-group form-row" [ngClass]="{'has-error' : forErrors.location}">
+                            <!-- <div class="form-group form-row" [ngClass]="{'has-error' : forErrors.location}">
                                 <label for="location" class="col-md-3 col-form-label">Location:</label>
                                 <div class="col-lg-7">
     
@@ -172,10 +172,10 @@
                                         <span class="text-danger"> {{forErrors.location}}</span>
                                     </span>
                                 </div>
-                            </div>
+                            </div> -->
     
                             <div class="text-center">
-                                <button type="button" class="btn btn-outline-primary mt-4" (click)="onUpdate(AssociateModel)">Edit
+                                <button type="button" class="btn btn-outline-primary mt-4" (click)="onUpdate(AssociateModel)">update
                                     Associate </button>
                                     <button type="button" class="btn btn-outline-primary mt-4" routerLink="/viewAssociate">View
                                             Associate </button>

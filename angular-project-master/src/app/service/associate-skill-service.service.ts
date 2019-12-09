@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpBackend } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { AssociateAndSkills } from '../model/associate-and-skills';
 import { map } from 'rxjs/operators';
@@ -9,9 +9,19 @@ import { Skills } from '../model/skills';
 })
 export class AssociateSkillServiceService {
   assoSkillModel:AssociateAndSkills=new AssociateAndSkills("","","","","","",null,null);
-  constructor(private http:HttpClient){
+  constructor(private http:HttpClient,
+    private http1:HttpClient,
+    private httpBackend:HttpBackend){
       
   }
+
+
+  getAllAssociateSkillsfeign(){
+
+    this.http1=new HttpClient(this.httpBackend)
+    return this.http1.get<AssociateAndSkills[]>("/api/associateSkills/all");
+   
+ }
   getAllAssociateSkills(){
      return this.http.get<AssociateAndSkills[]>("/api/associateSkills/all");
     
@@ -56,7 +66,8 @@ updateAssociateSkillByASid(model:AssociateAndSkills){
 //##########################################search on result list
 
   search(search:string){
-    return this.http.get<AssociateAndSkills[]>("/api/search/"+search);
+    this.http1=new HttpClient(this.httpBackend)
+    return this.http1.get<AssociateAndSkills[]>("/api/search/"+search);
   }
 //##############################from the skill update component
   getSkill(){

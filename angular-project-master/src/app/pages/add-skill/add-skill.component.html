@@ -17,14 +17,15 @@
                     <table>
                         <tr>
                             
-                                <td  scope="col"><select name="selected_Category" [(ngModel)]="skillModel.skillCategory" [(ngModel)]="selected_Category" (change)="onCategorySelected(selected_Category)">
+                                <td  scope="col">
+                                <select name="selected_Category" [(ngModel)]="skillModel.skillCategory" [(ngModel)]="selected_Category" class="form-control" (change)="onCategorySelected(selected_Category)">
                                     <option *ngFor="let category of skillCategory">{{category}}</option>
                                 </select>
                                 </td>
                           
                             
                                 <td>
-                                    <select id="state_dropdown" name="selected_skillname"[(ngModel)]="skillModel.skillName"  [(ngModel)]="selected_skillname" (change)="onSkillSelected(selected_skillname)">
+                                    <select id="state_dropdown" name="selected_skillname"[(ngModel)]="skillModel.skillName"  [(ngModel)]="selected_skillname"  class="form-control" (change)="onSkillSelected(selected_skillname)">
                                         <option *ngFor="let name of skillName">{{name}}</option>
                                     </select>
                                 </td>

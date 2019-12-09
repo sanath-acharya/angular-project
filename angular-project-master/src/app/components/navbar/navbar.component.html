@@ -1,8 +1,8 @@
-<script>
+<!-- <script>
     function myFunction(x) {
       x.classList.toggle("change");
     }
-    </script>
+    </script> -->
 <nav class="navbar navbar-top navbar-expand-md navbar-dark" id="navbar-main">
   <div class="container-fluid">
     <!-- Brand -->
@@ -25,7 +25,7 @@
         <a class="nav-link pr-0" role="button" ngbDropdownToggle>
           <div class="media align-items-center">
             
-              <div class="container" onclick="myFunction(this)">
+              <div class="container">
                   <div class="bar1"></div>
                   <div class="bar2"></div>
                   <div class="bar3"></div>
@@ -38,7 +38,7 @@
         </a>
         <div class="dropdown-menu-arrow dropdown-menu-right" ngbDropdownMenu>
           <div class=" dropdown-header noti-title">
-            <h6 class="text-overflow m-0">Welcome {{admin}} </h6>
+            <h6 class="text-overflow m-0">Welcome {{type}} </h6>
           </div>
           <a routerLinkActive="active" routerLink="/userprofile" class="dropdown-item" [routerLink]="['/', 'userprofile']" *ngIf="type=='employee'">
             <i class="ni ni-single-02"></i>
@@ -46,7 +46,7 @@
           </a>
          
           <div class="dropdown-divider"></div>
-          <a (click)="logout()" class="dropdown-item">
+          <a (click)="logout()"  class="dropdown-item">
             <i class="ni ni-user-run"></i>
             <span>Logout</span>
           </a>

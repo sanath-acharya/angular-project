@@ -6,8 +6,7 @@ import { CommonModule, } from '@angular/common';
 import { BrowserModule  } from '@angular/platform-browser';
 import { Routes, RouterModule } from '@angular/router';
 
-import { AdminLayoutComponent } from './layouts/admin-layout/admin-layout.component';
-import { AuthLayoutComponent } from './layouts/auth-layout/auth-layout.component';
+
 import { LandingComponent } from './pages/landing/landing.component';
 import { ResultlistComponent } from './pages/resultlist/resultlist.component';
 import { LoginComponent } from './pages/login/login.component';
@@ -21,38 +20,7 @@ import { TablesComponent } from './pages/tables/tables.component';
 import { ViewAssociateSkillsComponent } from './pages/view-associate-skills/view-associate-skills.component';
 import { UserProfileComponent } from './pages/user-profile/user-profile.component';
 import { UpdateAssoSkillsComponent } from './pages/update-asso-skills/update-asso-skills.component';
-//import { DashboardComponent } from './pages/dashboard/dashboard.component';
 
-// const routes: Routes =[
-//   {
-//     path: '',
-//     redirectTo: 'dashboard',
-//     pathMatch: 'full',
-//   } 
-//   ,{
-//     path: '',
-//     component: AdminLayoutComponent,
-//     children: [
-//       {
-//         path: '',
-//         loadChildren: () => import('./layouts/admin-layout/admin-layout.module').then(m => m.AdminLayoutModule)
-//       }
-//     ]
-//   }, {
-//     path: '',
-//     component: AuthLayoutComponent,
-//     children: [
-//       {
-//         path: '',
-//         loadChildren: () => import('./layouts/auth-layout/auth-layout.module').then(m => m.AuthLayoutModule)
-//       }
-//     ]
-//   },
-//   {
-//     path:'**' ,redirectTo: 'dashboard',
-//     pathMatch: 'full'
-//   }
-// ];
 
 const routes: Routes =[
   {

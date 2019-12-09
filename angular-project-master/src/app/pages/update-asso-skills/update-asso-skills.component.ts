@@ -29,12 +29,14 @@ export class UpdateAssoSkillsComponent implements OnInit {
     ) { }
 
   ngOnInit() {
-    // this.associateskillService.
+    this.AssociateSkill=this.associateskillService.getAssociteSkillmodel();
     
-
+console.log(this.AssociateSkill)
 
 
     this.skillUpdateForm = this.formBuilder.group({
+      skillGroup: ['', Validators.required],
+      skillName: ['', Validators.required],
       certification: ['', Validators.required],
       startDate: ['', Validators.required],
       endDate: ['', Validators.required],
@@ -68,10 +70,12 @@ onRate($event:{oldValue:number, newValue:number, starRating:StarRatingComponent}
 
 
 onUpdateChange(model){
-  this.associateskillService.setAssociateSkillModel(model);
-  
-  this.router.navigate(["/"])
+  this.associateskillService.updateAssociateSkillByASid(model).subscribe(response=>{
+    this.router.navigate(["/viewSkills"]);
 
+  })
+  
+ 
 }
 
 }

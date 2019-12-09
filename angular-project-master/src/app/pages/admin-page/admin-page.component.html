@@ -70,7 +70,7 @@
                     <div class="table-responsive">
                         <table class="table align-items-center table-flush">
                             <thead>
-                                <th scope="col">View profile</th>
+                                <th scope="col" *ngIf="type=='admin'">View profile</th>
                                 <th scope="col">FirstName</th>
                                 <th scope="col">LastName</th>
                                 <th scope="col">Email</th>
@@ -83,7 +83,7 @@
     
                                 <tr *ngFor="let employee of AssociateSkill | paginate : {itemsPerPage:3,currentPage:p} ;let i=index">
                                     <!-- <td>{{employee.associateFirstName | searchTitle:employee.gender}}</td> -->
-                                    <td>
+                                    <td  *ngIf="type=='admin'">
                                         <!--  --> <button class="btn btn-outline-warning"
                                             [routerLink]="['/', 'userprofile', {id: [employee.aid.associateId]}]">View
                                             profile</button>

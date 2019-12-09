@@ -31,7 +31,7 @@ export class ResultlistComponent implements OnInit {
     // this.search();
 
 
-    this.associateSkill.getAllAssociateSkills().subscribe(
+    this.associateSkill.getAllAssociateSkillsfeign().subscribe(
       (response:AssociateAndSkills[])=>{
         console.log("this is inside ts file above response")
         console.log(response)
