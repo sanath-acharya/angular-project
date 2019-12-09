@@ -51,13 +51,16 @@ export class ViewAssociateComponent implements OnInit {
       'minlength': 'mobile number must be 10 charactors',
       'maxlength': 'mobile number must be 10 charecters.',
 
-    },
+    }
+    // ,
 
 
-    'password': {
-      'required': 'Password is required'
+    // 'password': {
+    //   'required': 'Password is required'
 
-    },
+    
+    // }
+    ,
 
     'dob': {
       'required': 'date of birth is required'
@@ -79,7 +82,7 @@ export class ViewAssociateComponent implements OnInit {
     'associateFirstName': '',
     'associateLastName': '',
     'associateEmail': '',
-    'password': '',
+    // 'password': '',
     'dob': '',
     'gender': '',
     'location': '',
@@ -97,7 +100,7 @@ export class ViewAssociateComponent implements OnInit {
       associateLastName: [null, [Validators.required]],
 
       associateEmail: ['', [Validators.required, emailDomain]],
-      password: [null, Validators.required],
+      // password: [null, Validators.required],
       associateMobile: [null, [Validators.required]],
       dob: [null, Validators.required],
       gender: [null, Validators.required],

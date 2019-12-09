@@ -42,6 +42,7 @@ console.log(this.AssociateSkill)
       endDate: ['', Validators.required],
       duration: ['', Validators.required],
       expierence: ['', Validators.required],
+      rating:['',Validators.required]
 //     password: ['', [Validators.required, Validators.minLength(6)]],
       //  expertise: [null, Validators.required]
    });

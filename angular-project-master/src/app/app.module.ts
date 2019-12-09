@@ -38,6 +38,7 @@ import{ RatingModule } from  'ng-starrating';
 import { ViewAssociateSkillsComponent } from './pages/view-associate-skills/view-associate-skills.component';
 import { UserProfileComponent } from './pages/user-profile/user-profile.component';
 import { UpdateAssoSkillsComponent } from './pages/update-asso-skills/update-asso-skills.component';
+import { ForgotPasswordComponent } from './pages/forgot-password/forgot-password.component';
 
 
 @NgModule({
@@ -73,7 +74,9 @@ import { UpdateAssoSkillsComponent } from './pages/update-asso-skills/update-ass
      ViewAssociateSkillsComponent,
      UserProfileComponent,
      
-     UpdateAssoSkillsComponent
+     UpdateAssoSkillsComponent,
+     
+     ForgotPasswordComponent
  
     
    

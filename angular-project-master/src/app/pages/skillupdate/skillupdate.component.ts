@@ -24,6 +24,8 @@ export class SkillupdateComponent implements OnInit {
   aid:number
   skillName:Skills[];
   skill:Skills[];
+ mySet = new Set();
+
   skillCategory:string
   skillname:string
   AssociateSkill:AssociateAndSkills=new AssociateAndSkills("","","","","","",new Associate(0,"", "", "", "", null, "", "", "", ""),new Skills(0,"", ""));
@@ -48,6 +50,7 @@ export class SkillupdateComponent implements OnInit {
       endDate: ['', Validators.required],
       duration: ['', Validators.required],
       expierence: ['', Validators.required],
+      rating: ['', Validators.required],
 //     password: ['', [Validators.required, Validators.minLength(6)]],
       //  expertise: [null, Validators.required]
    });
@@ -121,7 +124,12 @@ getAllSkillCategory(){
   this.associateskillService.getSkill().subscribe(
     (response)=>{
       this.skill=response;
-      console.log(this.skill)
+      console.log("data is ")
+      console.log(this.skill);
+      for(let i=0;i<this.skill.length;i++){
+        this.mySet.add(this.skill[i]['skillCategory'])
+      }
+      console.log(this.mySet)
     }
   );
 }

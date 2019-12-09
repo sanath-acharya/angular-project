@@ -27,7 +27,7 @@
                 <label for="txtSearchText" class="col-md-3 col-form-label">SearchBy</label>
                 <div class="input-group input-group-rounded input-group-merge">
                     <input type="search" class=" form-control-rounded form-control  fa fa-search col-lg-7  "
-                        id="txtSearchText" [(ngModel)]="searchText" aria-label="Search" (keyup)="onSearchClick()">
+                        id="txtSearchText" [(ngModel)]="searchText" aria-label="Search" placeholder="type a text "(keyup)="onSearchClick()">
                     <div class="input-group-append">
                         <div class="input-group-text">
                             <span class="fa fa-search" (click)="onSearchClick()"></span>
@@ -144,7 +144,7 @@
                                 </td>
                                 <td>
                                     <button class="btn btn-outline-danger"
-                                        (click)="onRemoveconfirm(employee.associateId)"> Remove</button>
+                                        (click)="onRemoveconfirm(employee.associateEmail)"> Remove</button>
 
                                 </td>
                             </tr>

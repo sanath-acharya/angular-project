@@ -20,6 +20,7 @@ import { TablesComponent } from './pages/tables/tables.component';
 import { ViewAssociateSkillsComponent } from './pages/view-associate-skills/view-associate-skills.component';
 import { UserProfileComponent } from './pages/user-profile/user-profile.component';
 import { UpdateAssoSkillsComponent } from './pages/update-asso-skills/update-asso-skills.component';
+import { ForgotPasswordComponent } from './pages/forgot-password/forgot-password.component';
 
 
 const routes: Routes =[
@@ -80,7 +81,11 @@ const routes: Routes =[
     path:'updateAssociateSkils',
     component:UpdateAssoSkillsComponent,
     canActivate:[CanActivateGuardService]
-},
+}, {
+  path:'forgotPassword',
+  component:ForgotPasswordComponent,
+  // canActivate:[CanActivateGuardService]
+}
 // {
 //   path:'dashboard',
 //   component:DashboardComponent,

@@ -98,12 +98,12 @@ export class AddAssociateService {
 
 
   }
-  deletebyId(associateId:number)
+  deletebyId(email:string)
   {
     
     console.log("tis. is service");
-    console.log(associateId);
-      return this.http.delete("/api/deleteAssociate/"+associateId);
+    console.log(email);
+      return this.http.delete("/api/deleteAssociate/"+email);
       console.log("after. is service")
   }
   getModalofEdit():Associate{

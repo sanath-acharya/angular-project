@@ -13,7 +13,7 @@ export class AddAssociateComponent implements OnInit {
   load = 0
   private Associateinfo: Associate[];
   private editModel: Associate = new Associate(0, "", "", "", "", 0, "", "", "", "");
-  searchText = "searchvalue";
+  searchText = "";
   searchby = "associateFirstName";
   errorstring: string;
   stateInfo: any[] = [];
@@ -101,10 +101,10 @@ export class AddAssociateComponent implements OnInit {
 
 
   // }
-  onRemoveconfirm(associateId) {
+  onRemoveconfirm(associateEmail) {
     console.log("tis. is ts");
-    console.log(associateId);
-    this.AssociateService.deletebyId(associateId).subscribe((resoponse) => {
+    console.log(associateEmail);
+    this.AssociateService.deletebyId(associateEmail).subscribe((resoponse) => {
       console.log(resoponse);
 
       this.getdata();

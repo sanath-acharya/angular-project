@@ -155,6 +155,18 @@
                             </div>
     
     
+                            <div class="form-group form-row" [ngClass]="{'has-error' : forErrors.location}">
+                                    <label for="location" class="col-md-3 col-form-label">location:</label>
+                                    <div class="col-lg-7">
+                                        <input class="form-control" formControlName="location"
+                                            [(ngModel)]="AssociateModel.location" placeholder="location " type="text"
+                                            (blur)="logValidationErrors()">
+                                        <span class="help-block" *ngIf="forErrors.location">
+        
+                                            <span class="text-danger"> {{forErrors.location}}</span>
+                                        </span>
+                                    </div>
+                                </div>
     
     
                             <!-- <div class="form-group form-row" [ngClass]="{'has-error' : forErrors.location}">
@@ -185,7 +197,7 @@
     
                         </form>
     
-                        {{addAssociateForm.value| json}}
+                        <!-- {{addAssociateForm.value| json}} -->
                     </div>
     
                 </div>

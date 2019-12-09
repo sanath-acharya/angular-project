@@ -74,7 +74,7 @@
                             </div>
 
                         <div class="form-group form-row">
-                            <label for="duration" class="col-md-3 col-form-label">Duration: </label>
+                            <label for="duration" class="col-md-3 col-form-label">Duration (In Hours): </label>
                             <div class="col-lg-7">
                                 <input class="form-control" formControlName="duration"
                                     [(ngModel)]="AssociateSkill.duration" type="text" name="duration"
@@ -85,7 +85,7 @@
                             </div>
                         </div>
                         <div class="form-group form-row">
-                            <label for="expierence" class="col-md-3 col-form-label">Expierence: </label>
+                            <label for="expierence" class="col-md-3 col-form-label">Expierence (In Years): </label>
                             <div class="col-lg-7">
                                 <input class="form-control" formControlName="expierence" type="text"
                                     [(ngModel)]="AssociateSkill.experience" name="experience"
@@ -94,7 +94,23 @@
                                     <div *ngIf="f.expierence.errors.required">Expierence is required</div>
                                 </div>
                             </div>
+
                         </div>
+
+
+                        <div class="form-group form-row">
+                                <label for="rating" class="col-md-3 col-form-label">Rating: </label>
+                                <div class="col-lg-7">
+                                    <input class="form-control" formControlName="rating" type="range"
+                                        [(ngModel)]="AssociateSkill.rating" name="rating"
+                                        [ngClass]="{ 'is-invalid': submitted && f.rating.errors }" min="1" max="5" step="1"
+                                        value="{{AssociateSkill.rating}}">
+                                    <div *ngIf="submitted && f.rating.errors" class="invalid-feedback">
+                                        <div *ngIf="f.rating.errors.required">Rating is required</div>
+                                    </div>
+                                </div>
+                            </div>
+    
 
                         <!-- <div class="form-group form-row">
                                     <label for="expertise" class="col-md-3 col-form-label">Rate Your: </label>

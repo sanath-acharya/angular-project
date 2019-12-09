@@ -21,7 +21,9 @@ export class LoginService {
 
   constructor( private httpBackend:HttpBackend,
     private http:HttpClient,
-    private Uservice:UserDetailsService
+    private Uservice:UserDetailsService,
+    private http1:HttpClient,
+
     // private JwtHelperService:JwtHelperService
     ) { }
     public getcurrentid(){
@@ -108,6 +110,12 @@ export class LoginService {
     sessionStorage.removeItem("currentUser");
     sessionStorage.removeItem("id");
     sessionStorage.removeItem("user");
+  }
+
+  public forgotPass(email:string){
+    console.log("htisk is in service")
+    this.http1=new HttpClient(this.httpBackend)
+    return this.http1.get("/api/forgotPassword/"+email);
   }
 
 //   // public isAuthenticated():boolean{

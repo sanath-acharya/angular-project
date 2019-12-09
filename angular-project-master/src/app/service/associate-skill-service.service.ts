@@ -79,4 +79,5 @@ updateAssociateSkillByASid(model:AssociateAndSkills){
   getSkillfromSkillCategoryAndSkillName(skillcategory:string,skillname:string){
     return this.http.get<Skills>("/api/getSkillid/"+skillcategory+"/"+skillname)
   }
+ 
 }
